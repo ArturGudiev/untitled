@@ -1,0 +1,54 @@
+Seller2: 30 from Buyer2
+Seller3: 70 from Buyer1
+Buyer2: get REJECT from Seller2
+Buyer1: get REJECT from Seller3
+Seller1: 30 from Buyer2
+Seller2: 70 from Buyer1
+Buyer2: get REJECT from Seller1
+Buyer1: get ACCEPT from Seller2
+Seller4: 30 from Buyer2
+Buyer2: get REJECT from Seller4
+Seller5: 30 from Buyer2
+Buyer2: get REJECT from Seller5
+Seller3: 30 from Buyer2
+Buyer2: get REJECT from Seller3
+Seller6: 40 from Buyer2
+Buyer2: get REJECT from Seller6
+Seller2: 40 from Buyer2
+Buyer2: get REJECT from Seller2
+Seller1: 40 from Buyer2
+Buyer2: get REJECT from Seller1
+Seller4: 40 from Buyer2
+Buyer2: get REJECT from Seller4
+Seller5: 40 from Buyer2
+Buyer2: get REJECT from Seller5
+Seller3: 40 from Buyer2
+Buyer2: get REJECT from Seller3
+Seller6: 50 from Buyer2
+Buyer2: get REJECT from Seller6
+Seller2: 50 from Buyer2
+Buyer2: get REJECT from Seller2
+Seller1: 50 from Buyer2
+Buyer2: get REJECT from Seller1
+Seller4: 50 from Buyer2
+Buyer2: get REJECT from Seller4
+Seller5: 50 from Buyer2
+Buyer2: get REJECT from Seller5
+Seller3: 50 from Buyer2
+Buyer2: get REJECT from Seller3
+Seller6: 60 from Buyer2
+Buyer2: get REJECT from Seller6
+Seller2: 60 from Buyer2
+Buyer2: get REJECT from Seller2
+Seller1: 60 from Buyer2
+Buyer2: get REJECT from Seller1
+Seller4: 60 from Buyer2
+Buyer2: get REJECT from Seller4
+Seller5: 60 from Buyer2
+Buyer2: get REJECT from Seller5
+Seller3: 60 from Buyer2
+Buyer2: get REJECT from Seller3
+Seller6: 70 from Buyer2
+Buyer2: get REJECT from Seller6
+Seller2: 70 from Buyer2
+Buyer2: get ACCEPT from Seller2
