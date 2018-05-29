@@ -1,0 +1,80 @@
+//    private boolean containsInPathes(final int point) {
+//        return pathes.stream().map(p -> indexOfAll(point, p).size() != 0)
+//                .reduce(false, (a, b) -> a || b);
+//    }
+
+    private Object[] getDistFromPathesToPoint(List<List<Integer>> pathes, int point) {
+        int index = -1;
+        double res = Double.POSITIVE_INFINITY;
+        for (int i = 0; i < pathes.size(); i++) {
+            double distFromPathToPoint = getDistFromPathToPoint(pathes.get(i), point);
+            if (distFromPathToPoint < res) {
+                res = distFromPathToPoint;
+                index = i;
+            }
+        }
+        return new Object[]{res, index};
+    }
+
+    //    private Object[] getDistAfterAddingStock(int stock) {
+    //        ArrayList<Integer> newPath = getNewEverydayPath();
+    //        Object[] resFromExisting = getDistFromPathesToPoint(pathes, stock);
+    //        double distForNewPath = getDistFromPathToPoint(newPath, stock);
+    //        double distForExistPathes = (double) resFromExisting[0];
+    //        int indexForExistPathes = (int) resFromExisting[1];
+    //        int indexOfPathWithStock = -1;
+    //        double dist = min(distForExistPathes, distForNewPath);
+    //        if (distForNewPath < distForExistPathes) {
+    ////            addPointToPath(newPath, stock);
+    //            pathes.add(newPath);
+    //            indexOfPathWithStock = pathes.size() - 1;
+    //        } else {
+    ////            addPointToPath(pathes.get(indexForExistPathes), stock);
+    //            indexOfPathWithStock = indexForExistPathes;
+    //        }
+    //        return new Object[]{dist, indexOfPathWithStock};
+    //    }
+
+
+//    List<List<Integer>> pathes = new ArrayList<List<Integer>>();
+
+//    public ArrayList<Integer> getNewEverydayPath() {
+//        return (ArrayList) path.clone();
+//    }
+
+    static ArrayList<Integer> indexOfAll(Object obj, List list) {
+        ArrayList<Integer> indexList = new ArrayList<Integer>();
+        for (int i = 0; i < list.size(); i++)
+            if (obj.equals(list.get(i)))
+                indexList.add(i);
+        return indexList;
+    }
+
+//
+//    private void addHome(int indexOfPathWithStock, int stock, int home) {
+//        int distOther;
+//        int distWithStock;
+//        ArrayList<Integer> newPath = getNewEverydayPath();
+//        double distFromNewPath = getDistFromPathToPoint(newPath, home);
+//        List<List<Integer>> otherPathes = pathes.subList(indexOfPathWithStock + 1, pathes.size());
+//        Object[] resFromOtherPathes = getDistFromPathesToPoint(otherPathes, home);
+//        double distFromOtherPathes = (double) resFromOtherPathes[0];
+//        int indexForExistingPath = (int) resFromOtherPathes[1];
+//        List<Integer> stockPath = pathes.get(indexOfPathWithStock);
+//        int stockIndexInPath = stockPath.indexOf(stock);
+//        double distFromStockPath = getDistFromPathToPoint(stockPath.subList(stockIndexInPath, stockPath.size()), home);
+//        if(distFromNewPath < distFromOtherPathes && distFromNewPath < distFromStockPath){
+//            //addToNewpath
+//            addPointToPath(newPath, stock);
+//            pathes.add(newPath);
+//        }else if (distFromOtherPathes < distFromNewPath && distFromOtherPathes < distFromStockPath){
+//            //addToOtherPathes
+//            addPointToPath(pathes.get(indexForExistingPath), home);
+//        }else{
+//            List<Integer> subPathFromStock = stockPath.subList(stockIndexInPath, stockPath.size());
+//            addPointToPath(subPathFromStock, home);
+//            List<Integer> newStockPath = stockPath.subList(0, stockIndexInPath);
+//            newStockPath.addAll(subPathFromStock);
+//            pathes.set(pathes.indexOf(stockPath), newStockPath);
+//        }
+//    }

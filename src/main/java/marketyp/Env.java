@@ -1,35 +1,117 @@
 package marketyp;
 
-
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.logging.LogRecord;
 import java.util.logging.SimpleFormatter;
+import java.util.stream.Stream;
+
+import static java.lang.Math.min;
+import static marketyp.FloydWarshall.*;
+import static marketyp.FloydWarshall.getDistance;
 
 public class Env {
     public static final Env INSTANCE = new Env();
-    //    private int count = 0;
-    private volatile int count = 0;
-    private volatile int round = 0;
-    public volatile ArrayList<String> sellers = new ArrayList<String>();
-    public volatile ArrayList<String> consumers = new ArrayList<String>();
     public volatile ArrayList<Integer> pathes = new ArrayList<Integer>();
-    int proposal_senders = 0;
-    int answers = 0;
-    public enum EnvState {
-        START,
-        SEND_PROPOSALS,
-        WAIT_ANSWERS,
-        FINAL
+
+    public static int getLengthOfPath(List<Integer> path) {
+        int sum = 0;
+        for (int i = 0; i < path.size() - 1; i++) {
+            sum += getDistance(path.get(i), path.get(i + 1));
+        }
+        return sum;
     }
 
-    public volatile EnvState state  = EnvState.START;
 
+    public static void main(String[] args) {
+        FloydWarshall.main(null);
+        ArrayList<Integer> l = new ArrayList<Integer>();
+        l.add(8);
+        l.add(9);
+        l.add(10);
+//        System.out.println(getDistFromPathToPoint(l, 11));
+//        System.out.println(FloydWarshall.getLengthOfPath(l));
+        ;
+    }
+
+
+    public static double getDistFromPathToPoint(List<Integer> path, int point) {
+        return getDistFromPathToPoint(path, point, 0, path.size());
+    }
+
+    public static double getDistFromPathToPoint(List<Integer> path, int point, int startIndex, int lastIndex) {
+        double ans = Double.POSITIVE_INFINITY;
+        for (int i = startIndex; i < lastIndex; i++) {
+            int u = path.get(i);
+            double d = 2 * getDistance(u, point);
+            if (i != path.size() - 1) {
+                int v = path.get(i + 1);
+                double d2 = getDistance(u, point) + getDistance(point, v);
+                ans = min(min(d, d2), ans);
+            } else {
+                ans = min(d, ans);
+            }
+        }
+        return ans;
+    }
+
+    public static void addPointToPath(List<Integer> path, int point) {
+        addPointToPath(path, point, 0, path.size());
+    }
+
+    public static void addPointToPath(List<Integer> path, int point, int startIndex, int lastIndex) {
+//        System.out.println("path = [" + path + "], point = [" + point + "], startIndex = [" + startIndex + "], lastIndex = [" + lastIndex + "]");
+        double val = Double.POSITIVE_INFINITY;
+        int index = startIndex;
+        boolean self = false;
+        for (int i = startIndex; i < lastIndex; i++) {
+            int u = path.get(i);
+            double dist_self = 2 * getDistance(u, point);
+            if (i != path.size() - 1) {
+                int v = path.get(i + 1);
+                double dist_trans = getDistance(u, point) + getDistance(point, v);
+                if (val <= min(dist_self, dist_trans)) continue;
+                //min(d,d2) >= ans
+                val = min(dist_self, dist_trans);
+                index = i;
+                self = dist_self < dist_trans;
+            } else if (dist_self < val) {
+                index = i;
+                self = true;
+                val = dist_self;
+            }
+        }
+        //adding the path
+        if (self) {
+            int u = path.get(index);
+            ArrayList<Integer> path1 = getPath(u, point);
+            ArrayList<Integer> path2 = getPath(point, u);
+            path1.remove(0);
+            path2.remove(0);
+//            path2.remove(path2.size() - 1);
+            path1.addAll(path2);
+            path.addAll(index + 1, path1);
+        } else {
+            int u = path.get(index);
+            int v = path.get(index + 1);
+            ArrayList<Integer> path1 = getPath(u, point);
+            ArrayList<Integer> path2 = getPath(point, v);
+            path1.remove(0);
+            path2.remove(0);
+//            path2.remove(path2.size()-1);
+            path1.addAll(path2);
+            path.addAll(index + 1, path1);
+        }
+        return;
+    }
 
 }
 
-
 class MyFormatter extends SimpleFormatter {
-
     /* (non-Javadoc)
      * @see java.util.logging.Formatter#format(java.util.logging.LogRecord)
      */
@@ -38,5 +120,91 @@ class MyFormatter extends SimpleFormatter {
         StringBuilder sb = new StringBuilder();
         sb.append(record.getMessage()).append('\n');
         return sb.toString();
+    }
+}
+
+class FloydWarshall {
+    static double[][] dist;
+    static int[][] next;
+
+
+    public static void main(String[] args) {
+        int[][] weights = {{1, 3, 2}, {2, 1, 4}, {2, 3, 3}, {3, 4, 2}, {4, 2, 1}, {4, 5, 4}, {5, 6, 2}, {5, 7, 2}, {3, 8, 5},
+                {8, 9, 3}, {9, 10, 1}, {9, 11, 1}, {10, 7, 2}, {11, 7, 2}};
+        int numVertices = 11;
+        int[][] finalWeights = Arrays.stream(weights)
+                .flatMap(arr -> Stream.of(arr, new int[]{arr[1], arr[0], arr[2]}))
+                .toArray(int[][]::new);
+
+        floydWarshall(finalWeights, numVertices);
+    }
+
+    static void floydWarshall(int[][] weights, int numVertices) {
+
+        dist = new double[numVertices][numVertices];
+        for (double[] row : dist)
+            Arrays.fill(row, Double.POSITIVE_INFINITY);
+
+        for (int[] w : weights)
+            dist[w[0] - 1][w[1] - 1] = w[2];
+
+        next = new int[numVertices][numVertices];
+        for (int i = 0; i < next.length; i++) {
+            for (int j = 0; j < next.length; j++)
+                if (i != j)
+                    next[i][j] = j + 1;
+        }
+
+        for (int k = 0; k < numVertices; k++)
+            for (int i = 0; i < numVertices; i++)
+                for (int j = 0; j < numVertices; j++)
+                    if (dist[i][k] + dist[k][j] < dist[i][j]) {
+                        dist[i][j] = dist[i][k] + dist[k][j];
+                        next[i][j] = next[i][k];
+                    }
+
+        try {
+            printResult();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+//        printDefiniteResult(1,4);
+//        System.out.println(getDistance(1,4));
+    }
+
+    static ArrayList<Integer> getPath(int u, int v) {
+        ArrayList<Integer> list = new ArrayList<Integer>();
+        list.add(u);
+        do {
+            u = next[u - 1][v - 1];
+            list.add(u);
+        } while (u != v);
+        return list;
+    }
+
+    static double getDistance(int u, int v) {
+        return dist[u - 1][v - 1];
+    }
+
+    static void printResult() throws FileNotFoundException, UnsupportedEncodingException {
+        PrintWriter writer = new PrintWriter("C:\\Programming\\Java\\untitled\\src\\main\\java\\marketyp\\pathes.txt", "UTF-8");
+        writer.println("pair     dist    path");
+        for (int i = 0; i < next.length; i++) {
+            for (int j = 0; j < next.length; j++) {
+                if (i != j) {
+                    int u = i + 1;
+                    int v = j + 1;
+                    String path = String.format("%d -> %d    %2d     %s", u, v, (int) dist[i][j], u);
+                    do {
+                        u = next[u - 1][v - 1];
+                        path += " -> " + u;
+                    } while (u != v);
+                    writer.println(path);
+                }
+            }
+        }
+        writer.close();
     }
 }

@@ -12,43 +12,52 @@ import jade.domain.FIPANames;
 import jade.lang.acl.ACLMessage;
 
 import java.io.IOException;
-import java.util.Formatter;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
 import java.util.logging.FileHandler;
 import java.util.logging.Level;
-import java.util.logging.LogRecord;
 import java.util.logging.Logger;
-import java.util.logging.SimpleFormatter;
 
+import static java.lang.Math.min;
 import static java.lang.Thread.sleep;
 import static marketyp.Env.INSTANCE;
+import static marketyp.Env.addPointToPath;
+import static marketyp.Env.getDistFromPathToPoint;
+//import static marketyp.Env.getDistToPointFromPath;
+import static marketyp.FloydWarshall.*;
 
 public class SellerAgent extends Agent {
     private static final Logger LOGGER = Logger.getLogger(SellerAgent.class.getName());
-    int price = -1;
     double coef;
+    int sellerHome;
+    int sellerJob;
+    List<Integer> path = new ArrayList<>();
 
     @Override
     protected void setup() {
 
         Object[] args = getArguments();
         if (args != null && args.length > 0) {
-//            price = Integer.parseInt(args[0].toString());
-            coef = Double.parseDouble(args[0].toString());
-            LOGGER.log(Level.FINE, getLocalName() + ": sell with price " + price);
-//            System.out.println(getLocalName() + ": sell with price " + price);
+            sellerHome = Integer.parseInt(args[0].toString());
+            sellerJob = Integer.parseInt(args[1].toString());
+            coef = Double.parseDouble(args[2].toString());
+            path.add(sellerHome);
+            path.add(sellerJob);
+            LOGGER.log(Level.FINE, getLocalName() + ": sell with coef " + coef);
+            System.out.println(getLocalName() + ": seller with params coef " + coef);
         }
 
         // Register the service
-        System.out.println(getLocalName() + ": registering service of type \"market\" with price " + price);
+        System.out.println(getLocalName() + ": registering service of type \"market\" with coef " + coef);
         try {
             DFAgentDescription dfd = new DFAgentDescription();
             dfd.setName(getAID());
             ServiceDescription sd = new ServiceDescription();
             sd.setName(getLocalName());
             sd.setType("market");
-            // Agents that want to use this service need to "know" the weather-forecast-ontology
             sd.addOntologies("market-ontology");
-            // Agents that want to use this service need to "speak" the FIPA-SL language
             sd.addLanguages(FIPANames.ContentLanguage.FIPA_SL);
             dfd.addServices(sd);
 
@@ -59,83 +68,132 @@ public class SellerAgent extends Agent {
 
         addBehaviour(new CyclicBehaviour(this) {
 
-            public void answer(int offerPrice, String sender) {
+            public void answer(ACLMessage msg) {
+                Iterator<Integer> iter = Arrays.stream(msg.getContent().split(" "))
+                        .map(e -> Integer.valueOf(e))
+                        .iterator();
+                int clientHome = iter.next(), clientStock = iter.next(), offerPrice = iter.next();
+                double dist = getDistFromPathesToPoints(clientHome, clientStock);
+
                 ACLMessage ans;
-                if (offerPrice < coef * INSTANCE.pathes.get(0)) {
+                if (offerPrice < coef * dist) {
                     ans = new ACLMessage(ACLMessage.REJECT_PROPOSAL);
                 } else {
                     ans = new ACLMessage(ACLMessage.ACCEPT_PROPOSAL);
+                    addPointsToPath(clientHome, clientStock);
+                    coef *= 3;
                 }
-                ans.addReceiver(new AID(sender, AID.ISLOCALNAME));
+
+                ans.addReceiver(new AID(msg.getSender().getLocalName(), AID.ISLOCALNAME));
                 ans.setLanguage("English");
                 ans.setOntology("Connection");
                 myAgent.send(ans);
-//                System.out.println("sent to " + sender + " " + ACLMessage.getPerformative(ans.getPerformative()));
             }
 
             @Override
             public void action() {
                 ACLMessage msg = myAgent.receive();
                 if (msg != null) {
-                    String content = msg.getContent();
-                       LOGGER.log(Level.INFO, myAgent.getLocalName() + ": " + msg.getContent() + " from " + msg.getSender().getLocalName());
-                    int offerPrice = Integer.valueOf(msg.getContent());
-                    answer(offerPrice, msg.getSender().getLocalName());
+                    answer(msg);
+                    LOGGER.log(Level.INFO, myAgent.getLocalName() + ": " + msg.getContent() + " from "
+                            + msg.getSender().getLocalName() + " myPath:" + path);
 
-                        ACLMessage ans = new ACLMessage(ACLMessage.INFORM);
-//                        ans.addReceiver(new AID(msg.getSender().getLocalName(), AID.ISLOCALNAME));
-//                        ans.addReceiver(new AID(msg.getSender().getLocalName(), AID.ISLOCALNAME));
-//                        ans.setLanguage("English");
-//                        ans.setOntology("Connection");
-                        ans.setContent("pong");
-                        myAgent.send(ans);
-
-                }else {
+                } else {
                     block();
                 }
             }
         });
     }
 
-    public static void main(String[] args) throws InterruptedException, IOException {
-//        LOGGER.info("Logger Name: " + LOGGER.getName());
+    private void addPointsToPath(int home, int stock) {
 
-//        Handler consoleHandler = new ConsoleHandler();
-//        LOGGER.addHandler(consoleHandler);
-//        consoleHandler.setLevel(Level.INFO);
+        int homeIndex = path.indexOf(home);
+        int stockIndex = path.indexOf(stock);
+        if (homeIndex == -1 && stockIndex == -1) {
+//            LOGGER.log(Level.SEVERE, getLocalName() + "addPointsToPath1");
+            System.out.println(path);
+            addPointToPath(path, stock);
+            int iStock = path.indexOf(stock);
+            System.out.println(path);
+            addPointToPath(path, home, iStock, path.size());
+            System.out.println(path);
+        } else if (stockIndex != -1 && homeIndex == -1) {
+//            LOGGER.log(Level.SEVERE, getLocalName() + "addPointsToPath2");
+
+            int iStock = path.indexOf(stock);
+            addPointToPath(path, home, iStock, path.size());
+        } else if (
+        (stockIndex == -1 && homeIndex != -1)
+                        ||
+                        (stockIndex != -1 && homeIndex != -1 && homeIndex < stockIndex)
+                ) {
+
+//            LOGGER.log(Level.SEVERE, getLocalName() + "addPointsToPath3");
+            addPointToPath(path, home, 0, homeIndex);
+        }
+        return;
+
+    }
+
+
+    private double getDistFromPathesToPoints(int home, int stock) {
+        ArrayList<Integer> clonePath = cloneList(path);
+        double dist = 0;
+        int homeIndex = clonePath.indexOf(home);
+        int stockIndex = clonePath.indexOf(stock);
+        if (homeIndex == -1 && stockIndex == -1) {
+            dist = getDistFromPathToPoint(clonePath, stock, 0, clonePath.size());
+            addPointToPath(clonePath, stock);
+            int iStock = clonePath.indexOf(stock);
+            dist += getDistFromPathToPoint(clonePath, home, iStock, clonePath.size());
+        } else if (stockIndex != -1 && homeIndex == -1) {
+            int iStock = clonePath.indexOf(stock);
+            dist += getDistFromPathToPoint(clonePath, home, iStock, clonePath.size());
+        } else if (
+                (stockIndex == -1 && homeIndex != -1)
+                        ||
+                        (stockIndex != -1 && homeIndex != -1 && homeIndex < stockIndex)
+                ) {
+            dist += getDistFromPathToPoint(clonePath, home, 0, homeIndex);
+        }else{
+            dist = 0;
+        }
+
+        return dist;
+    }
+
+
+    public static ArrayList<Integer> cloneList(List<Integer> list) {
+        ArrayList<Integer> ans = new ArrayList<>();
+        for (int i = 0; i < list.size(); i++) {
+            ans.add(list.get(i));
+        }
+        return ans;
+    }
+
+
+    public static void main(String[] args) throws InterruptedException, IOException {
         LOGGER.setLevel(Level.INFO);
-//        LOGGER.setLevel(Level.OFF);
         FileHandler fh;
         fh = new FileHandler("C:\\Programming\\Java\\untitled\\src\\main\\java\\marketyp\\logs");
         LOGGER.addHandler(fh);
         fh.setFormatter(new MyFormatter());
-//        LOGGER.config("Configuration done.");
-//        LOGGER.log(Level.FINE, "Finer logged");
-//        LOGGER.finer("Finest example on LOGGER handler completed.");
-//        LOGGER.log(Level.INFO, "Hello World!");
-//        LOGGER.setLevel(Level.ALL);
-
-//        System.out.println(l);
-//        System.out.println(Arrays.toString(l.toArray()));;
-//        System.out.println(Arrays.toString(l.toArray()));;
-//        System.out.println(Arrays.toString(a));
 
         Env env = INSTANCE;
+        env.main(null);
 
-        env.pathes.add(50);
-        env.pathes.add(10);
-        env.pathes.add(20);
-        env.pathes.add(30);
-        env.pathes.add(40);
-
-        Boot.main(("-agents Seller1:marketyp.SellerAgent(100);Seller2:marketyp.SellerAgent(1.25);" +
-                "Seller3:marketyp.SellerAgent(1.5);" +
-                "Seller4:marketyp.SellerAgent(2.7);" +
-                "Seller5:marketyp.SellerAgent(3.4);" +
-                "Seller6:marketyp.SellerAgent(1.8);").split(" "));
+        Boot.main(("-agents " +
+                "Seller1:marketyp.SellerAgent(1,2,16);" +
+                "Seller2:marketyp.SellerAgent(2,3,17);" +
+                "Seller3:marketyp.SellerAgent(3,9,18);" +
+                "Seller4:marketyp.SellerAgent(4,6,17);" +
+                "Seller5:marketyp.SellerAgent(5,8,19);" +
+                "Seller6:marketyp.SellerAgent(6,5,24);").split(" "));
         sleep(1000);
-        Boot.main(("-container Buyer1:marketyp.BuyerAgent(70);" +
-                "Buyer2:marketyp.BuyerAgent(30)").split(" "));
+        Boot.main(("-container " +
+                "Buyer1:marketyp.BuyerAgent(1,11,70);" +
+                "Buyer2:marketyp.BuyerAgent(3,5,30);" +
+                "Buyer3:marketyp.BuyerAgent(4,9,100)").split(" "));
     }
 }
 

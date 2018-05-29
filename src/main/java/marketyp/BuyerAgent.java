@@ -13,6 +13,7 @@ import jade.domain.FIPAException;
 import jade.lang.acl.ACLMessage;
 import jade.util.leap.Iterator;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -29,7 +30,8 @@ public class BuyerAgent extends Agent {
     int timeout = 100;
     DFAgentDescription[] services;
     int indexService = 0;
-    double coef = -1;
+    int home;
+    int stock;
     private DFAgentDescription[] getServices() throws FIPAException {
         DFAgentDescription template = new DFAgentDescription();
         ServiceDescription templateSd = new ServiceDescription();
@@ -49,8 +51,12 @@ public class BuyerAgent extends Agent {
     private void extractArgumentsAndServices() throws FIPAException {
         Object[] args = getArguments();
         if (args != null && args.length > 0) {
-            offerPrice = Integer.parseInt(args[0].toString());
+            home = Integer.parseInt(args[0].toString());
+            stock = Integer.parseInt(args[1].toString());
+             offerPrice = Integer.parseInt(args[2].toString());
         }
+        LOGGER.log(Level.SEVERE, "Initialize " + getLocalName() + " with parameters " + home + " " + stock + " " +
+                offerPrice);
         services = getServices();
     }
 
@@ -60,7 +66,7 @@ public class BuyerAgent extends Agent {
         msg.addReceiver(new AID(serviceName, AID.ISLOCALNAME));
         msg.setLanguage("Engilsh");
         msg.setOntology("market-ontology");
-        msg.setContent(String.valueOf(offerPrice));
+        msg.setContent(home + " " + stock + " " + offerPrice );
         this.send(msg);
 //        System.out.println("Send message to " + serviceName);
     }
@@ -95,15 +101,12 @@ public class BuyerAgent extends Agent {
                 }
             });
         }
-
     }
 
     private void incServiceIndex() {
         indexService = (indexService + 1) % services.length;
-        offerPrice += indexService == 0 ? 10 : 0;
+        offerPrice += indexService == 0 ? 50 : 0;
     }
-
-
 
     @Override
     protected void setup() {
