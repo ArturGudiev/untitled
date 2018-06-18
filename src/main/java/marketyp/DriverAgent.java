@@ -27,6 +27,7 @@ import static marketyp.Env.INSTANCE;
 import static marketyp.Env.addPointToPath;
 import static marketyp.Env.getDistFromPathToPoint;
 //import static marketyp.Env.getDistToPointFromPath;
+import static marketyp.Env.getLengthOfPath;
 import static marketyp.FloydWarshall.*;
 
 public class DriverAgent extends Agent {
@@ -45,8 +46,7 @@ public class DriverAgent extends Agent {
             sellerHome = Integer.parseInt(args[0].toString());
             sellerJob = Integer.parseInt(args[1].toString());
             coef = Double.parseDouble(args[2].toString());
-//            path.add(sellerHome);
-//            path.add(sellerJob);
+
             path.addAll(getPath(sellerHome, sellerJob));
             LOGGER.log(Level.FINE, getLocalName() + ": sell with coef " + coef);
             System.out.println(getLocalName() + ": seller with params coef " + coef);
@@ -75,15 +75,15 @@ public class DriverAgent extends Agent {
                 Iterator<Integer> iter = Arrays.stream(msg.getContent().split(" "))
                         .map(e -> Integer.valueOf(e))
                         .iterator();
-                int clientHome = iter.next(), clientStock = FloydWarshall.getStock(), offerPrice = iter.next();
-                double dist = getDistFromPathesToPoints(clientHome, clientStock);
+                int clientHome = iter.next(), offerPrice = iter.next();
+                double dist = getDistFromPathToPoint(clientHome);
 
                 ACLMessage ans;
                 if (offerPrice < coef * dist) {
                     ans = new ACLMessage(ACLMessage.REJECT_PROPOSAL);
                 } else {
                     ans = new ACLMessage(ACLMessage.ACCEPT_PROPOSAL);
-                    addPointsToPath(clientHome, clientStock);
+                    addPointToPath(clientHome);
                     coef *= 3;
                 }
 
@@ -113,9 +113,8 @@ public class DriverAgent extends Agent {
                 if(!printLast && Env.INSTANCE.SOLVED) {
 
                     LOGGER.log(Level.INFO, getLocalName() + ": END " );
-                    System.out.println(getLocalName() + ": " + makePathString(path) + " ("
-                            + FloydWarshall.getDistance(path.get(0), path.get(path.size()-1)) + ", "
-                    + Env.getLengthOfPath(path) + ")");
+                    System.out.println(getLocalName() + ": " + makePathString(path) + " Delta: "
+                            + (-getDistance(path.get(0), path.get(path.size()-1)) + getLengthOfPath(path)) );
                     printLast = true;
                 }
             }
@@ -139,58 +138,83 @@ public class DriverAgent extends Agent {
         return ans;
     }
 
-    private void addPointsToPath(int home, int stock) {
+    private void addPointToPath(int home) {
 
-        int homeIndex = path.indexOf(home);
-        int stockIndex = path.indexOf(stock);
-        if (homeIndex == -1 && stockIndex == -1) {
-//            LOGGER.log(Level.SEVERE, getLocalName() + "addPointsToPath1");
-            addPointToPath(path, stock);
-            int iStock = path.indexOf(stock);
-            addPointToPath(path, home, iStock, path.size());
-        } else if (stockIndex != -1 && homeIndex == -1) {
-//            LOGGER.log(Level.SEVERE, getLocalName() + "addPointsToPath2");
-
-            int iStock = path.indexOf(stock);
-            addPointToPath(path, home, iStock, path.size());
-        } else if (
-                (stockIndex == -1 && homeIndex != -1)
-                        ||
-                        (stockIndex != -1 && homeIndex != -1 && homeIndex < stockIndex)
-                ) {
-
-//            LOGGER.log(Level.SEVERE, getLocalName() + "addPointsToPath3");
-            addPointToPath(path, home, 0, homeIndex);
+        if(path.indexOf(getStock()) == -1){
+            addStock(path);
         }
-        return;
+        int stockIndex = path.indexOf(getStock());
 
+        int min = Integer.MAX_VALUE;
+        int index = stockIndex;
+        for (int i = stockIndex; i < path.size() - 1; i++) {
+            int distanceFromAdding = getDistanceFromAdding(i, home, path);
+            if(min > distanceFromAdding){
+                min = distanceFromAdding;
+                index = i;
+            }
+        }
+
+        addPathToPointFromIndex(home, path, index);
     }
 
-
-    private double getDistFromPathesToPoints(int home, int stock) {
+    private double getDistFromPathToPoint(int home) {
         ArrayList<Integer> clonePath = cloneList(path);
-        double dist = 0;
-        int homeIndex = clonePath.indexOf(home);
-        int stockIndex = clonePath.indexOf(stock);
-        if (homeIndex == -1 && stockIndex == -1) {
-            dist = getDistFromPathToPoint(clonePath, stock, 0, clonePath.size());
-            addPointToPath(clonePath, stock);
-            int iStock = clonePath.indexOf(stock);
-            dist += getDistFromPathToPoint(clonePath, home, iStock, clonePath.size());
-        } else if (stockIndex != -1 && homeIndex == -1) {
-            int iStock = clonePath.indexOf(stock);
-            dist += getDistFromPathToPoint(clonePath, home, iStock, clonePath.size());
-        } else if (
-                (stockIndex == -1 && homeIndex != -1)
-                        ||
-                        (stockIndex != -1 && homeIndex != -1 && homeIndex < stockIndex)
-                ) {
-            dist += getDistFromPathToPoint(clonePath, home, 0, homeIndex);
-        } else {
-            dist = 0;
+
+        if(clonePath.indexOf(getStock()) == -1){
+            addStock(clonePath);
+        }
+        int stockIndex = clonePath.indexOf(getStock());
+
+        int min = Integer.MAX_VALUE;
+        int index = stockIndex;
+        for (int i = stockIndex; i < clonePath.size() - 1; i++) {
+            int distanceFromAdding = getDistanceFromAdding(i, home, clonePath);
+            if(min > distanceFromAdding){
+                min = distanceFromAdding;
+                index = i;
+            }
         }
 
-        return dist;
+        addPathToPointFromIndex(home, clonePath, index);
+        return getLengthOfPath(clonePath) - getLengthOfPath(path);
+    }
+
+    void addPathToPointFromIndex(int home, List<Integer> clonePath, int index) {
+        int u = clonePath.get(index);
+        int v = clonePath.get(index+1);
+        ArrayList<Integer> path1 = getPath(u, home);
+        ArrayList<Integer> path2 = getPath(home, v);
+        path2.remove(0);
+        path1.addAll(path2);
+        clonePath.remove(index);
+        clonePath.remove(index);
+        clonePath.addAll(index, path1);
+    }
+
+    int getDistanceFromAdding(int i, int home, List<Integer> clonePath ){
+        int u = clonePath.get(i);
+        int v = clonePath.get(i + 1);
+        ArrayList<Integer> path1 = getPath(u, home);
+        ArrayList<Integer> path2 = getPath(home, v);
+        path2.remove(0);
+        int l1 = getLengthOfPath(path1);
+        int l2 = getLengthOfPath(path2);
+        return l1 + l2;
+    }
+
+    private void addStock(List<Integer> list) {
+        int stockIndex = list.indexOf(getStock());
+        if(stockIndex == -1){
+            int u = list.remove(0);
+            int v = list.remove(0);
+            ArrayList<Integer> pathToStock = getPath(u, getStock());
+            ArrayList<Integer> pathFromStockToNext = getPath(getStock(), v);
+            pathFromStockToNext.remove(0);
+            pathToStock.addAll(pathFromStockToNext);
+
+            list.addAll(0, pathToStock);
+        }
     }
 
 
