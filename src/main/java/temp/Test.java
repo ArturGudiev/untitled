@@ -1,14 +1,14 @@
 package temp;
 
+import utilities.Clipboard;
+
 import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Test {
     public static void main(String[] args) {
-        String s1 = "s1 52";
-        String s2 = "s1 8";
-        String s3 = "s1 ssssssssssssss";
-        System.out.println(s1.compareTo(s2));
-        System.out.println(s1.compareTo(s3));
-        System.out.println(s2.compareTo(s3));
     }
 }

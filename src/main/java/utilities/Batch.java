@@ -5,6 +5,15 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.stream.Stream;
 
 public class Batch {
     String firstPart = "";
@@ -36,19 +45,66 @@ public class Batch {
     public static void main(String[] args) {
 //        Batch batch = new Batch("C:\\Programming\\Batch\\azure.bat");
         Batch batch = new Batch(args[0]);
-        batch.modify(args[1], args[2], args[3]);
+        if ("--modify".equals(args[1])) {
+            batch.modify(args[2], args[3], args[4]);
+        }
+        if ("--echo".equals(args[1])) {
+            batch.echo();
+        }
 
     }
 
+    private void echo() {
+        HashMap<String, List<String>> map = new HashMap<String, List<String>>();
+        Stream.of(firstPart.split("\n")).forEach(
+                str -> {
+                    try {
+                        Pattern p = Pattern.compile("\"([^\"]*)\"");
+                        Matcher m = p.matcher(str);
+                        String key = null;
+                        String value = null;
+                        if (m.find(7)) {
+                            value = m.group(1);
+                        }
+                        p = Pattern.compile("goto (.*)");
+                        m = p.matcher(str);
+                        if (m.find()) {
+                            key = m.group(1);
+                        }
+                        if(key == null || value == null){return;}
+                        if (map.containsKey(key)) {
+                            map.get(key).add(value);
+                        } else {
+                            map.put(key, new ArrayList<String>(Arrays.asList(value)));
+                        }
+                    } catch (Exception e) {
+                    }
+                }
+        );
+        Iterator it = map.entrySet().iterator();
+        while (it.hasNext()) {
+            Map.Entry pair = (Map.Entry)it.next();
+            System.out.println(pair.getKey() + " - " + pair.getValue());
+            it.remove(); // avoids a ConcurrentModificationException
+        }
+    }
+
     private void modify(String tag, String loop, String command) {
-        System.out.println(tag + " " +  loop + " " + command);
+        System.out.println(tag + " " + loop + " " + command);
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(filename))) {
             bw.write(firstPart);
-            bw.write(String.format("if \"%%1\"==\"%s\" goto %s\ngoto end\n\n" +
-                                    ":%s\n" +
-                                    "%s\n" +
-                                    "goto end\n"
-                    ,tag, loop, loop, command));
+
+            Stream.of(tag.split(" ")).forEach(el -> {
+                try {
+                    bw.write(String.format("if \"%%1\"==\"%s\" goto %s\n", el, loop));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            });
+            bw.write("goto end\n\n");
+            bw.write(String.format(":%s\n" +
+                    "%s\n" +
+                    "goto end\n", loop, command));
             bw.write(secondPart);
         } catch (IOException e) {
             e.printStackTrace();
