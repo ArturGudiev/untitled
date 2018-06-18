@@ -29,8 +29,8 @@ import static marketyp.Env.getDistFromPathToPoint;
 //import static marketyp.Env.getDistToPointFromPath;
 import static marketyp.FloydWarshall.*;
 
-public class SellerAgent extends Agent {
-    private static final Logger LOGGER = Logger.getLogger(SellerAgent.class.getName());
+public class DriverAgent extends Agent {
+    private static final Logger LOGGER = Logger.getLogger(DriverAgent.class.getName());
     double coef;
     int sellerHome;
     int sellerJob;
@@ -214,17 +214,17 @@ public class SellerAgent extends Agent {
         env.main(null);
 
         Boot.main(("-agents " +
-                "Seller1:marketyp.SellerAgent(1,2,16);" +
-                "Seller2:marketyp.SellerAgent(2,3,17);" +
-                "Seller3:marketyp.SellerAgent(3,9,18);" +
-                "Seller4:marketyp.SellerAgent(4,6,17);" +
-                "Seller5:marketyp.SellerAgent(5,8,19);" +
-                "Seller6:marketyp.SellerAgent(6,5,24);").split(" "));
+                "Seller1:marketyp.DriverAgent(1,2,16);" +
+                "Seller2:marketyp.DriverAgent(2,3,17);" +
+                "Seller3:marketyp.DriverAgent(3,9,18);" +
+                "Seller4:marketyp.DriverAgent(4,6,17);" +
+                "Seller5:marketyp.DriverAgent(5,8,19);" +
+                "Seller6:marketyp.DriverAgent(6,5,24);").split(" "));
 //        sleep(1000);
         Boot.main(("-container " +
-                "Buyer1:marketyp.BuyerAgent(9,70);" +
-                "Buyer2:marketyp.BuyerAgent(11,30);" +
-                "Buyer3:marketyp.BuyerAgent(4,100)").split(" "));
+                "Buyer1:marketyp.ConsumerAgent(9,70);" +
+                "Buyer2:marketyp.ConsumerAgent(11,30);" +
+                "Buyer3:marketyp.ConsumerAgent(4,100)").split(" "));
     }
 }
 

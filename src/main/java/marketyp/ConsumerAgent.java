@@ -2,7 +2,6 @@ package marketyp;
 
 import jade.core.AID;
 import jade.core.Agent;
-import jade.core.behaviours.CyclicBehaviour;
 import jade.core.behaviours.TickerBehaviour;
 import jade.core.behaviours.WakerBehaviour;
 import jade.domain.DFService;
@@ -13,7 +12,6 @@ import jade.domain.FIPAException;
 import jade.lang.acl.ACLMessage;
 import jade.util.leap.Iterator;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -22,8 +20,8 @@ import java.util.logging.Logger;
 
 import static java.lang.Thread.sleep;
 
-public class BuyerAgent extends Agent {
-    private static final Logger LOGGER = Logger.getLogger(SellerAgent.class.getName());
+public class ConsumerAgent extends Agent {
+    private static final Logger LOGGER = Logger.getLogger(DriverAgent.class.getName());
     int offerPrice = -1;
     boolean needToBuy = true;
     boolean waitForAnswer = false;

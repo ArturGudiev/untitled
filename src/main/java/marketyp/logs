@@ -1,101 +1,95 @@
+Initialize Buyer1 with parameters 9 70
 Initialize Buyer3 with parameters 4 100
 Initialize Buyer2 with parameters 11 30
-Initialize Buyer1 with parameters 9 70
-Seller6: 4 100 from Buyer3 myPath:6 -> 5
 Seller1: 9 70 from Buyer1 myPath:1 -> 2
-Seller2: 11 30 from Buyer2 myPath:2 -> 3
-Buyer3: get REJECT from Seller6
+Seller5: 11 30 from Buyer2 myPath:5 -> 7 -> 10 -> 9 -> 8
+Seller6: 4 100 from Buyer3 myPath:6 -> 5
 Buyer1: get REJECT from Seller1
-Buyer2: get REJECT from Seller2
-Seller5: 4 100 from Buyer3 myPath:5 -> 7 -> 10 -> 9 -> 8
-Seller2: 9 70 from Buyer1 myPath:2 -> 3
-Seller4: 11 30 from Buyer2 myPath:4 -> 5 -> 6
-Buyer3: get REJECT from Seller5
-Buyer1: get REJECT from Seller2
-Buyer2: get REJECT from Seller4
-Seller4: 4 100 from Buyer3 myPath:4 -> 5 -> 6
-Seller5: 9 70 from Buyer1 myPath:5 -> 7 -> 10 -> 9 -> 10 -> 9 -> 8
-Seller3: 11 30 from Buyer2 myPath:3 -> 8 -> 9
-Buyer3: get REJECT from Seller4
-Buyer1: get ACCEPT from Seller5
-Buyer2: get REJECT from Seller3
-Seller1: 4 100 from Buyer3 myPath:1 -> 2
-Seller1: 11 30 from Buyer2 myPath:1 -> 2
-Buyer3: get REJECT from Seller1
-Buyer2: get REJECT from Seller1
-Seller2: 4 100 from Buyer3 myPath:2 -> 3
-Seller5: 11 30 from Buyer2 myPath:5 -> 7 -> 10 -> 9 -> 10 -> 9 -> 8
-Buyer3: get REJECT from Seller2
 Buyer2: get REJECT from Seller5
-Seller3: 4 150 from Buyer3 myPath:3 -> 8 -> 9
-Seller6: 11 80 from Buyer2 myPath:6 -> 5
-Buyer3: get REJECT from Seller3
-Buyer2: get REJECT from Seller6
-Seller6: 4 150 from Buyer3 myPath:6 -> 5
-Seller2: 11 80 from Buyer2 myPath:2 -> 3
 Buyer3: get REJECT from Seller6
-Buyer2: get REJECT from Seller2
-Seller5: 4 150 from Buyer3 myPath:5 -> 7 -> 10 -> 9 -> 10 -> 9 -> 8
-Seller4: 11 80 from Buyer2 myPath:4 -> 5 -> 6
-Buyer3: get REJECT from Seller5
-Buyer2: get REJECT from Seller4
-Seller4: 4 150 from Buyer3 myPath:4 -> 5 -> 6
-Seller3: 11 80 from Buyer2 myPath:3 -> 8 -> 9 -> 11 -> 9 -> 11 -> 9
-Buyer3: get REJECT from Seller4
-Buyer2: get ACCEPT from Seller3
-Seller1: 4 150 from Buyer3 myPath:1 -> 2
+Seller4: 9 70 from Buyer1 myPath:4 -> 5 -> 6
+Seller3: 11 30 from Buyer2 myPath:3 -> 8 -> 9
+Seller1: 4 100 from Buyer3 myPath:1 -> 2
+Buyer1: get REJECT from Seller4
+Buyer2: get REJECT from Seller3
 Buyer3: get REJECT from Seller1
+Seller5: 9 70 from Buyer1 myPath:5 -> 7 -> 10 -> 9 -> 10 -> 9 -> 8
+Seller1: 11 30 from Buyer2 myPath:1 -> 2
+Seller3: 4 100 from Buyer3 myPath:3 -> 8 -> 9
+Buyer1: get ACCEPT from Seller5
+Buyer2: get REJECT from Seller1
+Buyer3: get REJECT from Seller3
+Seller2: 11 30 from Buyer2 myPath:2 -> 3
+Seller2: 4 100 from Buyer3 myPath:2 -> 3
+Buyer2: get REJECT from Seller2
+Buyer3: get REJECT from Seller2
+Seller6: 11 30 from Buyer2 myPath:6 -> 5
+Seller4: 4 100 from Buyer3 myPath:4 -> 5 -> 6
+Buyer2: get REJECT from Seller6
+Buyer3: get REJECT from Seller4
+Seller4: 11 80 from Buyer2 myPath:4 -> 5 -> 6
+Seller5: 4 150 from Buyer3 myPath:5 -> 7 -> 10 -> 9 -> 10 -> 9 -> 8
+Buyer2: get REJECT from Seller4
+Buyer3: get REJECT from Seller5
+Seller5: 11 80 from Buyer2 myPath:5 -> 7 -> 10 -> 9 -> 10 -> 9 -> 8
+Seller6: 4 150 from Buyer3 myPath:6 -> 5
+Buyer2: get REJECT from Seller5
+Buyer3: get REJECT from Seller6
+Seller3: 11 80 from Buyer2 myPath:3 -> 8 -> 9 -> 11 -> 9 -> 11 -> 9
+Seller1: 4 150 from Buyer3 myPath:1 -> 2
+Buyer2: get ACCEPT from Seller3
+Buyer3: get REJECT from Seller1
+Seller3: 4 150 from Buyer3 myPath:3 -> 8 -> 9 -> 11 -> 9 -> 11 -> 9
+Buyer3: get REJECT from Seller3
 Seller2: 4 150 from Buyer3 myPath:2 -> 3
 Buyer3: get REJECT from Seller2
-Seller3: 4 200 from Buyer3 myPath:3 -> 8 -> 9 -> 11 -> 9 -> 11 -> 9
-Buyer3: get REJECT from Seller3
-Seller6: 4 200 from Buyer3 myPath:6 -> 5
-Buyer3: get REJECT from Seller6
+Seller4: 4 150 from Buyer3 myPath:4 -> 5 -> 6
+Buyer3: get REJECT from Seller4
 Seller5: 4 200 from Buyer3 myPath:5 -> 7 -> 10 -> 9 -> 10 -> 9 -> 8
 Buyer3: get REJECT from Seller5
-Seller4: 4 200 from Buyer3 myPath:4 -> 5 -> 6
-Buyer3: get REJECT from Seller4
+Seller6: 4 200 from Buyer3 myPath:6 -> 5
+Buyer3: get REJECT from Seller6
 Seller1: 4 200 from Buyer3 myPath:1 -> 2
 Buyer3: get REJECT from Seller1
+Seller3: 4 200 from Buyer3 myPath:3 -> 8 -> 9 -> 11 -> 9 -> 11 -> 9
+Buyer3: get REJECT from Seller3
 Seller2: 4 200 from Buyer3 myPath:2 -> 3
 Buyer3: get REJECT from Seller2
-Seller3: 4 250 from Buyer3 myPath:3 -> 8 -> 9 -> 11 -> 9 -> 11 -> 9
-Buyer3: get REJECT from Seller3
-Seller6: 4 250 from Buyer3 myPath:6 -> 5
-Buyer3: get REJECT from Seller6
+Seller4: 4 200 from Buyer3 myPath:4 -> 5 -> 6
+Buyer3: get REJECT from Seller4
 Seller5: 4 250 from Buyer3 myPath:5 -> 7 -> 10 -> 9 -> 10 -> 9 -> 8
 Buyer3: get REJECT from Seller5
-Seller4: 4 250 from Buyer3 myPath:4 -> 5 -> 6
-Buyer3: get REJECT from Seller4
+Seller6: 4 250 from Buyer3 myPath:6 -> 5
+Buyer3: get REJECT from Seller6
 Seller1: 4 250 from Buyer3 myPath:1 -> 2
 Buyer3: get REJECT from Seller1
+Seller3: 4 250 from Buyer3 myPath:3 -> 8 -> 9 -> 11 -> 9 -> 11 -> 9
+Buyer3: get REJECT from Seller3
 Seller2: 4 250 from Buyer3 myPath:2 -> 3
 Buyer3: get REJECT from Seller2
-Seller3: 4 300 from Buyer3 myPath:3 -> 8 -> 9 -> 11 -> 9 -> 11 -> 9
-Buyer3: get REJECT from Seller3
-Seller6: 4 300 from Buyer3 myPath:6 -> 5
-Buyer3: get REJECT from Seller6
+Seller4: 4 250 from Buyer3 myPath:4 -> 5 -> 6
+Buyer3: get REJECT from Seller4
 Seller5: 4 300 from Buyer3 myPath:5 -> 7 -> 10 -> 9 -> 10 -> 9 -> 8
 Buyer3: get REJECT from Seller5
-Seller4: 4 300 from Buyer3 myPath:4 -> 5 -> 6
-Buyer3: get REJECT from Seller4
+Seller6: 4 300 from Buyer3 myPath:6 -> 5
+Buyer3: get REJECT from Seller6
 Seller1: 4 300 from Buyer3 myPath:1 -> 2
 Buyer3: get REJECT from Seller1
+Seller3: 4 300 from Buyer3 myPath:3 -> 8 -> 9 -> 11 -> 9 -> 11 -> 9
+Buyer3: get REJECT from Seller3
 Seller2: 4 300 from Buyer3 myPath:2 -> 3
 Buyer3: get REJECT from Seller2
-Seller3: 4 350 from Buyer3 myPath:3 -> 8 -> 9 -> 11 -> 9 -> 11 -> 9
-Buyer3: get REJECT from Seller3
-Seller6: 4 350 from Buyer3 myPath:6 -> 5
-Buyer3: get REJECT from Seller6
+Seller4: 4 300 from Buyer3 myPath:4 -> 5 -> 6
+Buyer3: get REJECT from Seller4
 Seller5: 4 350 from Buyer3 myPath:5 -> 7 -> 10 -> 9 -> 10 -> 9 -> 8
 Buyer3: get REJECT from Seller5
-Seller4: 4 350 from Buyer3 myPath:4 -> 5 -> 6
-Buyer3: get REJECT from Seller4
+Seller6: 4 350 from Buyer3 myPath:6 -> 5
+Buyer3: get REJECT from Seller6
 Seller1: 4 350 from Buyer3 myPath:1 -> 2 -> 4 -> 5 -> 7 -> 11 -> 7 -> 5 -> 4 -> 2 -> 4 -> 2
 Buyer3: get ACCEPT from Seller1
-Seller3: END 
-Seller5: END 
-Seller6: END 
-Seller4: END 
 Seller2: END 
+Seller6: END 
 Seller1: END 
+Seller5: END 
+Seller4: END 
+Seller3: END 
