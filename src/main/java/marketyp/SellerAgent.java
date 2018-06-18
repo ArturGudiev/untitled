@@ -4,6 +4,7 @@ import jade.Boot;
 import jade.core.AID;
 import jade.core.Agent;
 import jade.core.behaviours.CyclicBehaviour;
+import jade.core.behaviours.TickerBehaviour;
 import jade.domain.DFService;
 import jade.domain.FIPAAgentManagement.DFAgentDescription;
 import jade.domain.FIPAAgentManagement.ServiceDescription;
@@ -34,6 +35,7 @@ public class SellerAgent extends Agent {
     int sellerHome;
     int sellerJob;
     List<Integer> path = new ArrayList<>();
+    public boolean printLast = false;
 
     @Override
     protected void setup() {
@@ -43,8 +45,9 @@ public class SellerAgent extends Agent {
             sellerHome = Integer.parseInt(args[0].toString());
             sellerJob = Integer.parseInt(args[1].toString());
             coef = Double.parseDouble(args[2].toString());
-            path.add(sellerHome);
-            path.add(sellerJob);
+//            path.add(sellerHome);
+//            path.add(sellerJob);
+            path.addAll(getPath(sellerHome, sellerJob));
             LOGGER.log(Level.FINE, getLocalName() + ": sell with coef " + coef);
             System.out.println(getLocalName() + ": seller with params coef " + coef);
         }
@@ -68,11 +71,11 @@ public class SellerAgent extends Agent {
 
         addBehaviour(new CyclicBehaviour(this) {
 
-            public void answer(ACLMessage msg) {
+            public void  answer(ACLMessage msg) {
                 Iterator<Integer> iter = Arrays.stream(msg.getContent().split(" "))
                         .map(e -> Integer.valueOf(e))
                         .iterator();
-                int clientHome = iter.next(), clientStock = iter.next(), offerPrice = iter.next();
+                int clientHome = iter.next(), clientStock = FloydWarshall.getStock(), offerPrice = iter.next();
                 double dist = getDistFromPathesToPoints(clientHome, clientStock);
 
                 ACLMessage ans;
@@ -96,13 +99,44 @@ public class SellerAgent extends Agent {
                 if (msg != null) {
                     answer(msg);
                     LOGGER.log(Level.INFO, myAgent.getLocalName() + ": " + msg.getContent() + " from "
-                            + msg.getSender().getLocalName() + " myPath:" + path);
+                            + msg.getSender().getLocalName() + " myPath:" + makePathString(path));
 
                 } else {
                     block();
                 }
             }
         });
+        //print last
+        addBehaviour(new TickerBehaviour(this, 2) {
+            @Override
+            protected void onTick() {
+                if(!printLast && Env.INSTANCE.SOLVED) {
+
+                    LOGGER.log(Level.INFO, getLocalName() + ": END " );
+                    System.out.println(getLocalName() + ": " + makePathString(path) + " ("
+                            + FloydWarshall.getDistance(path.get(0), path.get(path.size()-1)) + ", "
+                    + Env.getLengthOfPath(path) + ")");
+                    printLast = true;
+                }
+            }
+        });
+    }
+
+    private String makePathString(List<Integer> path) {
+        String ans = "";
+        int last = -1;
+        for (int i = 0; i < path.size(); i++) {
+            int element = path.get(i);
+            if (ans != "" && element != last) {
+                ans += " -> ";
+            }
+            if (element != last) {
+                ans += element;
+                last = element;
+            }
+        }
+
+        return ans;
     }
 
     private void addPointsToPath(int home, int stock) {
@@ -111,19 +145,16 @@ public class SellerAgent extends Agent {
         int stockIndex = path.indexOf(stock);
         if (homeIndex == -1 && stockIndex == -1) {
 //            LOGGER.log(Level.SEVERE, getLocalName() + "addPointsToPath1");
-            System.out.println(path);
             addPointToPath(path, stock);
             int iStock = path.indexOf(stock);
-            System.out.println(path);
             addPointToPath(path, home, iStock, path.size());
-            System.out.println(path);
         } else if (stockIndex != -1 && homeIndex == -1) {
 //            LOGGER.log(Level.SEVERE, getLocalName() + "addPointsToPath2");
 
             int iStock = path.indexOf(stock);
             addPointToPath(path, home, iStock, path.size());
         } else if (
-        (stockIndex == -1 && homeIndex != -1)
+                (stockIndex == -1 && homeIndex != -1)
                         ||
                         (stockIndex != -1 && homeIndex != -1 && homeIndex < stockIndex)
                 ) {
@@ -155,7 +186,7 @@ public class SellerAgent extends Agent {
                         (stockIndex != -1 && homeIndex != -1 && homeIndex < stockIndex)
                 ) {
             dist += getDistFromPathToPoint(clonePath, home, 0, homeIndex);
-        }else{
+        } else {
             dist = 0;
         }
 
@@ -189,11 +220,11 @@ public class SellerAgent extends Agent {
                 "Seller4:marketyp.SellerAgent(4,6,17);" +
                 "Seller5:marketyp.SellerAgent(5,8,19);" +
                 "Seller6:marketyp.SellerAgent(6,5,24);").split(" "));
-        sleep(1000);
+//        sleep(1000);
         Boot.main(("-container " +
-                "Buyer1:marketyp.BuyerAgent(1,11,70);" +
-                "Buyer2:marketyp.BuyerAgent(3,5,30);" +
-                "Buyer3:marketyp.BuyerAgent(4,9,100)").split(" "));
+                "Buyer1:marketyp.BuyerAgent(9,70);" +
+                "Buyer2:marketyp.BuyerAgent(11,30);" +
+                "Buyer3:marketyp.BuyerAgent(4,100)").split(" "));
     }
 }
 

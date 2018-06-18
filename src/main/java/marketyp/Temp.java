@@ -4,22 +4,25 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class Temp {
 
     public static void main(String[] args) {
-        Env env = Env.INSTANCE;
-        env.main(null);
-        List<Integer> l2 = Arrays.asList(new Integer[]{1, 2, 4,5,4,3});
-        List<Integer> l = Arrays.asList(new Integer[]{1, 2, 3});
-        l.set(2, 10);
-        System.out.println(l);
-        System.out.println(l2);
+        Set<Integer> set = new HashSet<Integer>();
+        set.add(2);
+        set.add(3);
+        System.out.println(set);
+        set.add(4);
+        set.add(2);
+        System.out.println(set);
     }
+
 
 
     static ArrayList<Integer> indexOfAll(Object obj, ArrayList list){

@@ -31,7 +31,6 @@ public class BuyerAgent extends Agent {
     DFAgentDescription[] services;
     int indexService = 0;
     int home;
-    int stock;
     private DFAgentDescription[] getServices() throws FIPAException {
         DFAgentDescription template = new DFAgentDescription();
         ServiceDescription templateSd = new ServiceDescription();
@@ -52,10 +51,9 @@ public class BuyerAgent extends Agent {
         Object[] args = getArguments();
         if (args != null && args.length > 0) {
             home = Integer.parseInt(args[0].toString());
-            stock = Integer.parseInt(args[1].toString());
-             offerPrice = Integer.parseInt(args[2].toString());
+             offerPrice = Integer.parseInt(args[1].toString());
         }
-        LOGGER.log(Level.SEVERE, "Initialize " + getLocalName() + " with parameters " + home + " " + stock + " " +
+        LOGGER.log(Level.SEVERE, "Initialize " + getLocalName() + " with parameters " + home + " " +
                 offerPrice);
         services = getServices();
     }
@@ -66,7 +64,7 @@ public class BuyerAgent extends Agent {
         msg.addReceiver(new AID(serviceName, AID.ISLOCALNAME));
         msg.setLanguage("Engilsh");
         msg.setOntology("market-ontology");
-        msg.setContent(home + " " + stock + " " + offerPrice );
+        msg.setContent(home + " " + offerPrice );
         this.send(msg);
 //        System.out.println("Send message to " + serviceName);
     }
@@ -92,6 +90,7 @@ public class BuyerAgent extends Agent {
                         } else if (msg.getPerformative() == ACLMessage.ACCEPT_PROPOSAL) {
                             LOGGER.log(Level.INFO, getLocalName() + ": get ACCEPT from " + msg.getSender().getLocalName());
                             needToBuy = false;
+                            Env.INSTANCE.decreaseBuyers();
                         }
                     }
                     waitForAnswer = false;
@@ -100,6 +99,8 @@ public class BuyerAgent extends Agent {
 //                    }
                 }
             });
+
+
         }
     }
 
@@ -115,7 +116,7 @@ public class BuyerAgent extends Agent {
         } catch (FIPAException e) {
             e.printStackTrace();
         }
-
+        Env.INSTANCE.buyerAgent++;
         addBehaviour(new TickerBehaviour(this, timeout) {
             @Override
             protected void onTick() {
@@ -128,9 +129,6 @@ public class BuyerAgent extends Agent {
                 }
             }
         });
-
-
-
 
 //        addBehaviour(new CyclicBehaviour(this) {
 //

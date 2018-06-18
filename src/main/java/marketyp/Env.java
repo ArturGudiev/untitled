@@ -17,6 +17,8 @@ import static marketyp.FloydWarshall.getDistance;
 public class Env {
     public static final Env INSTANCE = new Env();
     public volatile ArrayList<Integer> pathes = new ArrayList<Integer>();
+    public volatile int buyerAgent = 0;
+    public boolean SOLVED = false;
 
     public static int getLengthOfPath(List<Integer> path) {
         int sum = 0;
@@ -29,13 +31,9 @@ public class Env {
 
     public static void main(String[] args) {
         FloydWarshall.main(null);
-        ArrayList<Integer> l = new ArrayList<Integer>();
-        l.add(8);
-        l.add(9);
-        l.add(10);
-//        System.out.println(getDistFromPathToPoint(l, 11));
-//        System.out.println(FloydWarshall.getLengthOfPath(l));
-        ;
+        List<Integer> path1 = getPath(1, 11);
+//        System.out.println(path1);
+
     }
 
 
@@ -109,6 +107,12 @@ public class Env {
         return;
     }
 
+    public void decreaseBuyers() {
+        buyerAgent--;
+        if(buyerAgent == 0){
+            SOLVED = true;
+        }
+    }
 }
 
 class MyFormatter extends SimpleFormatter {
@@ -126,6 +130,7 @@ class MyFormatter extends SimpleFormatter {
 class FloydWarshall {
     static double[][] dist;
     static int[][] next;
+    private static int stock = 11;
 
 
     public static void main(String[] args) {
@@ -174,6 +179,9 @@ class FloydWarshall {
 //        System.out.println(getDistance(1,4));
     }
 
+    static int getStock(){
+        return stock;
+    }
     static ArrayList<Integer> getPath(int u, int v) {
         ArrayList<Integer> list = new ArrayList<Integer>();
         list.add(u);
