@@ -71,7 +71,7 @@ public class DriverAgent extends Agent {
 
         addBehaviour(new CyclicBehaviour(this) {
 
-            public void  answer(ACLMessage msg) {
+            public void answer(ACLMessage msg) {
                 Iterator<Integer> iter = Arrays.stream(msg.getContent().split(" "))
                         .map(e -> Integer.valueOf(e))
                         .iterator();
@@ -79,18 +79,15 @@ public class DriverAgent extends Agent {
                 double dist = getDistFromPathToPoint(clientHome);
 
                 ACLMessage ans;
-                if (offerPrice < coef * dist) {
-                    ans = new ACLMessage(ACLMessage.REJECT_PROPOSAL);
-                } else {
+                if (offerPrice >= coef * dist) {
                     ans = new ACLMessage(ACLMessage.ACCEPT_PROPOSAL);
                     addPointToPath(clientHome);
                     coef *= 3;
+                    ans.addReceiver(new AID(msg.getSender().getLocalName(), AID.ISLOCALNAME));
+                    ans.setLanguage("English");
+                    ans.setOntology("Connection");
+                    myAgent.send(ans);
                 }
-
-                ans.addReceiver(new AID(msg.getSender().getLocalName(), AID.ISLOCALNAME));
-                ans.setLanguage("English");
-                ans.setOntology("Connection");
-                myAgent.send(ans);
             }
 
             @Override
@@ -110,11 +107,11 @@ public class DriverAgent extends Agent {
         addBehaviour(new TickerBehaviour(this, 2) {
             @Override
             protected void onTick() {
-                if(!printLast && Env.INSTANCE.SOLVED) {
+                if (!printLast && Env.INSTANCE.SOLVED) {
 
-                    LOGGER.log(Level.INFO, getLocalName() + ": END " );
+                    LOGGER.log(Level.INFO, getLocalName() + ": END ");
                     System.out.println(getLocalName() + ": " + makePathString(path) + " Delta: "
-                            + (-getDistance(path.get(0), path.get(path.size()-1)) + getLengthOfPath(path)) );
+                            + (-getDistance(path.get(0), path.get(path.size() - 1)) + getLengthOfPath(path)));
                     printLast = true;
                 }
             }
@@ -140,7 +137,7 @@ public class DriverAgent extends Agent {
 
     private void addPointToPath(int home) {
 
-        if(path.indexOf(getStock()) == -1){
+        if (path.indexOf(getStock()) == -1) {
             addStock(path);
         }
         int stockIndex = path.indexOf(getStock());
@@ -149,7 +146,7 @@ public class DriverAgent extends Agent {
         int index = stockIndex;
         for (int i = stockIndex; i < path.size() - 1; i++) {
             int distanceFromAdding = getDistanceFromAdding(i, home, path);
-            if(min > distanceFromAdding){
+            if (min > distanceFromAdding) {
                 min = distanceFromAdding;
                 index = i;
             }
@@ -161,7 +158,7 @@ public class DriverAgent extends Agent {
     private double getDistFromPathToPoint(int home) {
         ArrayList<Integer> clonePath = cloneList(path);
 
-        if(clonePath.indexOf(getStock()) == -1){
+        if (clonePath.indexOf(getStock()) == -1) {
             addStock(clonePath);
         }
         int stockIndex = clonePath.indexOf(getStock());
@@ -170,7 +167,7 @@ public class DriverAgent extends Agent {
         int index = stockIndex;
         for (int i = stockIndex; i < clonePath.size() - 1; i++) {
             int distanceFromAdding = getDistanceFromAdding(i, home, clonePath);
-            if(min > distanceFromAdding){
+            if (min > distanceFromAdding) {
                 min = distanceFromAdding;
                 index = i;
             }
@@ -182,7 +179,7 @@ public class DriverAgent extends Agent {
 
     void addPathToPointFromIndex(int home, List<Integer> clonePath, int index) {
         int u = clonePath.get(index);
-        int v = clonePath.get(index+1);
+        int v = clonePath.get(index + 1);
         ArrayList<Integer> path1 = getPath(u, home);
         ArrayList<Integer> path2 = getPath(home, v);
         path2.remove(0);
@@ -192,7 +189,7 @@ public class DriverAgent extends Agent {
         clonePath.addAll(index, path1);
     }
 
-    int getDistanceFromAdding(int i, int home, List<Integer> clonePath ){
+    int getDistanceFromAdding(int i, int home, List<Integer> clonePath) {
         int u = clonePath.get(i);
         int v = clonePath.get(i + 1);
         ArrayList<Integer> path1 = getPath(u, home);
@@ -205,7 +202,7 @@ public class DriverAgent extends Agent {
 
     private void addStock(List<Integer> list) {
         int stockIndex = list.indexOf(getStock());
-        if(stockIndex == -1){
+        if (stockIndex == -1) {
             int u = list.remove(0);
             int v = list.remove(0);
             ArrayList<Integer> pathToStock = getPath(u, getStock());

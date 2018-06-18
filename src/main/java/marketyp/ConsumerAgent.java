@@ -83,9 +83,7 @@ public class ConsumerAgent extends Agent {
                 protected void onWake() {
                     ACLMessage msg = myAgent.receive();
                     if (msg != null) {
-                        if (msg.getPerformative() == ACLMessage.REJECT_PROPOSAL) {
-                            LOGGER.log(Level.INFO, getLocalName() + ": get REJECT from " + msg.getSender().getLocalName());
-                        } else if (msg.getPerformative() == ACLMessage.ACCEPT_PROPOSAL) {
+                        if (msg.getPerformative() == ACLMessage.ACCEPT_PROPOSAL) {
                             LOGGER.log(Level.INFO, getLocalName() + ": get ACCEPT from " + msg.getSender().getLocalName());
                             needToBuy = false;
                             Env.INSTANCE.decreaseBuyers();
