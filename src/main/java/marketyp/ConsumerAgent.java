@@ -93,10 +93,10 @@ public class ConsumerAgent extends Agent {
                             printMessage(myAgent, msg);
                             LOGGER.log(Level.INFO, getLocalName() + ": get ACCEPT from " + msg.getSender().getLocalName());
                             needToBuy = false;
-                            Env.INSTANCE.decreaseBuyers();
                             ACLMessage acceptMessage = getAcceptMessage(msg);
                             printSentMessage(myAgent, msg.getSender().getLocalName(), acceptMessage);
                             myAgent.send(acceptMessage);
+                            Env.INSTANCE.decreaseBuyers();
                         }
                     }
                     waitForAnswer = false;

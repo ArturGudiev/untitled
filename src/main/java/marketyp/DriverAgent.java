@@ -42,6 +42,7 @@ public class DriverAgent extends Agent {
     int sellerHome;
     int sellerJob;
     List<Integer> path = new ArrayList<>();
+    List<String> consumers = new ArrayList<String>();
     public boolean printLast = false;
     private boolean waitForAnswer = false;
     private String waitAgent;
@@ -97,39 +98,37 @@ public class DriverAgent extends Agent {
                         && msg.getSender().getLocalName().equals(waitAgent)) {
 
                     addPointToPath(agentHome);
+                    consumers.add(waitAgent);
                     coef *= 3;
                     printMessage(myAgent, msg);
-                }else if(msg != null){
-                    System.out.println("HHEERE");
-                    System.out.println("waitForAnswer = " + waitForAnswer);
-                    System.out.println( msg.getSender().getLocalName().equals(waitAgent));
+                } else if (msg != null) {
                     printMessage(myAgent, msg);
-                }else
-            {
-                block();
-            }
-        }
-
-    });
-
-    //print last
-    addBehaviour(new TickerBehaviour(this, 2) {
-        @Override
-        protected void onTick () {
-            if (!printLast && Env.INSTANCE.SOLVED) {
-
-                LOGGER.log(Level.INFO, getLocalName() + ": END ");
-                try {
-                    sleep(2000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+                } else {
+                    block();
                 }
-                System.out.println(getLocalName() + ": " + makePathString(path) + " Delta: "
-                        + (-getDistance(path.get(0), path.get(path.size() - 1)) + getLengthOfPath(path)));
-                printLast = true;
             }
-        }
-    });
+
+        });
+
+        //print last
+        addBehaviour(new TickerBehaviour(this, 2) {
+            @Override
+            protected void onTick() {
+                if (!printLast && Env.INSTANCE.SOLVED) {
+
+                    LOGGER.log(Level.INFO, getLocalName() + ": END ");
+                    try {
+                        sleep(2000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    System.out.println(getLocalName() + ": " + makePathString(path) + " Delta: "
+                            + (-getDistance(path.get(0), path.get(path.size() - 1)) + getLengthOfPath(path)) +
+                    " Consumers: " + consumers);
+                    printLast = true;
+                }
+            }
+        });
 
 //        addBehaviour(new CyclicBehaviour(this) {
 //
@@ -148,7 +147,7 @@ public class DriverAgent extends Agent {
 //                }
 //            }
 //        });
-}
+    }
 
 
     private void extractArguments(Object[] args) {
@@ -200,23 +199,27 @@ public class DriverAgent extends Agent {
     }
 
     private void addPointToPath(int home) {
-
+        System.out.println("Before path: " + path);
         if (path.indexOf(getStock()) == -1) {
             addStock(path);
         }
         int stockIndex = path.indexOf(getStock());
 
-        int min = Integer.MAX_VALUE;
-        int index = stockIndex;
-        for (int i = stockIndex; i < path.size() - 1; i++) {
-            int distanceFromAdding = getDistanceFromAdding(i, home, path);
-            if (min > distanceFromAdding) {
-                min = distanceFromAdding;
-                index = i;
-            }
-        }
+        if (!(path.lastIndexOf(home) != -1 && path.lastIndexOf(home) >= stockIndex)) {
 
-        addPathToPointFromIndex(home, path, index);
+            int min = Integer.MAX_VALUE;
+            int index = stockIndex;
+            for (int i = stockIndex; i < path.size() - 1; i++) {
+                int distanceFromAdding = getDistanceFromAdding(i, home, path);
+                if (min > distanceFromAdding) {
+                    min = distanceFromAdding;
+                    index = i;
+                }
+            }
+
+            addPathToPointFromIndex(home, path, index);
+        }
+        System.out.println("After path: " + path);
     }
 
     private double getDistFromPathToPoint(int home) {
@@ -300,17 +303,17 @@ public class DriverAgent extends Agent {
 
         Boot.main(("-agents " +
                 "Driver1:marketyp.DriverAgent(1,2,16);" +
-//                "Driver2:marketyp.DriverAgent(2,3,17);" +
-//                "Driver3:marketyp.DriverAgent(3,9,18);" +
-//                "Driver4:marketyp.DriverAgent(4,6,17);" +
-//                "Driver5:marketyp.DriverAgent(5,8,19);" +
-//                "Driver6:marketyp.DriverAgent(6,5,24);"+
+                "Driver2:marketyp.DriverAgent(2,3,17);" +
+                "Driver3:marketyp.DriverAgent(3,9,18);" +
+                "Driver4:marketyp.DriverAgent(4,6,17);" +
+                "Driver5:marketyp.DriverAgent(5,8,19);" +
+                "Driver6:marketyp.DriverAgent(6,5,24);"+
                 "").split(" "));
-//        sleep(1000);
+        sleep(1000);
         Boot.main(("-container " +
                 "Consumer1:marketyp.ConsumerAgent(9,70);" +
-//                "Consumer2:marketyp.ConsumerAgent(11,30);" +
-//                "Consumer3:marketyp.ConsumerAgent(4,100)"+
+                "Consumer2:marketyp.ConsumerAgent(11,30);" +
+                "Consumer3:marketyp.ConsumerAgent(4,100)"+
                 "").split(" "));
     }
 }

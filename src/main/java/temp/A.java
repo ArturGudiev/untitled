@@ -1,19 +1,24 @@
 package temp;
+import java.lang.annotation.Native;
 import java.util.*;
 import java.text.*;
+
+import static java.awt.SystemColor.windowText;
 
 public class A {
 
     public static void main(String args[]) {
-        Contributor c1 = new Contributor("a", 1);
-        Contributor c2 = new Contributor("b", 1);
-        Contributor c3 = new Contributor("c", 1);
-        List<Contributor> l = new ArrayList<>();
-        l.add(c1);
-        l.add(c2);
-        l.add(c3);
-        String[] strings = l.stream().map(el -> el.login).toArray(String[]::new);
-        System.out.println(Arrays.toString(strings));
+
+
+    }
+
+    public void f(){
+//        String wText = Native.toString(windowText, System.getProperty("file.encoding")).trim();
+//        com.sun.jna.platform.win32.WinDef.HWND hwnd_1 = new WinDef.HWND(hWnd);
+//        boolean b = com.sun.jna.platform.win32.User32.INSTANCE.IsWindowVisible(hwnd_1);
+//        if (!wText.isEmpty() && b) {
+//            windowNames.add(wText);
+//        }
     }
 }
 
@@ -38,3 +43,4 @@ class Contributor {
                 '}';
     }
 }
+

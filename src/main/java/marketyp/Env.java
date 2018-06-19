@@ -66,7 +66,9 @@ public class Env {
     }
 
     public static void printMessage(Agent agent, ACLMessage msg) {
-        System.out.println(agent.getLocalName() + ": GOT message "+perf(msg)+" from " + msg.getSender().getLocalName() + " " + msg.getContent());
+        String content = msg.getContent() ;
+        content = content == null ? "" : content;
+        System.out.println(agent.getLocalName() + ": GOT message "+perf(msg)+" from " + msg.getSender().getLocalName() + " " + content);
     }
 
     public static String perf(ACLMessage msg){
@@ -149,10 +151,11 @@ public class Env {
 
     public void decreaseBuyers() {
         buyerAgent--;
-        LOGGER.info("DECREASE: " + buyerAgent);
+        if(buyerAgent > 0)LOGGER.info("DECREASE: " + buyerAgent);
         if(buyerAgent == 0){
             SOLVED = true;
         }
+        System.out.println("=============== \n \n");
     }
 
     public static boolean hasSameSender(ACLMessage msg, ACLMessage msgNew) {
