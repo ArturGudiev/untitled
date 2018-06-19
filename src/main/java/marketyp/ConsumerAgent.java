@@ -2,6 +2,7 @@ package marketyp;
 
 import jade.core.AID;
 import jade.core.Agent;
+import jade.core.behaviours.CyclicBehaviour;
 import jade.core.behaviours.TickerBehaviour;
 import jade.core.behaviours.WakerBehaviour;
 import jade.domain.DFService;
@@ -19,13 +20,17 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import static java.lang.Thread.sleep;
+import static marketyp.Env.getAcceptMessage;
+import static marketyp.Env.printMessage;
+import static marketyp.Env.printSentMessage;
+import static marketyp.Env.timeout;
 
 public class ConsumerAgent extends Agent {
     private static final Logger LOGGER = Logger.getLogger(DriverAgent.class.getName());
     int offerPrice = -1;
     boolean needToBuy = true;
     boolean waitForAnswer = false;
-    int timeout = 100;
+
     DFAgentDescription[] services;
     int indexService = 0;
     int home;
@@ -64,8 +69,9 @@ public class ConsumerAgent extends Agent {
         msg.setOntology("market-ontology");
         msg.setContent(home + " " + offerPrice );
         this.send(msg);
-//        System.out.println("Send message to " + serviceName);
+        printSentMessage(this, serviceName, msg);
     }
+
 
 
     private void tryToBuy() throws InterruptedException {
@@ -84,9 +90,13 @@ public class ConsumerAgent extends Agent {
                     ACLMessage msg = myAgent.receive();
                     if (msg != null) {
                         if (msg.getPerformative() == ACLMessage.ACCEPT_PROPOSAL) {
+                            printMessage(myAgent, msg);
                             LOGGER.log(Level.INFO, getLocalName() + ": get ACCEPT from " + msg.getSender().getLocalName());
                             needToBuy = false;
                             Env.INSTANCE.decreaseBuyers();
+                            ACLMessage acceptMessage = getAcceptMessage(msg);
+                            printSentMessage(myAgent, msg.getSender().getLocalName(), acceptMessage);
+                            myAgent.send(acceptMessage);
                         }
                     }
                     waitForAnswer = false;
@@ -112,7 +122,7 @@ public class ConsumerAgent extends Agent {
         } catch (FIPAException e) {
             e.printStackTrace();
         }
-        Env.INSTANCE.buyerAgent++;
+        Env.INSTANCE.increaseAgent();
         addBehaviour(new TickerBehaviour(this, timeout) {
             @Override
             protected void onTick() {
@@ -134,6 +144,7 @@ public class ConsumerAgent extends Agent {
 //                ACLMessage msg = myAgent.receive();
 //                if (msg != null) {
 //                    System.out.println(myAgent.getLocalName() + ": " + ACLMessage.getPerformative(msg.getPerformative()) + " from " + msg.getSender().getLocalName());
+//                    System.out.println(msg.getContent());
 //                }else{
 //                    block();
 //                }

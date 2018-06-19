@@ -1,15 +1,23 @@
 package marketyp;
 
+import jade.core.AID;
+import jade.core.Agent;
+import jade.lang.acl.ACLMessage;
+
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.logging.Level;
 import java.util.logging.LogRecord;
 import java.util.logging.SimpleFormatter;
 import java.util.stream.Stream;
 
+import static com.sun.xml.internal.ws.spi.db.BindingContextFactory.LOGGER;
 import static java.lang.Math.min;
 import static marketyp.FloydWarshall.*;
 import static marketyp.FloydWarshall.getDistance;
@@ -19,7 +27,7 @@ public class Env {
     public volatile ArrayList<Integer> pathes = new ArrayList<Integer>();
     public volatile int buyerAgent = 0;
     public boolean SOLVED = false;
-
+    public static int timeout = 100;
     public static int getLengthOfPath(List<Integer> path) {
         int sum = 0;
         for (int i = 0; i < path.size() - 1; i++) {
@@ -28,7 +36,20 @@ public class Env {
         return sum;
     }
 
+    public static void printToFile(String str) {
+        try
+        {
+            String filename= "C:\\Programming\\Java\\untitled\\src\\main\\java\\marketyp\\final.txt";
+            FileWriter fw = new FileWriter(filename,true); //the true will append the new data
+            fw.write(str + "\n");//appends the string to the file
+            fw.close();
+        }
+        catch(IOException ioe)
+        {
+            System.err.println("IOException: " + ioe.getMessage());
+        }
 
+    }
     public static void main(String[] args) {
         FloydWarshall.main(null);
         List<Integer> path1 = getPath(1, 11);
@@ -36,6 +57,25 @@ public class Env {
 
     }
 
+    public static ACLMessage getAcceptMessage(ACLMessage msg) {
+        ACLMessage ans = new ACLMessage(ACLMessage.ACCEPT_PROPOSAL);
+        ans.addReceiver(new AID(msg.getSender().getLocalName(), AID.ISLOCALNAME));
+        ans.setLanguage("English");
+        ans.setOntology("Connection");
+        return ans;
+    }
+
+    public static void printMessage(Agent agent, ACLMessage msg) {
+        System.out.println(agent.getLocalName() + ": GOT message "+perf(msg)+" from " + msg.getSender().getLocalName() + " " + msg.getContent());
+    }
+
+    public static String perf(ACLMessage msg){
+        return ACLMessage.getAllPerformativeNames()[msg.getPerformative()];
+    }
+
+    public static void printSentMessage(Agent agent, String agentName, ACLMessage msg) {
+        System.out.println(agent.getLocalName() +  ": SENT message "+ perf(msg) +" to " + agentName + " " + msg.getContent());
+    }
 
     public static double getDistFromPathToPoint(List<Integer> path, int point) {
         return getDistFromPathToPoint(path, point, 0, path.size());
@@ -109,9 +149,20 @@ public class Env {
 
     public void decreaseBuyers() {
         buyerAgent--;
+        LOGGER.info("DECREASE: " + buyerAgent);
         if(buyerAgent == 0){
             SOLVED = true;
         }
+    }
+
+    public static boolean hasSameSender(ACLMessage msg, ACLMessage msgNew) {
+        return msgNew.getSender().getLocalName().equals(msg.getSender().getLocalName());
+    }
+
+    public void increaseAgent() {
+        buyerAgent++;
+        LOGGER.info("INCREASE: " + buyerAgent);
+
     }
 }
 

@@ -5,6 +5,7 @@ import jade.core.AID;
 import jade.core.Agent;
 import jade.core.behaviours.CyclicBehaviour;
 import jade.core.behaviours.TickerBehaviour;
+import jade.core.behaviours.WakerBehaviour;
 import jade.domain.DFService;
 import jade.domain.FIPAAgentManagement.DFAgentDescription;
 import jade.domain.FIPAAgentManagement.ServiceDescription;
@@ -25,9 +26,14 @@ import static java.lang.Math.min;
 import static java.lang.Thread.sleep;
 import static marketyp.Env.INSTANCE;
 import static marketyp.Env.addPointToPath;
+import static marketyp.Env.getAcceptMessage;
 import static marketyp.Env.getDistFromPathToPoint;
 //import static marketyp.Env.getDistToPointFromPath;
 import static marketyp.Env.getLengthOfPath;
+import static marketyp.Env.hasSameSender;
+import static marketyp.Env.printMessage;
+import static marketyp.Env.printSentMessage;
+import static marketyp.Env.timeout;
 import static marketyp.FloydWarshall.*;
 
 public class DriverAgent extends Agent {
@@ -37,11 +43,115 @@ public class DriverAgent extends Agent {
     int sellerJob;
     List<Integer> path = new ArrayList<>();
     public boolean printLast = false;
+    private boolean waitForAnswer = false;
+    private String waitAgent;
+    private int agentHome;
 
     @Override
     protected void setup() {
 
-        Object[] args = getArguments();
+        extractArguments(getArguments());
+        registerTheService();
+
+        addBehaviour(new CyclicBehaviour(this) {
+
+            public void answer(ACLMessage msg) {
+                Iterator<Integer> iter = Arrays.stream(msg.getContent().split(" "))
+                        .map(e -> Integer.valueOf(e))
+                        .iterator();
+                int clientHome = iter.next(), offerPrice = iter.next();
+                double dist = getDistFromPathToPoint(clientHome);
+
+                if (offerPrice >= coef * dist) {
+                    ACLMessage acceptMessage = getAcceptMessage(msg);
+                    printSentMessage(myAgent, msg.getSender().getLocalName(), acceptMessage);
+                    myAgent.send(acceptMessage);
+                    waitForAnswer = true;
+                    waitAgent = msg.getSender().getLocalName();
+                    agentHome = clientHome;
+                    addBehaviour(new WakerBehaviour(myAgent, 1000) {
+                        @Override
+                        protected void onWake() {
+
+                            waitForAnswer = false;
+
+                        }
+                    });
+
+
+                }
+            }
+
+            @Override
+            public void action() {
+                ACLMessage msg = myAgent.receive();
+                if (msg != null && msg.getPerformative() != ACLMessage.ACCEPT_PROPOSAL && !waitForAnswer) {
+//                if (msg != null && msg.getPerformative() != ACLMessage.ACCEPT_PROPOSAL && !waitForAnswer) {
+                    printMessage(myAgent, msg);
+                    answer(msg);
+                    LOGGER.log(Level.INFO, myAgent.getLocalName() + ": " + msg.getContent() + " from "
+                            + msg.getSender().getLocalName() + " myPath:" + makePathString(path));
+
+                } else if (msg != null && waitForAnswer
+                        && msg.getPerformative() == ACLMessage.ACCEPT_PROPOSAL
+                        && msg.getSender().getLocalName().equals(waitAgent)) {
+
+                    addPointToPath(agentHome);
+                    coef *= 3;
+                    printMessage(myAgent, msg);
+                }else if(msg != null){
+                    System.out.println("HHEERE");
+                    System.out.println("waitForAnswer = " + waitForAnswer);
+                    System.out.println( msg.getSender().getLocalName().equals(waitAgent));
+                    printMessage(myAgent, msg);
+                }else
+            {
+                block();
+            }
+        }
+
+    });
+
+    //print last
+    addBehaviour(new TickerBehaviour(this, 2) {
+        @Override
+        protected void onTick () {
+            if (!printLast && Env.INSTANCE.SOLVED) {
+
+                LOGGER.log(Level.INFO, getLocalName() + ": END ");
+                try {
+                    sleep(2000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                System.out.println(getLocalName() + ": " + makePathString(path) + " Delta: "
+                        + (-getDistance(path.get(0), path.get(path.size() - 1)) + getLengthOfPath(path)));
+                printLast = true;
+            }
+        }
+    });
+
+//        addBehaviour(new CyclicBehaviour(this) {
+//
+//            @Override
+//            public void action() {
+//                if (Env.INSTANCE.SOLVED) {
+//                    return;
+//                }
+//                ACLMessage msg = myAgent.receive();
+//                if (msg != null) {
+//                    System.out.println("GETTING MESSAGES");
+//                    System.out.println(myAgent.getLocalName() + ": " + ACLMessage.getPerformative(msg.getPerformative()) + " from " + msg.getSender().getLocalName());
+//                    System.out.println(msg.getContent());
+//                }else{
+//                    block();
+//                }
+//            }
+//        });
+}
+
+
+    private void extractArguments(Object[] args) {
         if (args != null && args.length > 0) {
             sellerHome = Integer.parseInt(args[0].toString());
             sellerJob = Integer.parseInt(args[1].toString());
@@ -51,8 +161,9 @@ public class DriverAgent extends Agent {
             LOGGER.log(Level.FINE, getLocalName() + ": sell with coef " + coef);
             System.out.println(getLocalName() + ": seller with params coef " + coef);
         }
+    }
 
-        // Register the service
+    private void registerTheService() {
         System.out.println(getLocalName() + ": registering service of type \"market\" with coef " + coef);
         try {
             DFAgentDescription dfd = new DFAgentDescription();
@@ -68,55 +179,8 @@ public class DriverAgent extends Agent {
         } catch (FIPAException fe) {
             fe.printStackTrace();
         }
-
-        addBehaviour(new CyclicBehaviour(this) {
-
-            public void answer(ACLMessage msg) {
-                Iterator<Integer> iter = Arrays.stream(msg.getContent().split(" "))
-                        .map(e -> Integer.valueOf(e))
-                        .iterator();
-                int clientHome = iter.next(), offerPrice = iter.next();
-                double dist = getDistFromPathToPoint(clientHome);
-
-                ACLMessage ans;
-                if (offerPrice >= coef * dist) {
-                    ans = new ACLMessage(ACLMessage.ACCEPT_PROPOSAL);
-                    addPointToPath(clientHome);
-                    coef *= 3;
-                    ans.addReceiver(new AID(msg.getSender().getLocalName(), AID.ISLOCALNAME));
-                    ans.setLanguage("English");
-                    ans.setOntology("Connection");
-                    myAgent.send(ans);
-                }
-            }
-
-            @Override
-            public void action() {
-                ACLMessage msg = myAgent.receive();
-                if (msg != null) {
-                    answer(msg);
-                    LOGGER.log(Level.INFO, myAgent.getLocalName() + ": " + msg.getContent() + " from "
-                            + msg.getSender().getLocalName() + " myPath:" + makePathString(path));
-
-                } else {
-                    block();
-                }
-            }
-        });
-        //print last
-        addBehaviour(new TickerBehaviour(this, 2) {
-            @Override
-            protected void onTick() {
-                if (!printLast && Env.INSTANCE.SOLVED) {
-
-                    LOGGER.log(Level.INFO, getLocalName() + ": END ");
-                    System.out.println(getLocalName() + ": " + makePathString(path) + " Delta: "
-                            + (-getDistance(path.get(0), path.get(path.size() - 1)) + getLengthOfPath(path)));
-                    printLast = true;
-                }
-            }
-        });
     }
+
 
     private String makePathString(List<Integer> path) {
         String ans = "";
@@ -225,7 +289,7 @@ public class DriverAgent extends Agent {
 
 
     public static void main(String[] args) throws InterruptedException, IOException {
-        LOGGER.setLevel(Level.INFO);
+        LOGGER.setLevel(Level.SEVERE);
         FileHandler fh;
         fh = new FileHandler("C:\\Programming\\Java\\untitled\\src\\main\\java\\marketyp\\logs");
         LOGGER.addHandler(fh);
@@ -235,17 +299,19 @@ public class DriverAgent extends Agent {
         env.main(null);
 
         Boot.main(("-agents " +
-                "Seller1:marketyp.DriverAgent(1,2,16);" +
-                "Seller2:marketyp.DriverAgent(2,3,17);" +
-                "Seller3:marketyp.DriverAgent(3,9,18);" +
-                "Seller4:marketyp.DriverAgent(4,6,17);" +
-                "Seller5:marketyp.DriverAgent(5,8,19);" +
-                "Seller6:marketyp.DriverAgent(6,5,24);").split(" "));
+                "Driver1:marketyp.DriverAgent(1,2,16);" +
+//                "Driver2:marketyp.DriverAgent(2,3,17);" +
+//                "Driver3:marketyp.DriverAgent(3,9,18);" +
+//                "Driver4:marketyp.DriverAgent(4,6,17);" +
+//                "Driver5:marketyp.DriverAgent(5,8,19);" +
+//                "Driver6:marketyp.DriverAgent(6,5,24);"+
+                "").split(" "));
 //        sleep(1000);
         Boot.main(("-container " +
-                "Buyer1:marketyp.ConsumerAgent(9,70);" +
-                "Buyer2:marketyp.ConsumerAgent(11,30);" +
-                "Buyer3:marketyp.ConsumerAgent(4,100)").split(" "));
+                "Consumer1:marketyp.ConsumerAgent(9,70);" +
+//                "Consumer2:marketyp.ConsumerAgent(11,30);" +
+//                "Consumer3:marketyp.ConsumerAgent(4,100)"+
+                "").split(" "));
     }
 }
 
