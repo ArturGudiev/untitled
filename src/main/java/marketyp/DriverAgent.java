@@ -1,7 +1,6 @@
 package marketyp;
 
 import jade.Boot;
-import jade.core.AID;
 import jade.core.Agent;
 import jade.core.behaviours.CyclicBehaviour;
 import jade.core.behaviours.TickerBehaviour;
@@ -26,14 +25,12 @@ import static java.lang.Math.min;
 import static java.lang.Thread.sleep;
 import static marketyp.Env.INSTANCE;
 import static marketyp.Env.addPointToPath;
-import static marketyp.Env.getAcceptMessage;
+import static marketyp.Env.getResponseMessage;
 import static marketyp.Env.getDistFromPathToPoint;
 //import static marketyp.Env.getDistToPointFromPath;
 import static marketyp.Env.getLengthOfPath;
-import static marketyp.Env.hasSameSender;
 import static marketyp.Env.printMessage;
 import static marketyp.Env.printSentMessage;
-import static marketyp.Env.timeout;
 import static marketyp.FloydWarshall.*;
 
 public class DriverAgent extends Agent {
@@ -53,8 +50,33 @@ public class DriverAgent extends Agent {
 
         extractArguments(getArguments());
         registerTheService();
-
+        //get messages and answer
         addBehaviour(new CyclicBehaviour(this) {
+
+
+            @Override
+            public void action() {
+                ACLMessage msg = myAgent.receive();
+                if (msg != null && msg.getPerformative() == ACLMessage.PROPOSE && !waitForAnswer) {
+                    printMessage(myAgent, msg);
+                    answer(msg);
+                    LOGGER.log(Level.INFO, myAgent.getLocalName() + ": " + msg.getContent() + " from "
+                            + msg.getSender().getLocalName() + " myPath:" + makePathString(path));
+
+                } else if (msg != null && waitForAnswer
+                        && msg.getPerformative() == ACLMessage.CONFIRM
+                        && msg.getSender().getLocalName().equals(waitAgent)) {
+
+                    addPointToPath(agentHome);
+                    consumers.add(waitAgent);
+                    coef *= 3;
+                    printMessage(myAgent, msg);
+                } else if (msg != null) {
+                    printMessage(myAgent, msg);
+                } else {
+                    block();
+                }
+            }
 
             public void answer(ACLMessage msg) {
                 Iterator<Integer> iter = Arrays.stream(msg.getContent().split(" "))
@@ -64,7 +86,7 @@ public class DriverAgent extends Agent {
                 double dist = getDistFromPathToPoint(clientHome);
 
                 if (offerPrice >= coef * dist) {
-                    ACLMessage acceptMessage = getAcceptMessage(msg);
+                    ACLMessage acceptMessage = getResponseMessage(msg, ACLMessage.ACCEPT_PROPOSAL);
                     printSentMessage(myAgent, msg.getSender().getLocalName(), acceptMessage);
                     myAgent.send(acceptMessage);
                     waitForAnswer = true;
@@ -83,30 +105,6 @@ public class DriverAgent extends Agent {
                 }
             }
 
-            @Override
-            public void action() {
-                ACLMessage msg = myAgent.receive();
-                if (msg != null && msg.getPerformative() != ACLMessage.ACCEPT_PROPOSAL && !waitForAnswer) {
-//                if (msg != null && msg.getPerformative() != ACLMessage.ACCEPT_PROPOSAL && !waitForAnswer) {
-                    printMessage(myAgent, msg);
-                    answer(msg);
-                    LOGGER.log(Level.INFO, myAgent.getLocalName() + ": " + msg.getContent() + " from "
-                            + msg.getSender().getLocalName() + " myPath:" + makePathString(path));
-
-                } else if (msg != null && waitForAnswer
-                        && msg.getPerformative() == ACLMessage.ACCEPT_PROPOSAL
-                        && msg.getSender().getLocalName().equals(waitAgent)) {
-
-                    addPointToPath(agentHome);
-                    consumers.add(waitAgent);
-                    coef *= 3;
-                    printMessage(myAgent, msg);
-                } else if (msg != null) {
-                    printMessage(myAgent, msg);
-                } else {
-                    block();
-                }
-            }
 
         });
 
@@ -124,29 +122,12 @@ public class DriverAgent extends Agent {
                     }
                     System.out.println(getLocalName() + ": " + makePathString(path) + " Delta: "
                             + (-getDistance(path.get(0), path.get(path.size() - 1)) + getLengthOfPath(path)) +
-                    " Consumers: " + consumers);
+                    " " + consumers);
                     printLast = true;
                 }
             }
         });
 
-//        addBehaviour(new CyclicBehaviour(this) {
-//
-//            @Override
-//            public void action() {
-//                if (Env.INSTANCE.SOLVED) {
-//                    return;
-//                }
-//                ACLMessage msg = myAgent.receive();
-//                if (msg != null) {
-//                    System.out.println("GETTING MESSAGES");
-//                    System.out.println(myAgent.getLocalName() + ": " + ACLMessage.getPerformative(msg.getPerformative()) + " from " + msg.getSender().getLocalName());
-//                    System.out.println(msg.getContent());
-//                }else{
-//                    block();
-//                }
-//            }
-//        });
     }
 
 

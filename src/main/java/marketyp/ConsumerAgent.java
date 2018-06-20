@@ -2,7 +2,6 @@ package marketyp;
 
 import jade.core.AID;
 import jade.core.Agent;
-import jade.core.behaviours.CyclicBehaviour;
 import jade.core.behaviours.TickerBehaviour;
 import jade.core.behaviours.WakerBehaviour;
 import jade.domain.DFService;
@@ -20,7 +19,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import static java.lang.Thread.sleep;
-import static marketyp.Env.getAcceptMessage;
+import static marketyp.Env.getResponseMessage;
 import static marketyp.Env.printMessage;
 import static marketyp.Env.printSentMessage;
 import static marketyp.Env.timeout;
@@ -32,7 +31,6 @@ public class ConsumerAgent extends Agent {
     boolean waitForAnswer = false;
 
     DFAgentDescription[] services;
-    int indexService = 0;
     int home;
     private DFAgentDescription[] getServices() throws FIPAException {
         DFAgentDescription template = new DFAgentDescription();
@@ -50,15 +48,19 @@ public class ConsumerAgent extends Agent {
         return l.toArray(results);
     }
 
-    private void extractArgumentsAndServices() throws FIPAException {
-        Object[] args = getArguments();
-        if (args != null && args.length > 0) {
-            home = Integer.parseInt(args[0].toString());
-             offerPrice = Integer.parseInt(args[1].toString());
+    private void extractArgumentsAndServices() {
+        try {
+            Object[] args = getArguments();
+            if (args != null && args.length > 0) {
+                home = Integer.parseInt(args[0].toString());
+                offerPrice = Integer.parseInt(args[1].toString());
+            }
+            LOGGER.log(Level.SEVERE, "Initialize " + getLocalName() + " with parameters " + home + " " +
+                    offerPrice);
+            services = getServices();
+        }catch (Exception e){
+            e.printStackTrace();
         }
-        LOGGER.log(Level.SEVERE, "Initialize " + getLocalName() + " with parameters " + home + " " +
-                offerPrice);
-        services = getServices();
     }
 
 
@@ -69,21 +71,17 @@ public class ConsumerAgent extends Agent {
         msg.setOntology("market-ontology");
         msg.setContent(home + " " + offerPrice );
         this.send(msg);
-        printSentMessage(this, serviceName, msg);
+//        printSentMessage(this, serviceName, msg);
     }
 
 
-
-    private void tryToBuy() throws InterruptedException {
-        DFAgentDescription dfd = services[indexService];
-        incServiceIndex();
-
-        AID provider = dfd.getName();
-        Iterator it = dfd.getAllServices();
-        ServiceDescription sd = (ServiceDescription) it.next();
-        if (sd.getType().equals("market")) {
-            sendOffer(sd.getName());
+    private void tryToBuy() {
+        try {
             waitForAnswer = true;
+            System.out.println(this.getLocalName() + ": SENT message PROPOSE " +  home + " " +  offerPrice);
+            for(DFAgentDescription dfd : services){
+                sendOfferToDefiniteService(dfd);
+            }
             addBehaviour(new WakerBehaviour(this, timeout) {
                 @Override
                 protected void onWake() {
@@ -93,45 +91,41 @@ public class ConsumerAgent extends Agent {
                             printMessage(myAgent, msg);
                             LOGGER.log(Level.INFO, getLocalName() + ": get ACCEPT from " + msg.getSender().getLocalName());
                             needToBuy = false;
-                            ACLMessage acceptMessage = getAcceptMessage(msg);
+                            ACLMessage acceptMessage = getResponseMessage(msg, ACLMessage.CONFIRM);
                             printSentMessage(myAgent, msg.getSender().getLocalName(), acceptMessage);
                             myAgent.send(acceptMessage);
                             Env.INSTANCE.decreaseBuyers();
                         }
                     }
                     waitForAnswer = false;
-//                    else {
-//                        block();
-//                    }
+                    offerPrice +=  needToBuy ? 50 : 0;
                 }
             });
 
 
+        }catch (Exception e){e.printStackTrace();}
+    }
+
+    private void sendOfferToDefiniteService(DFAgentDescription dfd) {
+        Iterator it = dfd.getAllServices();
+        ServiceDescription sd = (ServiceDescription) it.next();
+        if (sd.getType().equals("market")) {
+            sendOffer(sd.getName());
         }
     }
 
     private void incServiceIndex() {
-        indexService = (indexService + 1) % services.length;
-        offerPrice += indexService == 0 ? 50 : 0;
     }
 
     @Override
     protected void setup() {
-        try {
-            extractArgumentsAndServices();
-        } catch (FIPAException e) {
-            e.printStackTrace();
-        }
-        Env.INSTANCE.increaseAgent();
+        extractArgumentsAndServices();
+        Env.increaseAgent();
         addBehaviour(new TickerBehaviour(this, timeout) {
             @Override
             protected void onTick() {
                 if(needToBuy && !waitForAnswer) {
-                    try {
-                        tryToBuy();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+                    tryToBuy();
                 }
             }
         });

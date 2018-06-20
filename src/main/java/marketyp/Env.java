@@ -25,7 +25,7 @@ import static marketyp.FloydWarshall.getDistance;
 public class Env {
     public static final Env INSTANCE = new Env();
     public volatile ArrayList<Integer> pathes = new ArrayList<Integer>();
-    public volatile int buyerAgent = 0;
+    public static volatile int buyerAgent = 0;
     public boolean SOLVED = false;
     public static int timeout = 100;
     public static int getLengthOfPath(List<Integer> path) {
@@ -57,8 +57,8 @@ public class Env {
 
     }
 
-    public static ACLMessage getAcceptMessage(ACLMessage msg) {
-        ACLMessage ans = new ACLMessage(ACLMessage.ACCEPT_PROPOSAL);
+    public static ACLMessage getResponseMessage(ACLMessage msg, int messageType) {
+        ACLMessage ans = new ACLMessage(messageType);
         ans.addReceiver(new AID(msg.getSender().getLocalName(), AID.ISLOCALNAME));
         ans.setLanguage("English");
         ans.setOntology("Connection");
@@ -68,7 +68,7 @@ public class Env {
     public static void printMessage(Agent agent, ACLMessage msg) {
         String content = msg.getContent() ;
         content = content == null ? "" : content;
-        System.out.println(agent.getLocalName() + ": GOT message "+perf(msg)+" from " + msg.getSender().getLocalName() + " " + content);
+//        System.out.println(agent.getLocalName() + ": GOT message "+perf(msg)+" from " + msg.getSender().getLocalName() + " " + content);
     }
 
     public static String perf(ACLMessage msg){
@@ -76,7 +76,8 @@ public class Env {
     }
 
     public static void printSentMessage(Agent agent, String agentName, ACLMessage msg) {
-        System.out.println(agent.getLocalName() +  ": SENT message "+ perf(msg) +" to " + agentName + " " + msg.getContent());
+        String content = msg.getContent() == null ? "" : msg.getContent();
+        System.out.println(agent.getLocalName() +  ": SENT message "+ perf(msg) +" to " + agentName + " " + content);
     }
 
     public static double getDistFromPathToPoint(List<Integer> path, int point) {
@@ -155,14 +156,14 @@ public class Env {
         if(buyerAgent == 0){
             SOLVED = true;
         }
-        System.out.println("=============== \n \n");
+//        System.out.println("=============== \n \n");
     }
 
     public static boolean hasSameSender(ACLMessage msg, ACLMessage msgNew) {
         return msgNew.getSender().getLocalName().equals(msg.getSender().getLocalName());
     }
 
-    public void increaseAgent() {
+    public static void increaseAgent() {
         buyerAgent++;
         LOGGER.info("INCREASE: " + buyerAgent);
 
