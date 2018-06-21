@@ -33,17 +33,17 @@ import static marketyp.Env.printMessage;
 import static marketyp.Env.printSentMessage;
 import static marketyp.FloydWarshall.*;
 
-public class DriverAgent extends Agent {
+public class DriverAgent extends BaseAgent{
     private static final Logger LOGGER = Logger.getLogger(DriverAgent.class.getName());
+
     double coef;
-    int sellerHome;
-    int sellerJob;
     List<Integer> path = new ArrayList<>();
     List<String> consumers = new ArrayList<String>();
     public boolean printLast = false;
-    private boolean waitForAnswer = false;
-    private String waitAgent;
-    private int agentHome;
+    private boolean waitForConfirm = false;
+    private String consumerAgent;
+    private int consumerHome;
+    private int offerPrice = -1;
 
     @Override
     protected void setup() {
@@ -57,18 +57,18 @@ public class DriverAgent extends Agent {
             @Override
             public void action() {
                 ACLMessage msg = myAgent.receive();
-                if (msg != null && msg.getPerformative() == ACLMessage.PROPOSE && !waitForAnswer) {
+                if (msg != null && msg.getPerformative() == ACLMessage.PROPOSE && !waitForConfirm) {
                     printMessage(myAgent, msg);
                     answer(msg);
                     LOGGER.log(Level.INFO, myAgent.getLocalName() + ": " + msg.getContent() + " from "
                             + msg.getSender().getLocalName() + " myPath:" + makePathString(path));
 
-                } else if (msg != null && waitForAnswer
+                } else if (msg != null && waitForConfirm
                         && msg.getPerformative() == ACLMessage.CONFIRM
-                        && msg.getSender().getLocalName().equals(waitAgent)) {
+                        && msg.getSender().getLocalName().equals(consumerAgent)) {
 
-                    addPointToPath(agentHome);
-                    consumers.add(waitAgent);
+                    addPointToPath(consumerHome);
+                    consumers.add(consumerAgent);
                     coef *= 3;
                     printMessage(myAgent, msg);
                 } else if (msg != null) {
@@ -89,14 +89,14 @@ public class DriverAgent extends Agent {
                     ACLMessage acceptMessage = getResponseMessage(msg, ACLMessage.ACCEPT_PROPOSAL);
                     printSentMessage(myAgent, msg.getSender().getLocalName(), acceptMessage);
                     myAgent.send(acceptMessage);
-                    waitForAnswer = true;
-                    waitAgent = msg.getSender().getLocalName();
-                    agentHome = clientHome;
+                    waitForConfirm = true;
+                    consumerAgent = msg.getSender().getLocalName();
+                    consumerHome = clientHome;
                     addBehaviour(new WakerBehaviour(myAgent, 1000) {
                         @Override
                         protected void onWake() {
 
-                            waitForAnswer = false;
+                            waitForConfirm = false;
 
                         }
                     });
@@ -133,13 +133,13 @@ public class DriverAgent extends Agent {
 
     private void extractArguments(Object[] args) {
         if (args != null && args.length > 0) {
-            sellerHome = Integer.parseInt(args[0].toString());
-            sellerJob = Integer.parseInt(args[1].toString());
+            home = Integer.parseInt(args[0].toString());
+            int sellerJob = Integer.parseInt(args[1].toString());
             coef = Double.parseDouble(args[2].toString());
-
-            path.addAll(getPath(sellerHome, sellerJob));
+            offerPrice = args.length > 3 ? Integer.parseInt(args[3].toString()) : -1;
+            path.addAll(getPath(home, sellerJob));
             LOGGER.log(Level.FINE, getLocalName() + ": sell with coef " + coef);
-            System.out.println(getLocalName() + ": seller with params coef " + coef);
+            System.out.println(getLocalName() + ": COEF " + coef + " " + (offerPrice != -1 ? " OFFER PRICE " +offerPrice : ""));
         }
     }
 
@@ -282,18 +282,19 @@ public class DriverAgent extends Agent {
         Env env = INSTANCE;
         env.main(null);
 
+        //home stock coef [price]
         Boot.main(("-agents " +
-                "Driver1:marketyp.DriverAgent(1,2,16);" +
+                "Driver1:marketyp.DriverAgent(1,2,16,60);" +
                 "Driver2:marketyp.DriverAgent(2,3,17);" +
                 "Driver3:marketyp.DriverAgent(3,9,18);" +
-                "Driver4:marketyp.DriverAgent(4,6,17);" +
+                "Driver4:marketyp.DriverAgent(4,6,17,70);" +
                 "Driver5:marketyp.DriverAgent(5,8,19);" +
                 "Driver6:marketyp.DriverAgent(6,5,24);"+
                 "").split(" "));
         sleep(1000);
         Boot.main(("-container " +
                 "Consumer1:marketyp.ConsumerAgent(9,70);" +
-                "Consumer2:marketyp.ConsumerAgent(11,30);" +
+                "Consumer2:marketyp.ConsumerAgent(8,30);" +
                 "Consumer3:marketyp.ConsumerAgent(4,100)"+
                 "").split(" "));
     }

@@ -2,7 +2,14 @@ package marketyp;
 
 import jade.core.AID;
 import jade.core.Agent;
+import jade.core.behaviours.WakerBehaviour;
+import jade.domain.DFService;
+import jade.domain.FIPAAgentManagement.DFAgentDescription;
+import jade.domain.FIPAAgentManagement.SearchConstraints;
+import jade.domain.FIPAAgentManagement.ServiceDescription;
+import jade.domain.FIPAException;
 import jade.lang.acl.ACLMessage;
+import jade.util.leap.Iterator;
 
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -11,6 +18,7 @@ import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.LogRecord;
@@ -149,6 +157,72 @@ public class Env {
         }
         return;
     }
+
+
+    public static DFAgentDescription[] getServices(Agent agent) throws FIPAException {
+        DFAgentDescription template = new DFAgentDescription();
+        ServiceDescription templateSd = new ServiceDescription();
+        templateSd.setType("market");
+        template.addServices(templateSd);
+
+        SearchConstraints sc = new SearchConstraints();
+        // We want to receive 10 results at most
+        sc.setMaxResults(new Long(100));
+
+        DFAgentDescription[] results = DFService.search(agent, template, sc);
+        List<DFAgentDescription> l = Arrays.asList(results);
+        Collections.shuffle(l);
+        return l.toArray(results);
+    }
+
+    private static void sendOfferToDefiniteService(DFAgentDescription dfd, BaseAgent agent) {
+        Iterator it = dfd.getAllServices();
+        ServiceDescription sd = (ServiceDescription) it.next();
+        if (sd.getType().equals("market")) {
+            sendOffer(sd.getName(), agent);
+        }
+    }
+
+
+    private static void sendOffer(String serviceName, BaseAgent agent) {
+        ACLMessage msg = new ACLMessage(ACLMessage.PROPOSE);
+        msg.addReceiver(new AID(serviceName, AID.ISLOCALNAME));
+        msg.setLanguage("Engilsh");
+        msg.setOntology("market-ontology");
+        msg.setContent(agent.home + " " + agent.offerPrice );
+        agent.send(msg);
+//        printSentMessage(this, serviceName, msg);
+    }
+
+    public static void tryToBuy(BaseAgent agent, DFAgentDescription[] services) {
+        try {
+            agent.waitForAccept = true;
+            System.out.println(agent.getLocalName() + ": SENT message PROPOSE " +  agent.home + " " +  agent.offerPrice);
+            for(DFAgentDescription dfd : services){
+                sendOfferToDefiniteService(dfd, agent);
+            }
+            agent.addBehaviour(new WakerBehaviour(agent, timeout) {
+                @Override
+                protected void onWake() {
+                    ACLMessage msg = myAgent.receive();
+                    if (msg != null) {
+                        if (msg.getPerformative() == ACLMessage.ACCEPT_PROPOSAL) {
+                            printMessage(myAgent, msg);
+                            LOGGER.log(Level.INFO, agent.getLocalName() + ": get ACCEPT from " + msg.getSender().getLocalName());
+                            agent.needToBuy = false;
+                            ACLMessage acceptMessage = getResponseMessage(msg, ACLMessage.CONFIRM);
+                            printSentMessage(myAgent, msg.getSender().getLocalName(), acceptMessage);
+                            myAgent.send(acceptMessage);
+                            Env.INSTANCE.decreaseBuyers();
+                        }
+                    }
+                    agent.waitForAccept = false;
+                    agent.offerPrice +=  agent.needToBuy ? 50 : 0;
+                }
+            });
+        }catch (Exception e){e.printStackTrace();}
+    }
+
 
     public void decreaseBuyers() {
         buyerAgent--;

@@ -78,3 +78,20 @@
 //            pathes.set(pathes.indexOf(stockPath), newStockPath);
 //        }
 //    }
+
+
+
+//        addBehaviour(new CyclicBehaviour(this) {
+//
+//            @Override
+//            public void action() {
+//                System.out.println("GETTING MESSAGES");
+//                ACLMessage msg = myAgent.receive();
+//                if (msg != null) {
+//                    System.out.println(myAgent.getLocalName() + ": " + ACLMessage.getPerformative(msg.getPerformative()) + " from " + msg.getSender().getLocalName());
+//                    System.out.println(msg.getContent());
+//                }else{
+//                    block();
+//                }
+//            }
+//        });
