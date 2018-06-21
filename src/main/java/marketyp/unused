@@ -95,3 +95,37 @@
 //                }
 //            }
 //        });
+
+
+
+
+
+//    private void tryToBuy() {
+//        try {
+//            waitForAccept = true;
+//            System.out.println(this.getLocalName() + ": SENT message PROPOSE " +  home + " " +  offerPrice);
+//            for(DFAgentDescription dfd : services){
+//                sendOfferToDefiniteService(dfd);
+//            }
+//            addBehaviour(new WakerBehaviour(this, timeout) {
+//                @Override
+//                protected void onWake() {
+//                    ACLMessage msg = myAgent.receive();
+//                    if (msg != null) {
+//                        if (msg.getPerformative() == ACLMessage.ACCEPT_PROPOSAL) {
+//                            printMessage(myAgent, msg);
+//                            LOGGER.log(Level.INFO, getLocalName() + ": get ACCEPT from " + msg.getSender().getLocalName());
+//                            needToBuy = false;
+//                            ACLMessage acceptMessage = getResponseMessage(msg, ACLMessage.CONFIRM);
+//                            printSentMessage(myAgent, msg.getSender().getLocalName(), acceptMessage);
+//                            myAgent.send(acceptMessage);
+//                            Env.INSTANCE.decreaseBuyers();
+//                        }
+//                    }
+//                    waitForAccept = false;
+//                    offerPrice +=  needToBuy ? 50 : 0;
+//                }
+//            });
+//        }catch (Exception e){e.printStackTrace();}
+//    }
+

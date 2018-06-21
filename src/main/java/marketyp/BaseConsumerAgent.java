@@ -3,7 +3,7 @@ package marketyp;
 
 import jade.core.Agent;
 
-public class BaseAgent extends Agent {
+public class BaseConsumerAgent extends Agent {
     boolean waitForAccept = false;
     int home;
     int offerPrice = -1;

@@ -7,9 +7,9 @@ import jade.domain.DFService;
 import jade.domain.FIPAAgentManagement.DFAgentDescription;
 import jade.domain.FIPAAgentManagement.SearchConstraints;
 import jade.domain.FIPAAgentManagement.ServiceDescription;
-import jade.domain.FIPAException;
 import jade.lang.acl.ACLMessage;
 import jade.util.leap.Iterator;
+import javafx.util.Pair;
 
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -33,7 +33,7 @@ import static marketyp.FloydWarshall.getDistance;
 public class Env {
     public static final Env INSTANCE = new Env();
     public volatile ArrayList<Integer> pathes = new ArrayList<Integer>();
-    public static volatile int buyerAgent = 0;
+    public static volatile int consumerAgentsNumber = 0;
     public boolean SOLVED = false;
     public static int timeout = 100;
     public static int getLengthOfPath(List<Integer> path) {
@@ -44,6 +44,7 @@ public class Env {
         return sum;
     }
 
+    public static ArrayList<Pair<String, String>> orders = new ArrayList<Pair<String, String>>();
     public static void printToFile(String str) {
         try
         {
@@ -159,8 +160,10 @@ public class Env {
     }
 
 
-    public static DFAgentDescription[] getServices(Agent agent) throws FIPAException {
-        DFAgentDescription template = new DFAgentDescription();
+    public static DFAgentDescription[] getServices(Agent agent) {
+        try{
+            DFAgentDescription template = new DFAgentDescription();
+
         ServiceDescription templateSd = new ServiceDescription();
         templateSd.setType("market");
         template.addServices(templateSd);
@@ -172,10 +175,30 @@ public class Env {
         DFAgentDescription[] results = DFService.search(agent, template, sc);
         List<DFAgentDescription> l = Arrays.asList(results);
         Collections.shuffle(l);
+
         return l.toArray(results);
+        }catch (Exception e){
+            return null;
+        }
     }
 
-    private static void sendOfferToDefiniteService(DFAgentDescription dfd, BaseAgent agent) {
+    public static boolean checkForAcceptMessage(BaseConsumerAgent agent, ACLMessage msg){
+        if(msg == null){
+            return false;
+        }
+        if (agent.needToBuy && agent.waitForAccept && msg.getPerformative() == ACLMessage.ACCEPT_PROPOSAL) {
+            printMessage(agent, msg);
+            LOGGER.log(Level.INFO, agent.getLocalName() + ": get ACCEPT from " + msg.getSender().getLocalName());
+            agent.needToBuy = false;
+            ACLMessage confirmMessage = getResponseMessage(msg, ACLMessage.CONFIRM);
+            printSentMessage(agent, msg.getSender().getLocalName(), confirmMessage);
+            agent.send(confirmMessage);
+            Env.INSTANCE.decreaseBuyers();
+            return true;
+        }
+        return false;
+    }
+    private static void sendOfferToDefiniteService(DFAgentDescription dfd, BaseConsumerAgent agent) {
         Iterator it = dfd.getAllServices();
         ServiceDescription sd = (ServiceDescription) it.next();
         if (sd.getType().equals("market")) {
@@ -184,7 +207,7 @@ public class Env {
     }
 
 
-    private static void sendOffer(String serviceName, BaseAgent agent) {
+    private static void sendOffer(String serviceName, BaseConsumerAgent agent) {
         ACLMessage msg = new ACLMessage(ACLMessage.PROPOSE);
         msg.addReceiver(new AID(serviceName, AID.ISLOCALNAME));
         msg.setLanguage("Engilsh");
@@ -194,30 +217,22 @@ public class Env {
 //        printSentMessage(this, serviceName, msg);
     }
 
-    public static void tryToBuy(BaseAgent agent, DFAgentDescription[] services) {
+    public static void tryToBuy(BaseConsumerAgent agent) {
+        DFAgentDescription[] services = getServices(agent);
         try {
             agent.waitForAccept = true;
             System.out.println(agent.getLocalName() + ": SENT message PROPOSE " +  agent.home + " " +  agent.offerPrice);
             for(DFAgentDescription dfd : services){
                 sendOfferToDefiniteService(dfd, agent);
             }
+            // remove listening and increase offer
             agent.addBehaviour(new WakerBehaviour(agent, timeout) {
                 @Override
                 protected void onWake() {
-                    ACLMessage msg = myAgent.receive();
-                    if (msg != null) {
-                        if (msg.getPerformative() == ACLMessage.ACCEPT_PROPOSAL) {
-                            printMessage(myAgent, msg);
-                            LOGGER.log(Level.INFO, agent.getLocalName() + ": get ACCEPT from " + msg.getSender().getLocalName());
-                            agent.needToBuy = false;
-                            ACLMessage acceptMessage = getResponseMessage(msg, ACLMessage.CONFIRM);
-                            printSentMessage(myAgent, msg.getSender().getLocalName(), acceptMessage);
-                            myAgent.send(acceptMessage);
-                            Env.INSTANCE.decreaseBuyers();
-                        }
-                    }
                     agent.waitForAccept = false;
-                    agent.offerPrice +=  agent.needToBuy ? 50 : 0;
+                    if(agent.needToBuy){
+                        agent.offerPrice +=  agent.needToBuy ? 50 : 0;
+                    }
                 }
             });
         }catch (Exception e){e.printStackTrace();}
@@ -225,22 +240,66 @@ public class Env {
 
 
     public void decreaseBuyers() {
-        buyerAgent--;
-        if(buyerAgent > 0)LOGGER.info("DECREASE: " + buyerAgent);
-        if(buyerAgent == 0){
+        consumerAgentsNumber--;
+        if(consumerAgentsNumber > 0)LOGGER.info("DECREASE: " + consumerAgentsNumber);
+        if(consumerAgentsNumber == 0){
             SOLVED = true;
+            System.out.println("orders = " + orders);
         }
 //        System.out.println("=============== \n \n");
     }
+
+    public static String makePathString(List<Integer> path) {
+        String ans = "";
+        int last = -1;
+        for (int i = 0; i < path.size(); i++) {
+            int element = path.get(i);
+            if (ans != "" && element != last) {
+                ans += " -> ";
+            }
+            if (element != last) {
+                ans += element;
+                last = element;
+            }
+        }
+
+        return ans;
+    }
+
 
     public static boolean hasSameSender(ACLMessage msg, ACLMessage msgNew) {
         return msgNew.getSender().getLocalName().equals(msg.getSender().getLocalName());
     }
 
-    public static void increaseAgent() {
-        buyerAgent++;
-        LOGGER.info("INCREASE: " + buyerAgent);
+    public static void increaseConsumers() {
+        consumerAgentsNumber++;
+        System.out.println("consumerAgentsNumber = " + consumerAgentsNumber);
+        LOGGER.info("INCREASE: " + consumerAgentsNumber);
 
+    }
+
+    public static void addOrder(String driver, String consumer) {
+        orders.add(new Pair<String, String>(driver, consumer));
+    }
+
+    public static boolean checkForLoop(String driver, String consumer) {
+        if(containsElement(consumer, driver)){
+            return true;
+        }
+        return false;
+    }
+
+    private static boolean containsElement(String parent, String element) {
+        if (parent.equals(element)) {
+            return true;
+        }
+        for (int i = 0; i < orders.size(); i++) {
+            Pair<String, String> order = orders.get(i);
+            if(parent.equals(order.getKey()) && containsElement(order.getValue(), element)){
+                return true;
+            }
+        }
+        return false;
     }
 }
 

@@ -1,7 +1,6 @@
 package marketyp;
 
 import jade.Boot;
-import jade.core.Agent;
 import jade.core.behaviours.CyclicBehaviour;
 import jade.core.behaviours.TickerBehaviour;
 import jade.core.behaviours.WakerBehaviour;
@@ -23,17 +22,11 @@ import java.util.logging.Logger;
 
 import static java.lang.Math.min;
 import static java.lang.Thread.sleep;
-import static marketyp.Env.INSTANCE;
-import static marketyp.Env.addPointToPath;
-import static marketyp.Env.getResponseMessage;
-import static marketyp.Env.getDistFromPathToPoint;
 //import static marketyp.Env.getDistToPointFromPath;
-import static marketyp.Env.getLengthOfPath;
-import static marketyp.Env.printMessage;
-import static marketyp.Env.printSentMessage;
+import static marketyp.Env.*;
 import static marketyp.FloydWarshall.*;
 
-public class DriverAgent extends BaseAgent{
+public class DriverAgent extends BaseConsumerAgent {
     private static final Logger LOGGER = Logger.getLogger(DriverAgent.class.getName());
 
     double coef;
@@ -43,13 +36,22 @@ public class DriverAgent extends BaseAgent{
     private boolean waitForConfirm = false;
     private String consumerAgent;
     private int consumerHome;
-    private int offerPrice = -1;
 
     @Override
     protected void setup() {
 
         extractArguments(getArguments());
-        registerTheService();
+        registerService();
+        addBehaviour(new TickerBehaviour(this, timeout) {
+            @Override
+            protected void onTick() {
+//                System.out.println("In DRIVER NEED TO BUY");
+                if(needToBuy && !waitForAccept) {
+                    tryToBuy((BaseConsumerAgent)myAgent);
+                }
+            }
+        });
+
         //get messages and answer
         addBehaviour(new CyclicBehaviour(this) {
 
@@ -69,9 +71,14 @@ public class DriverAgent extends BaseAgent{
 
                     addPointToPath(consumerHome);
                     consumers.add(consumerAgent);
+                    Env.addOrder(getLocalName(), consumerAgent);
+
                     coef *= 3;
                     printMessage(myAgent, msg);
-                } else if (msg != null) {
+                } else if (checkForAcceptMessage((BaseConsumerAgent) myAgent, msg)){
+
+                }
+                else if (msg != null) {
                     printMessage(myAgent, msg);
                 } else {
                     block();
@@ -84,8 +91,9 @@ public class DriverAgent extends BaseAgent{
                         .iterator();
                 int clientHome = iter.next(), offerPrice = iter.next();
                 double dist = getDistFromPathToPoint(clientHome);
+                boolean hasLoops  = Env.checkForLoop(getLocalName(), msg.getSender().getLocalName());
 
-                if (offerPrice >= coef * dist) {
+                if (offerPrice >= coef * dist && !hasLoops) {
                     ACLMessage acceptMessage = getResponseMessage(msg, ACLMessage.ACCEPT_PROPOSAL);
                     printSentMessage(myAgent, msg.getSender().getLocalName(), acceptMessage);
                     myAgent.send(acceptMessage);
@@ -130,20 +138,25 @@ public class DriverAgent extends BaseAgent{
 
     }
 
-
     private void extractArguments(Object[] args) {
         if (args != null && args.length > 0) {
+            needToBuy = false;
             home = Integer.parseInt(args[0].toString());
             int sellerJob = Integer.parseInt(args[1].toString());
             coef = Double.parseDouble(args[2].toString());
-            offerPrice = args.length > 3 ? Integer.parseInt(args[3].toString()) : -1;
+            if (args.length > 3) {
+                offerPrice = Integer.parseInt(args[3].toString());
+                needToBuy = true;
+                Env.increaseConsumers();
+//                System.out.println(getLocalName() + ":::::: INCREASE CONSUMERS " + consumerAgentsNumber);
+            }
             path.addAll(getPath(home, sellerJob));
             LOGGER.log(Level.FINE, getLocalName() + ": sell with coef " + coef);
-            System.out.println(getLocalName() + ": COEF " + coef + " " + (offerPrice != -1 ? " OFFER PRICE " +offerPrice : ""));
+            System.out.println(getLocalName() + ": COEF " + coef + " " + (offerPrice != -1 ? " OFFER PRICE " + offerPrice : ""));
         }
     }
 
-    private void registerTheService() {
+    private void registerService() {
         System.out.println(getLocalName() + ": registering service of type \"market\" with coef " + coef);
         try {
             DFAgentDescription dfd = new DFAgentDescription();
@@ -159,24 +172,6 @@ public class DriverAgent extends BaseAgent{
         } catch (FIPAException fe) {
             fe.printStackTrace();
         }
-    }
-
-
-    private String makePathString(List<Integer> path) {
-        String ans = "";
-        int last = -1;
-        for (int i = 0; i < path.size(); i++) {
-            int element = path.get(i);
-            if (ans != "" && element != last) {
-                ans += " -> ";
-            }
-            if (element != last) {
-                ans += element;
-                last = element;
-            }
-        }
-
-        return ans;
     }
 
     private void addPointToPath(int home) {
@@ -262,7 +257,6 @@ public class DriverAgent extends BaseAgent{
         }
     }
 
-
     public static ArrayList<Integer> cloneList(List<Integer> list) {
         ArrayList<Integer> ans = new ArrayList<>();
         for (int i = 0; i < list.size(); i++) {
@@ -270,7 +264,6 @@ public class DriverAgent extends BaseAgent{
         }
         return ans;
     }
-
 
     public static void main(String[] args) throws InterruptedException, IOException {
         LOGGER.setLevel(Level.SEVERE);
@@ -282,8 +275,16 @@ public class DriverAgent extends BaseAgent{
         Env env = INSTANCE;
         env.main(null);
 
-        //home stock coef [price]
+
         Boot.main(("-agents " +
+                "Consumer1:marketyp.ConsumerAgent(9,70);" +
+                "Consumer2:marketyp.ConsumerAgent(8,30);" +
+                "Consumer3:marketyp.ConsumerAgent(4,100)"+
+                "").split(" "));
+
+        sleep(1000);
+        //home stock coef [price]
+        Boot.main(("-container " +
                 "Driver1:marketyp.DriverAgent(1,2,16,60);" +
                 "Driver2:marketyp.DriverAgent(2,3,17);" +
                 "Driver3:marketyp.DriverAgent(3,9,18);" +
@@ -291,12 +292,7 @@ public class DriverAgent extends BaseAgent{
                 "Driver5:marketyp.DriverAgent(5,8,19);" +
                 "Driver6:marketyp.DriverAgent(6,5,24);"+
                 "").split(" "));
-        sleep(1000);
-        Boot.main(("-container " +
-                "Consumer1:marketyp.ConsumerAgent(9,70);" +
-                "Consumer2:marketyp.ConsumerAgent(8,30);" +
-                "Consumer3:marketyp.ConsumerAgent(4,100)"+
-                "").split(" "));
+
     }
 }
 
