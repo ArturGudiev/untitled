@@ -8,10 +8,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import static java.lang.Thread.sleep;
-import static marketyp.Env.checkForAcceptMessage;
 import static marketyp.Env.consumerAgentsNumber;
 import static marketyp.Env.timeout;
-import static marketyp.Env.tryToBuy;
 
 public class ConsumerAgent extends BaseConsumerAgent {
     private static final Logger LOGGER = Logger.getLogger(DriverAgent.class.getName());
@@ -41,7 +39,7 @@ public class ConsumerAgent extends BaseConsumerAgent {
             @Override
             protected void onTick() {
                 if(needToBuy && !waitForAccept) {
-                    tryToBuy((BaseConsumerAgent)myAgent);
+                    tryToBuy();
                 }
             }
         });
@@ -54,7 +52,7 @@ public class ConsumerAgent extends BaseConsumerAgent {
                 ACLMessage msg = myAgent.receive();
                 if (msg != null) {
                     // get ACCEPT
-                    checkForAcceptMessage((BaseConsumerAgent) myAgent, msg);
+                    checkForAcceptMessage(msg);
                 }
             }
 

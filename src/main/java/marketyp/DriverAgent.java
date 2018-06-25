@@ -47,7 +47,7 @@ public class DriverAgent extends BaseConsumerAgent {
             protected void onTick() {
 //                System.out.println("In DRIVER NEED TO BUY");
                 if(needToBuy && !waitForAccept) {
-                    tryToBuy((BaseConsumerAgent)myAgent);
+                    tryToBuy();
                 }
             }
         });
@@ -60,7 +60,7 @@ public class DriverAgent extends BaseConsumerAgent {
             public void action() {
                 ACLMessage msg = myAgent.receive();
                 if (msg != null && msg.getPerformative() == ACLMessage.PROPOSE && !waitForConfirm) {
-                    printMessage(myAgent, msg);
+                    printMessage(msg);
                     answer(msg);
                     LOGGER.log(Level.INFO, myAgent.getLocalName() + ": " + msg.getContent() + " from "
                             + msg.getSender().getLocalName() + " myPath:" + makePathString(path));
@@ -74,12 +74,12 @@ public class DriverAgent extends BaseConsumerAgent {
                     Env.addOrder(getLocalName(), consumerAgent);
 
                     coef *= 3;
-                    printMessage(myAgent, msg);
-                } else if (checkForAcceptMessage((BaseConsumerAgent) myAgent, msg)){
+                    printMessage(msg);
+                } else if (checkForAcceptMessage(msg)){
 
                 }
                 else if (msg != null) {
-                    printMessage(myAgent, msg);
+                    printMessage(msg);
                 } else {
                     block();
                 }
@@ -95,7 +95,7 @@ public class DriverAgent extends BaseConsumerAgent {
 
                 if (offerPrice >= coef * dist && !hasLoops) {
                     ACLMessage acceptMessage = getResponseMessage(msg, ACLMessage.ACCEPT_PROPOSAL);
-                    printSentMessage(myAgent, msg.getSender().getLocalName(), acceptMessage);
+                    printSentMessage(msg.getSender().getLocalName(), acceptMessage);
                     myAgent.send(acceptMessage);
                     waitForConfirm = true;
                     consumerAgent = msg.getSender().getLocalName();
@@ -108,14 +108,9 @@ public class DriverAgent extends BaseConsumerAgent {
 
                         }
                     });
-
-
                 }
             }
-
-
         });
-
         //print last
         addBehaviour(new TickerBehaviour(this, 2) {
             @Override
@@ -135,7 +130,6 @@ public class DriverAgent extends BaseConsumerAgent {
                 }
             }
         });
-
     }
 
     private void extractArguments(Object[] args) {

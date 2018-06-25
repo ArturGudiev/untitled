@@ -27,6 +27,7 @@ import java.util.stream.Stream;
 
 import static com.sun.xml.internal.ws.spi.db.BindingContextFactory.LOGGER;
 import static java.lang.Math.min;
+import static marketyp.BaseConsumerAgent.getResponseMessage;
 import static marketyp.FloydWarshall.*;
 import static marketyp.FloydWarshall.getDistance;
 
@@ -64,29 +65,6 @@ public class Env {
         List<Integer> path1 = getPath(1, 11);
 //        System.out.println(path1);
 
-    }
-
-    public static ACLMessage getResponseMessage(ACLMessage msg, int messageType) {
-        ACLMessage ans = new ACLMessage(messageType);
-        ans.addReceiver(new AID(msg.getSender().getLocalName(), AID.ISLOCALNAME));
-        ans.setLanguage("English");
-        ans.setOntology("Connection");
-        return ans;
-    }
-
-    public static void printMessage(Agent agent, ACLMessage msg) {
-        String content = msg.getContent() ;
-        content = content == null ? "" : content;
-//        System.out.println(agent.getLocalName() + ": GOT message "+perf(msg)+" from " + msg.getSender().getLocalName() + " " + content);
-    }
-
-    public static String perf(ACLMessage msg){
-        return ACLMessage.getAllPerformativeNames()[msg.getPerformative()];
-    }
-
-    public static void printSentMessage(Agent agent, String agentName, ACLMessage msg) {
-        String content = msg.getContent() == null ? "" : msg.getContent();
-        System.out.println(agent.getLocalName() +  ": SENT message "+ perf(msg) +" to " + agentName + " " + content);
     }
 
     public static double getDistFromPathToPoint(List<Integer> path, int point) {
@@ -159,86 +137,6 @@ public class Env {
         return;
     }
 
-
-    public static DFAgentDescription[] getServices(Agent agent) {
-        try{
-            DFAgentDescription template = new DFAgentDescription();
-
-        ServiceDescription templateSd = new ServiceDescription();
-        templateSd.setType("market");
-        template.addServices(templateSd);
-
-        SearchConstraints sc = new SearchConstraints();
-        // We want to receive 10 results at most
-        sc.setMaxResults(new Long(100));
-
-        DFAgentDescription[] results = DFService.search(agent, template, sc);
-        List<DFAgentDescription> l = Arrays.asList(results);
-        Collections.shuffle(l);
-
-        return l.toArray(results);
-        }catch (Exception e){
-            return null;
-        }
-    }
-
-    public static boolean checkForAcceptMessage(BaseConsumerAgent agent, ACLMessage msg){
-        if(msg == null){
-            return false;
-        }
-        if (agent.needToBuy && agent.waitForAccept && msg.getPerformative() == ACLMessage.ACCEPT_PROPOSAL) {
-            printMessage(agent, msg);
-            LOGGER.log(Level.INFO, agent.getLocalName() + ": get ACCEPT from " + msg.getSender().getLocalName());
-            agent.needToBuy = false;
-            ACLMessage confirmMessage = getResponseMessage(msg, ACLMessage.CONFIRM);
-            printSentMessage(agent, msg.getSender().getLocalName(), confirmMessage);
-            agent.send(confirmMessage);
-            Env.INSTANCE.decreaseBuyers();
-            return true;
-        }
-        return false;
-    }
-    private static void sendOfferToDefiniteService(DFAgentDescription dfd, BaseConsumerAgent agent) {
-        Iterator it = dfd.getAllServices();
-        ServiceDescription sd = (ServiceDescription) it.next();
-        if (sd.getType().equals("market")) {
-            sendOffer(sd.getName(), agent);
-        }
-    }
-
-
-    private static void sendOffer(String serviceName, BaseConsumerAgent agent) {
-        ACLMessage msg = new ACLMessage(ACLMessage.PROPOSE);
-        msg.addReceiver(new AID(serviceName, AID.ISLOCALNAME));
-        msg.setLanguage("Engilsh");
-        msg.setOntology("market-ontology");
-        msg.setContent(agent.home + " " + agent.offerPrice );
-        agent.send(msg);
-//        printSentMessage(this, serviceName, msg);
-    }
-
-    public static void tryToBuy(BaseConsumerAgent agent) {
-        DFAgentDescription[] services = getServices(agent);
-        try {
-            agent.waitForAccept = true;
-            System.out.println(agent.getLocalName() + ": SENT message PROPOSE " +  agent.home + " " +  agent.offerPrice);
-            for(DFAgentDescription dfd : services){
-                sendOfferToDefiniteService(dfd, agent);
-            }
-            // remove listening and increase offer
-            agent.addBehaviour(new WakerBehaviour(agent, timeout) {
-                @Override
-                protected void onWake() {
-                    agent.waitForAccept = false;
-                    if(agent.needToBuy){
-                        agent.offerPrice +=  agent.needToBuy ? 50 : 0;
-                    }
-                }
-            });
-        }catch (Exception e){e.printStackTrace();}
-    }
-
-
     public void decreaseBuyers() {
         consumerAgentsNumber--;
         if(consumerAgentsNumber > 0)LOGGER.info("DECREASE: " + consumerAgentsNumber);
@@ -265,7 +163,6 @@ public class Env {
 
         return ans;
     }
-
 
     public static boolean hasSameSender(ACLMessage msg, ACLMessage msgNew) {
         return msgNew.getSender().getLocalName().equals(msg.getSender().getLocalName());
