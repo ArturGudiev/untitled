@@ -1,15 +1,19 @@
 package marketyp;
 
 import jade.Boot;
+import jade.core.AID;
+import jade.core.behaviours.Behaviour;
 import jade.core.behaviours.CyclicBehaviour;
+import jade.core.behaviours.OneShotBehaviour;
+import jade.core.behaviours.SequentialBehaviour;
 import jade.core.behaviours.TickerBehaviour;
-import jade.core.behaviours.WakerBehaviour;
 import jade.domain.DFService;
 import jade.domain.FIPAAgentManagement.DFAgentDescription;
 import jade.domain.FIPAAgentManagement.ServiceDescription;
 import jade.domain.FIPAException;
 import jade.domain.FIPANames;
 import jade.lang.acl.ACLMessage;
+import jade.lang.acl.MessageTemplate;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -19,6 +23,7 @@ import java.util.List;
 import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 import static java.lang.Math.min;
 import static java.lang.Thread.sleep;
@@ -33,103 +38,132 @@ public class DriverAgent extends BaseConsumerAgent {
     List<Integer> path = new ArrayList<>();
     List<String> consumers = new ArrayList<String>();
     public boolean printLast = false;
-    private boolean waitForConfirm = false;
-    private String consumerAgent;
-    private int consumerHome;
 
     @Override
     protected void setup() {
 
         extractArguments(getArguments());
         registerService();
-        addBehaviour(new TickerBehaviour(this, timeout) {
-            @Override
-            protected void onTick() {
-//                System.out.println("In DRIVER NEED TO BUY");
-                if(needToBuy && !waitForAccept) {
-                    tryToBuy();
-                }
-            }
-        });
+        driverCheckIn();
+
+        if (needToBuy) {
+            addBehaviour(getConsumerBehaviour());
+        }
 
         //get messages and answer
         addBehaviour(new CyclicBehaviour(this) {
-
-
             @Override
             public void action() {
-                ACLMessage msg = myAgent.receive();
-                if (msg != null && msg.getPerformative() == ACLMessage.PROPOSE && !waitForConfirm) {
-                    printMessage(msg);
-                    answer(msg);
-                    LOGGER.log(Level.INFO, myAgent.getLocalName() + ": " + msg.getContent() + " from "
-                            + msg.getSender().getLocalName() + " myPath:" + makePathString(path));
+                ACLMessage msg = myAgent.receive(MessageTemplate.MatchPerformative(ACLMessage.PROPOSE));
+                if (msg != null) {
+                    String cid = msg.getConversationId();
+                    Iterator<Integer> iter = Arrays.stream(msg.getContent().split(" "))
+                            .map(e -> Integer.valueOf(e))
+                            .iterator();
+                    int clientHome = iter.next(), theOfferPrice = iter.next();
 
-                } else if (msg != null && waitForConfirm
-                        && msg.getPerformative() == ACLMessage.CONFIRM
-                        && msg.getSender().getLocalName().equals(consumerAgent)) {
-
-                    addPointToPath(consumerHome);
-                    consumers.add(consumerAgent);
-                    Env.addOrder(getLocalName(), consumerAgent);
-
-                    coef *= 3;
-                    printMessage(msg);
-                } else if (checkForAcceptMessage(msg)){
-
-                }
-                else if (msg != null) {
-                    printMessage(msg);
+                    SequentialBehaviour seq = new SequentialBehaviour();
+                    seq.addSubBehaviour(getAnswerOnProposeBehaviour(msg, cid, clientHome, theOfferPrice));
+                    seq.addSubBehaviour(getConfirmReceiverBehaviour(cid, msg.getSender().getLocalName(), clientHome));
+                    addBehaviour(seq);
                 } else {
                     block();
                 }
             }
 
-            public void answer(ACLMessage msg) {
-                Iterator<Integer> iter = Arrays.stream(msg.getContent().split(" "))
-                        .map(e -> Integer.valueOf(e))
-                        .iterator();
-                int clientHome = iter.next(), offerPrice = iter.next();
-                double dist = getDistFromPathToPoint(clientHome);
-                boolean hasLoops  = Env.checkForLoop(getLocalName(), msg.getSender().getLocalName());
+            public Behaviour getAnswerOnProposeBehaviour(ACLMessage msg, String cid, int clientHome, int theOfferPrice) {
+                return new OneShotBehaviour(myAgent) {
+                    @Override
+                    public void action() {
+                        String clientName = msg.getSender().getLocalName();
+                        printMessage(msg);
+                        double dist = getDistFromPathToPoint(clientHome);
+                        boolean hasLoops = deliversList.contains(clientName);
 
-                if (offerPrice >= coef * dist && !hasLoops) {
-                    ACLMessage acceptMessage = getResponseMessage(msg, ACLMessage.ACCEPT_PROPOSAL);
-                    printSentMessage(msg.getSender().getLocalName(), acceptMessage);
-                    myAgent.send(acceptMessage);
-                    waitForConfirm = true;
-                    consumerAgent = msg.getSender().getLocalName();
-                    consumerHome = clientHome;
-                    addBehaviour(new WakerBehaviour(myAgent, 1000) {
-                        @Override
-                        protected void onWake() {
+                        if (theOfferPrice >= coef * dist && !hasLoops) {
+                            ACLMessage acceptMessage = getResponseMessage(msg, ACLMessage.ACCEPT_PROPOSAL);
+                            printSentMessage(clientName, acceptMessage);
+                            acceptMessage.setConversationId(cid);
 
-                            waitForConfirm = false;
+                            ArrayList<String> clonedDeliverList = cloneList(deliversList);
+                            clonedDeliverList.add(myAgent.getLocalName());
+                            acceptMessage.setContent(
+                                    clonedDeliverList.stream().
+                                            map(Object::toString).
+                                            collect(Collectors.joining(" ")).toString());
 
+                            myAgent.send(acceptMessage);
                         }
-                    });
+                        LOGGER.log(Level.INFO, myAgent.getLocalName() + ": " + msg.getContent() + " from "
+                                + msg.getSender().getLocalName() + " myPath:" + makePathString(path));
+                    }
+                };
+
+            }
+        });
+        addBehaviour(new CyclicBehaviour(this) {
+            @Override
+            public void action() {
+                ACLMessage msg = myAgent.receive(MessageTemplate.MatchPerformative(ACLMessage.REQUEST));
+                if (msg != null && !printLast) {
+                    printLast = true;
+                    double delta = (-getDistance(path.get(0), path.get(path.size() - 1)) + getLengthOfPath(path));
+                    System.out.println(getLocalName() + " for Stat: " + makePathString(path) + " Delta: "
+                            + delta +
+                            " " + consumers);
+
+                    ACLMessage ans = new ACLMessage(ACLMessage.AGREE);
+                    ans.addReceiver(new AID("Stat", AID.ISLOCALNAME));
+                    ans.setLanguage("English");
+                    ans.setOntology("Connection");
+                    ans.setContent(String.valueOf((int) delta));
+                    send(ans);
+                } else {
+                    block();
                 }
             }
         });
         //print last
-        addBehaviour(new TickerBehaviour(this, 2) {
-            @Override
-            protected void onTick() {
-                if (!printLast && Env.INSTANCE.SOLVED) {
+//        addBehaviour(new TickerBehaviour(this, 2) {
+//            @Override
+//            protected void onTick() {
+//                if (!printLast && Env.INSTANCE.SOLVED) {
+//                    try {
+//                        sleep(2000);
+//                    } catch (InterruptedException e) {
+//                        e.printStackTrace();
+//                    }
+//                    LOGGER.log(Level.INFO, getLocalName() + ": END ");
+//                    try {
+//                        sleep(2000);
+//                    } catch (InterruptedException e) {
+//                        e.printStackTrace();
+//                    }
+//                    System.out.println(getLocalName() + ": " + makePathString(path) + " Delta: "
+//                            + (-getDistance(path.get(0), path.get(path.size() - 1)) + getLengthOfPath(path)) +
+//                    " " + consumers);
+//                    printLast = true;
+//                }
+//            }
+//        });
+    }
 
-                    LOGGER.log(Level.INFO, getLocalName() + ": END ");
-                    try {
-                        sleep(2000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    System.out.println(getLocalName() + ": " + makePathString(path) + " Delta: "
-                            + (-getDistance(path.get(0), path.get(path.size() - 1)) + getLengthOfPath(path)) +
-                    " " + consumers);
-                    printLast = true;
+
+    private MyReceiverBehaviour getConfirmReceiverBehaviour(String cid, String consumerAgent, int consumerHome) {
+        MessageTemplate template = MessageTemplate.and(
+                MessageTemplate.MatchPerformative(ACLMessage.CONFIRM),
+                MessageTemplate.MatchConversationId(cid)
+        );
+        return new MyReceiverBehaviour(this, timeout, template) {
+            public void handle(ACLMessage msg) {
+                if (msg != null) {
+                    addPointToPath(consumerHome);
+                    consumers.add(consumerAgent);
+                    coef *= 3;
+                    printMessage(msg);
                 }
             }
-        });
+        };
     }
 
     private void extractArguments(Object[] args) {
@@ -142,6 +176,7 @@ public class DriverAgent extends BaseConsumerAgent {
                 offerPrice = Integer.parseInt(args[3].toString());
                 needToBuy = true;
                 Env.increaseConsumers();
+                checkIn();
 //                System.out.println(getLocalName() + ":::::: INCREASE CONSUMERS " + consumerAgentsNumber);
             }
             path.addAll(getPath(home, sellerJob));
@@ -251,13 +286,30 @@ public class DriverAgent extends BaseConsumerAgent {
         }
     }
 
-    public static ArrayList<Integer> cloneList(List<Integer> list) {
-        ArrayList<Integer> ans = new ArrayList<>();
+    public static <T> ArrayList<T> cloneList(List<T> list) {
+        ArrayList<T> ans = new ArrayList<T>();
         for (int i = 0; i < list.size(); i++) {
             ans.add(list.get(i));
         }
         return ans;
     }
+
+    protected void driverCheckIn() {
+        ACLMessage msg = new ACLMessage(ACLMessage.INFORM);
+        msg.addReceiver(new AID("Stat", AID.ISLOCALNAME));
+        msg.setLanguage("English");
+        msg.setOntology("Connection");
+        msg.setContent("driver");
+        send(msg);
+        return;
+    }
+//    public static ArrayList<String> cloneList(List<String> list) {
+//        ArrayList<String> ans = new ArrayList<>();
+//        for (int i = 0; i < list.size(); i++) {
+//            ans.add(list.get(i));
+//        }
+//        return ans;
+//    }
 
     public static void main(String[] args) throws InterruptedException, IOException {
         LOGGER.setLevel(Level.SEVERE);
@@ -271,20 +323,20 @@ public class DriverAgent extends BaseConsumerAgent {
 
 
         Boot.main(("-agents " +
+                "Stat:marketyp.StatisticAgent();" +
                 "Consumer1:marketyp.ConsumerAgent(9,70);" +
                 "Consumer2:marketyp.ConsumerAgent(8,30);" +
-                "Consumer3:marketyp.ConsumerAgent(4,100)"+
+                "Consumer3:marketyp.ConsumerAgent(4,100)" +
                 "").split(" "));
-
         sleep(1000);
-        //home stock coef [price]
         Boot.main(("-container " +
                 "Driver1:marketyp.DriverAgent(1,2,16,60);" +
                 "Driver2:marketyp.DriverAgent(2,3,17);" +
                 "Driver3:marketyp.DriverAgent(3,9,18);" +
                 "Driver4:marketyp.DriverAgent(4,6,17,70);" +
                 "Driver5:marketyp.DriverAgent(5,8,19);" +
-                "Driver6:marketyp.DriverAgent(6,5,24);"+
+                "Driver6:marketyp.DriverAgent(6,5,24);" +
+
                 "").split(" "));
 
     }

@@ -9,7 +9,6 @@ import jade.domain.FIPAAgentManagement.SearchConstraints;
 import jade.domain.FIPAAgentManagement.ServiceDescription;
 import jade.lang.acl.ACLMessage;
 import jade.util.leap.Iterator;
-import javafx.util.Pair;
 
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -45,7 +44,6 @@ public class Env {
         return sum;
     }
 
-    public static ArrayList<Pair<String, String>> orders = new ArrayList<Pair<String, String>>();
     public static void printToFile(String str) {
         try
         {
@@ -142,7 +140,6 @@ public class Env {
         if(consumerAgentsNumber > 0)LOGGER.info("DECREASE: " + consumerAgentsNumber);
         if(consumerAgentsNumber == 0){
             SOLVED = true;
-            System.out.println("orders = " + orders);
         }
 //        System.out.println("=============== \n \n");
     }
@@ -175,29 +172,25 @@ public class Env {
 
     }
 
-    public static void addOrder(String driver, String consumer) {
-        orders.add(new Pair<String, String>(driver, consumer));
-    }
+//    public static boolean checkForLoop(String driver, String consumer) {
+//        if(containsElement(consumer, driver)){
+//            return true;
+//        }
+//        return false;
+//    }
 
-    public static boolean checkForLoop(String driver, String consumer) {
-        if(containsElement(consumer, driver)){
-            return true;
-        }
-        return false;
-    }
-
-    private static boolean containsElement(String parent, String element) {
-        if (parent.equals(element)) {
-            return true;
-        }
-        for (int i = 0; i < orders.size(); i++) {
-            Pair<String, String> order = orders.get(i);
-            if(parent.equals(order.getKey()) && containsElement(order.getValue(), element)){
-                return true;
-            }
-        }
-        return false;
-    }
+//    private static boolean containsElement(String parent, String element) {
+//        if (parent.equals(element)) {
+//            return true;
+//        }
+//        for (int i = 0; i < orders.size(); i++) {
+//            Pair<String, String> order = orders.get(i);
+//            if(parent.equals(order.getKey()) && containsElement(order.getValue(), element)){
+//                return true;
+//            }
+//        }
+//        return false;
+//    }
 }
 
 class MyFormatter extends SimpleFormatter {

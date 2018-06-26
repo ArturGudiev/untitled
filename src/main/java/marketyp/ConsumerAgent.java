@@ -1,12 +1,16 @@
 package marketyp;
 
 import jade.core.behaviours.CyclicBehaviour;
+import jade.core.behaviours.OneShotBehaviour;
+import jade.core.behaviours.SequentialBehaviour;
 import jade.core.behaviours.TickerBehaviour;
 import jade.lang.acl.ACLMessage;
+import jade.lang.acl.MessageTemplate;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import static com.sun.xml.internal.ws.spi.db.BindingContextFactory.LOGGER;
 import static java.lang.Thread.sleep;
 import static marketyp.Env.consumerAgentsNumber;
 import static marketyp.Env.timeout;
@@ -25,7 +29,7 @@ public class ConsumerAgent extends BaseConsumerAgent {
             LOGGER.log(Level.SEVERE, "Initialize " + getLocalName() + " with parameters " + home + " " +
                     offerPrice);
 //            services = getServices(this);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -34,30 +38,13 @@ public class ConsumerAgent extends BaseConsumerAgent {
     protected void setup() {
         extractArgumentsAndServices();
         Env.increaseConsumers();
-//        System.out.println(getLocalName() + ":::::: INCREASE CONSUMERS " + consumerAgentsNumber);
-        addBehaviour(new TickerBehaviour(this, timeout) {
-            @Override
-            protected void onTick() {
-                if(needToBuy && !waitForAccept) {
-                    tryToBuy();
-                }
-            }
-        });
+        System.out.println("CONSUMER-CHECKIN");
+        checkIn();
 
-        //get messages and answer
-        addBehaviour(new CyclicBehaviour(this) {
-
-            @Override
-            public void action() {
-                ACLMessage msg = myAgent.receive();
-                if (msg != null) {
-                    // get ACCEPT
-                    checkForAcceptMessage(msg);
-                }
-            }
-
-        });
+        addBehaviour(getConsumerBehaviour());
     }
+
+
 
 
 }

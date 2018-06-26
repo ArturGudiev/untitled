@@ -96,9 +96,57 @@
 //            }
 //        });
 
+//                else if (msg != null && waitForConfirm
+//                        && msg.getPerformative() == ACLMessage.CONFIRM
+//                        && msg.getSender().getLocalName().equals(consumerAgent)) {
+//
+//                    addPointToPath(consumerHome);
+//                    consumers.add(consumerAgent);
+//                    Env.addOrder(getLocalName(), consumerAgent);
+//
+//                    coef *= 3;
+//                    printMessage(msg);
+//                }
+//        addBehaviour(new TickerBehaviour(this, timeout) {
+//            @Override
+//            protected void onTick() {
+//                if(needToBuy ) {
+//                    tryToBuy();
+//                }
+//            }
+//        });
 
 
+    public boolean checkForAcceptMessage(ACLMessage msg) {
+        if (msg == null) {
+            return false;
+        }
+        if (this.needToBuy && this.waitForAccept && msg.getPerformative() == ACLMessage.ACCEPT_PROPOSAL) {
+            printMessage(msg);
+            LOGGER.log(Level.INFO, this.getLocalName() + ": get ACCEPT from " + msg.getSender().getLocalName());
+            this.needToBuy = false;
+            ACLMessage confirmMessage = getResponseMessage(msg, ACLMessage.CONFIRM);
+            printSentMessage(msg.getSender().getLocalName(), confirmMessage);
+            this.send(confirmMessage);
+            Env.INSTANCE.decreaseBuyers();
+            return true;
+        }
+        return false;
+    }
 
+        //get messages and answer
+//        addBehaviour(new CyclicBehaviour(this) {
+//
+//            @Override
+//            public void action() {
+//                ACLMessage msg = myAgent.receive();
+//                if (msg != null) {
+//                    // get ACCEPT
+//                    checkForAcceptMessage(msg);
+//                }
+//            }
+//
+//        });
 
 //    private void tryToBuy() {
 //        try {
