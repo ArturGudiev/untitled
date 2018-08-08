@@ -20,7 +20,14 @@ public class Test {
         String s = list.stream().
                 map(Object::toString).
                 collect(Collectors.joining(" ")).toString();
-        System.out.println(s);
-        System.out.println(list);
+        String a = "asd";
+        switch (a){
+            case "asd":
+                System.out.println("Here");
+                break;
+            default:
+                System.out.println("Nowhere");
+                break;
+        }
     }
 }
