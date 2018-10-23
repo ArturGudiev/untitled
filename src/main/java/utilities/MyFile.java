@@ -7,7 +7,9 @@ import java.util.Scanner;
 public class MyFile {
 
     public static void main(String args[]) {
-
+        if(args[0].equals("clip-content-file")){
+            Clipboard.clip(getFileString(args[1]));
+        }
 
     }
 
@@ -24,3 +26,4 @@ public class MyFile {
     }
 
 }
+

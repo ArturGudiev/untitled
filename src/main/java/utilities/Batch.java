@@ -19,6 +19,7 @@ public class Batch {
     String firstPart = "";
     String secondPart = "";
     String filename = "";
+    ArrayList<String> fileLines = new ArrayList<String>();
 
     Batch(String filename) {
         this.filename = filename;
@@ -26,6 +27,7 @@ public class Batch {
             String line;
             boolean isFirstPart = true;
             while ((line = br.readLine()) != null) {
+                fileLines.add(line);
                 if (isFirstPart && line.startsWith("goto end")) {
                     isFirstPart = false;
                     continue;
@@ -42,7 +44,7 @@ public class Batch {
         }
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 //        Batch batch = new Batch("C:\\Programming\\Batch\\azure.bat");
         Batch batch = new Batch(args[0]);
         if ("--modify".equals(args[1])) {
@@ -51,10 +53,46 @@ public class Batch {
         if ("--echo".equals(args[1])) {
             batch.echo();
         }
+        if ("--open".equals(args[1])) {
+            batch.open(args[2]);
+        }
 
     }
 
+    private void open(String tag) throws IOException {
+        HashMap<String, List<String>> map = getStringListHashMap();
+        if (!map.keySet().contains(tag)) {
+            System.out.println("Contains");
+            for (Map.Entry<String, List<String>> entry : map.entrySet()) {
+                String key = entry.getKey();
+                List<String> list = entry.getValue();
+                if (list.contains(tag)) {
+                    tag = key;
+                    break;
+                }
+            }
+        }
+
+        for (int i = 0; i < fileLines.size(); i++) {
+            String line = fileLines.get(i);
+            if (line.toLowerCase().replaceAll(" ", "").startsWith(":" + tag.toLowerCase())) {
+                Runtime.getRuntime().exec("cmd /c start notepad++ " + filename + " -n" + (i + 1));
+                return;
+            }
+        }
+    }
+
     private void echo() {
+        HashMap<String, List<String>> map = getStringListHashMap();
+        Iterator it = map.entrySet().iterator();
+        while (it.hasNext()) {
+            Map.Entry pair = (Map.Entry)it.next();
+            System.out.println(pair.getKey() + " - " + pair.getValue());
+            it.remove(); // avoids a ConcurrentModificationException
+        }
+    }
+
+    private HashMap<String, List<String>> getStringListHashMap() {
         HashMap<String, List<String>> map = new HashMap<String, List<String>>();
         Stream.of(firstPart.split("\n")).forEach(
                 str -> {
@@ -81,12 +119,7 @@ public class Batch {
                     }
                 }
         );
-        Iterator it = map.entrySet().iterator();
-        while (it.hasNext()) {
-            Map.Entry pair = (Map.Entry)it.next();
-            System.out.println(pair.getKey() + " - " + pair.getValue());
-            it.remove(); // avoids a ConcurrentModificationException
-        }
+        return map;
     }
 
     private void modify(String tag, String loop, String command) {

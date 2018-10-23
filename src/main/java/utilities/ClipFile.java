@@ -16,7 +16,8 @@ public class ClipFile {
 
     public static void main(String[] args) {
         File file = new File(args[0]);
-        System.out.println("\n\tCopy file " + file.getName());
+
+        System.out.println("\n\tCopy " + (file.isFile() ? "file" : "directory") + " " +  file.getName());
         List listOfFiles = new ArrayList();
         listOfFiles.add(file);
 

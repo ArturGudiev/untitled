@@ -21,8 +21,14 @@ public class PasteFile {
                     if (o instanceof File) {
                         File f = (File) o;
                         File newFile = new File(path + "\\" + f.getName());
-                        FileUtils.copyFile(f, newFile);
-                        System.out.println("\n\t Paste file " + newFile.getName());
+                        if(f.isDirectory()){
+                            FileUtils.copyDirectory(f, newFile);
+                        }
+                        else{
+                            FileUtils.copyFile(f, newFile);
+                        }
+                        String type = newFile.isFile() ? "file" : "directory";
+                        System.out.println("\n\t Paste " + type + " " + newFile.getName());
                     }
                 }
 
