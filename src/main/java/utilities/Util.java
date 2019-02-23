@@ -15,6 +15,15 @@ public class Util {
         clip(newStr);
     }
 
+    public static String getSQLPWDString(){
+        return MyFile.getFileString("C:\\Programming\\Java\\untitled\\resources\\sqlpwd.txt");
+    }
+
+
+    public static String geDPAPWDString(){
+        return MyFile.getFileString("C:\\Programming\\Java\\untitled\\resources\\sqlpwd.txt");
+    }
+
     public static void main(String[] args) {
         percent(args[0]);
     }

@@ -8,6 +8,8 @@ package com.company;
 
 // CIPHER / GENERATORS
 // EXCEPTIONS
+import utilities.Util;
+
 import javax.crypto.*;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
@@ -525,7 +527,7 @@ public class ConfHelper {
 
     public static void main(final String[] args) throws ShortBufferException, InvalidAlgorithmParameterException {
         thereback("Passw0rd!");
-        thereback("362044Dpa!");
+        thereback(Util.getSQLPWDString());
         thereback(" Passw 0rd ");
         String s = "Hello";
         String s1 = " " + s;

@@ -1,4 +1,6 @@
 package batch;
+import utilities.Util;
+
 import java.sql.DriverManager;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -31,7 +33,7 @@ import java.sql.SQLException;
 
                 connection = DriverManager.getConnection(
                         "jdbc:postgresql://127.0.0.1:5432/testdb", "postgres",
-                        "362044Sql");
+                        Util.getSQLPWDString());
 
             } catch (SQLException e) {
 

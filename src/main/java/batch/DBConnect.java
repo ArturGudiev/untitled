@@ -1,5 +1,7 @@
 package batch;
 
+import utilities.Util;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -12,7 +14,7 @@ public class DBConnect {
             Class.forName("org.postgresql.Driver");
             Connection connection = null;
             connection = DriverManager.getConnection("jdbc:postgresql://127.0.0.1:5432/postgres", "postgres",
-                    "362044Sql");
+                    Util.getSQLPWDString());
             Statement stmt = connection.createStatement();
             ResultSet rs = stmt.executeQuery( "SELECT * FROM public.task where done=false;" );
             while ( rs.next() ) {
