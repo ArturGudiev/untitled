@@ -16,12 +16,26 @@ public class Util {
     }
 
     public static String getSQLPWDString(){
-        return MyFile.getFileString("C:\\Programming\\Java\\untitled\\resources\\sqlpwd.txt");
+        String fileString = MyFile.getFileString("C:\\Programming\\Java\\untitled\\resources\\sqlpwd.txt");
+        fileString = fileString.substring(0, fileString.length() - 1);
+        return fileString;
     }
 
 
     public static String geDPAPWDString(){
-        return MyFile.getFileString("C:\\Programming\\Java\\untitled\\resources\\sqlpwd.txt");
+        return MyFile.getFileString("C:\\Programming\\Java\\untitled\\resources\\dpapwd.txt");
+    }
+
+    public static String getDPASysPWD(){
+        String fileString = MyFile.getFileString("C:\\Programming\\Java\\untitled\\resources\\dpasyspwd.txt");
+
+        return fileString.substring(0, fileString.length() - 1);
+    }
+
+
+    public static String getDPALogin(){
+        String fileString = MyFile.getFileString("C:\\Programming\\Java\\untitled\\resources\\dpalogin.txt");
+        return fileString.substring(0, fileString.length() - 1);
     }
 
     public static void main(String[] args) {

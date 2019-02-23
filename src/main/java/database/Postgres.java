@@ -1,5 +1,6 @@
 package database;
 
+import utilities.Sequences;
 import utilities.Util;
 
 import java.sql.Connection;
@@ -8,15 +9,22 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Logger;
+
+import static utilities.Util.getSQLPWDString;
 
 public class Postgres {
+
+    private static final Logger LOGGER = Logger.getLogger(Sequences.class.getName());
+
 
     static Connection getConnection() {
         try {
             Class.forName("org.postgresql.Driver");
             Connection connection = null;
+            String sqlpwdString = getSQLPWDString();
             connection = DriverManager.getConnection("jdbc:postgresql://127.0.0.1:5432/postgres", "postgres",
-                    Util.getSQLPWDString());
+                    sqlpwdString);
             return connection;
         } catch (Exception e) {
             e.printStackTrace();
@@ -153,6 +161,7 @@ public class Postgres {
             preparedStatement.setString(2, key);
             preparedStatement.executeUpdate();
         } catch (Exception e) {
+            LOGGER.warning("Can't set value in database");
             e.printStackTrace();
         }
     }

@@ -12,15 +12,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="557ff452-35b6-462b-b253-ebb913beef9f" name="Default" comment="Add vk api client">
-      <change afterPath="$PROJECT_DIR$/resources/dpapwd.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/temp/PR.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/dpalogin.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/dpasyspwd.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/selenium/SeleniumSequences.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/selenium/controllers/MyController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/selenium/controllers/jenkins/JenkinsLoginPageController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/selenium/controllers/stash/StashLoginPageController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/selenium/controllers/stash/StashMainPageController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/selenium/utils/SeleniumUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/batch/DBConnect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/batch/DBConnect.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/batch/JDBCExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/batch/JDBCExample.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/ConfHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/ConfHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/database/Postgres.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/Postgres.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utilities/ActionsForUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utilities/ActionsForUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utilities/Sequences.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utilities/Sequences.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/utilities/Util.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utilities/Util.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/untitled.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/batch/DBConnect.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/batch/DBConnect.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/batch/JDBCExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/batch/JDBCExample.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/company/ConfHelper$Base64.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/company/ConfHelper$Base64.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/company/ConfHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/company/ConfHelper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/intellij/uiDesigner/core/HorizontalInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/intellij/uiDesigner/core/HorizontalInfo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/intellij/uiDesigner/core/LayoutState.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/intellij/uiDesigner/core/LayoutState.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/intellij/uiDesigner/core/Util.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/intellij/uiDesigner/core/Util.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/intellij/uiDesigner/core/VerticalInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/intellij/uiDesigner/core/VerticalInfo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/database/Postgres.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/database/Postgres.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/p12/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/p12/App.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/utilities/ActionsForUser.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utilities/ActionsForUser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/utilities/Sequences.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utilities/Sequences.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/utilities/Util.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utilities/Util.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -120,12 +138,168 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/A.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/selenium/SeleniumSequences.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="12" selection-start-line="12" selection-end-line="12" />
+            <state relative-caret-position="-124">
+              <caret line="28" column="21" lean-forward="true" selection-start-line="28" selection-start-column="21" selection-end-line="28" selection-end-column="21" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#1172#1173#0" expanded="true" />
+                <element signature="e#1207#1208#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/selenium/controllers/stash/StashMainPageController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="126">
+              <caret line="38" column="30" selection-start-line="38" selection-start-column="30" selection-end-line="38" selection-end-column="30" />
+              <folding>
+                <element signature="e#698#699#0" expanded="true" />
+                <element signature="e#732#733#0" expanded="true" />
+                <element signature="e#856#857#0" expanded="true" />
+                <element signature="e#895#896#0" expanded="true" />
+                <element signature="e#991#992#0" expanded="true" />
+                <element signature="e#1028#1029#0" expanded="true" />
+                <element signature="e#349#350#0" expanded="true" />
+                <element signature="e#390#391#0" expanded="true" />
+                <element signature="e#428#429#0" expanded="true" />
+                <element signature="e#458#459#0" expanded="true" />
+                <element signature="e#504#505#0" expanded="true" />
+                <element signature="e#542#543#0" expanded="true" />
+                <element signature="e#592#593#0" expanded="true" />
+                <element signature="e#623#624#0" expanded="true" />
+                <element signature="e#1386#1387#0" expanded="true" />
+                <element signature="e#1456#1457#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/selenium/controllers/stash/StashLoginPageController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="589">
+              <caret line="31" column="13" lean-forward="true" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#469#470#0" expanded="true" />
+                <element signature="e#505#506#0" expanded="true" />
+                <element signature="e#549#550#0" expanded="true" />
+                <element signature="e#585#586#0" expanded="true" />
+                <element signature="e#628#629#0" expanded="true" />
+                <element signature="e#663#664#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/utilities/Sequences.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="379">
+              <caret line="78" column="7" selection-start-line="78" selection-start-column="7" selection-end-line="78" selection-end-column="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/selenium/utils/SeleniumUtil.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="125">
+              <caret line="20" column="11" selection-start-line="20" selection-start-column="11" selection-end-line="20" selection-end-column="11" />
+              <folding>
+                <element signature="method#isPresent#0;class#SeleniumUtil#0" />
+                <element signature="method#shouldBecome#0;class#SeleniumUtil#0" />
+                <element signature="method#shouldDisappear#0;class#SeleniumUtil#0" />
+                <element signature="method#clickOn#0;class#Util#0" />
+                <element signature="method#setValue#0;class#Util#0" />
+                <element signature="method#initController#0;class#SeleniumUtil#0" />
+                <element signature="e#1176#1288#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/selenium/controllers/jenkins/JenkinsLoginPageController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="650">
+              <caret line="32" selection-start-line="32" selection-end-line="33" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/utilities/ActionsForUser.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="550">
+              <caret line="34" selection-start-line="34" selection-end-line="34" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/database/Postgres.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="325">
+              <caret line="24" column="39" selection-start-line="24" selection-start-column="39" selection-end-line="24" selection-end-column="39" />
+              <folding>
+                <element signature="e#611#655#0" />
+                <element signature="method#getApolloConnection#0;class#Postgres#0" />
+                <element signature="e#742#1028#0" />
+                <element signature="e#1049#1093#0" />
+                <element signature="method#getDPAConnection#0;class#Postgres#0" />
+                <element signature="e#1177#1460#0" />
+                <element signature="e#1481#1525#0" />
+                <element signature="method#getTask#0;class#Postgres#0" />
+                <element signature="e#1664#1928#0" />
+                <element signature="e#1949#1993#0" />
+                <element signature="method#insertValue#0;class#Postgres#0" />
+                <element signature="e#2760#3179#0" />
+                <element signature="e#2922#3096#0" />
+                <element signature="e#3117#3169#0" />
+                <element signature="e#3203#3247#0" />
+                <element signature="method#delete#0;class#Postgres#0" />
+                <element signature="e#3313#3370#0" />
+                <element signature="method#main#0;class#Postgres#0" />
+                <element signature="e#3909#3980#1" />
+                <element signature="e#4019#4082#1" />
+                <element signature="method#showGerman#0;class#Postgres#0" />
+                <element signature="e#4175#4595#0" />
+                <element signature="e#4420#4552#1" />
+                <element signature="e#4616#4660#0" />
+                <element signature="method#setTask#0;class#Postgres#0" />
+                <element signature="e#4914#5025#0" />
+                <element signature="e#5046#5090#0" />
+                <element signature="method#setAdminPassword#0;class#Postgres#0" />
+                <element signature="e#5705#6139#0" />
+                <element signature="e#5964#6096#1" />
+                <element signature="e#6160#6204#0" />
+                <marker date="1550946975611" expanded="false" signature="2010:2056" ph="SELECT value... work" />
+                <marker date="1550946975611" expanded="false" signature="2511:2529" ph="SELECT value... missingValue" />
+                <marker date="1550946975611" expanded="false" signature="2511:2561" ph="SELECT value... missingValue" />
+                <marker date="1550946975611" expanded="false" signature="2511:2573" ph="SELECT value... work" />
+                <marker date="1550946975611" expanded="false" signature="2627:2648" ph="SELECT * FRO... missingValue" />
+                <marker date="1550946975611" expanded="false" signature="2627:2661" ph="SELECT * FRO... missingValue" />
+                <marker date="1550946975611" expanded="false" signature="3110:3129" ph="INSERT into public.... " />
+                <marker date="1550946975611" expanded="false" signature="3110:3156" ph="INSERT into public.work... " />
+                <marker date="1550946975611" expanded="false" signature="3723:3765" ph="DELETE from " />
+                <marker date="1550946975611" expanded="false" signature="3729:3742" ph="INSERT into public.missingValue... " />
+                <marker date="1550946975611" expanded="false" signature="4521:4567" ph="SELECT * FRO... task" />
+                <marker date="1550946975611" expanded="false" signature="5099:5148" ph="UPDATE publi... " />
+                <marker date="1550946975611" expanded="false" signature="5561:5575" ph="UPDATE publi... " />
+                <marker date="1550946975611" expanded="false" signature="5561:5613" ph="UPDATE publi... " />
+                <marker date="1550946975611" expanded="false" signature="5561:5614" ph="UPDATE publi... " />
+                <marker date="1550946975611" expanded="false" signature="6110:6170" ph="SELECT * FRO... abstractcredential" />
               </folding>
             </state>
           </provider>
@@ -135,16 +309,7 @@
         <entry file="file://$PROJECT_DIR$/resources/sqlpwd.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state>
-              <caret column="6" selection-start-column="6" selection-end-column="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="175">
-              <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+              <caret column="9" selection-start-column="9" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -152,80 +317,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/utilities/Util.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="11" column="34" selection-start-line="11" selection-start-column="34" selection-end-line="11" selection-end-column="34" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/dpapwd.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="10" selection-start-column="10" selection-end-column="10" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/company/ConfHelper.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="403">
-              <caret line="529" column="40" selection-start-line="529" selection-start-column="40" selection-end-line="529" selection-end-column="40" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/batch/DBConnect.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="250">
-              <caret line="16" column="42" lean-forward="true" selection-start-line="16" selection-start-column="42" selection-end-line="16" selection-end-column="42" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/batch/JDBCExample.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="332">
-              <caret line="35" column="46" selection-start-line="35" selection-start-column="46" selection-end-line="35" selection-end-column="46" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/database/Postgres.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="275">
-              <caret line="18" column="42" selection-start-line="18" selection-start-column="42" selection-end-line="18" selection-end-column="42" />
-              <folding>
-                <marker date="1550915950844" expanded="false" signature="1771:1817" ph="SELECT value... work" />
-                <marker date="1550915950844" expanded="false" signature="2272:2290" ph="SELECT value... missingValue" />
-                <marker date="1550915950844" expanded="false" signature="2272:2322" ph="SELECT value... missingValue" />
-                <marker date="1550915950844" expanded="false" signature="2272:2334" ph="SELECT value... work" />
-                <marker date="1550915950844" expanded="false" signature="2388:2409" ph="SELECT * FRO... missingValue" />
-                <marker date="1550915950844" expanded="false" signature="2388:2422" ph="SELECT * FRO... missingValue" />
-                <marker date="1550915950844" expanded="false" signature="2871:2890" ph="INSERT into public.... " />
-                <marker date="1550915950844" expanded="false" signature="2871:2917" ph="INSERT into public.work... " />
-                <marker date="1550915950844" expanded="false" signature="3484:3526" ph="DELETE from " />
-                <marker date="1550915950844" expanded="false" signature="3490:3503" ph="INSERT into public.missingValue... " />
-                <marker date="1550915950844" expanded="false" signature="4282:4328" ph="SELECT * FRO... task" />
-                <marker date="1550915950844" expanded="false" signature="4860:4909" ph="UPDATE publi... " />
-                <marker date="1550915950844" expanded="false" signature="5322:5336" ph="UPDATE publi... " />
-                <marker date="1550915950844" expanded="false" signature="5322:5374" ph="UPDATE publi... " />
-                <marker date="1550915950844" expanded="false" signature="5322:5375" ph="UPDATE publi... " />
-                <marker date="1550915950844" expanded="false" signature="5812:5872" ph="SELECT * FRO... abstractcredential" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/temp/PR.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="250">
-              <caret line="10" selection-start-line="10" selection-end-line="10" />
+            <state relative-caret-position="165">
+              <caret line="19" column="70" selection-start-line="19" selection-start-column="70" selection-end-line="19" selection-end-column="70" />
             </state>
           </provider>
         </entry>
@@ -244,7 +337,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>conversation</find>
       <find>wall,</find>
       <find>cmd /</find>
       <find>getFileString</find>
@@ -274,6 +366,7 @@
       <find>--echo</find>
       <find>FileStrin</find>
       <find>362044</find>
+      <find>getPwd</find>
     </findStrings>
     <replaceStrings>
       <replace>Apple</replace>
@@ -296,19 +389,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/marketyp/StatisticAgent.java" />
-        <option value="$PROJECT_DIR$/src/main/java/marketyp/Env.java" />
-        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/5dbc1ad2-1df8-4800-8cfc-1407086bc739/console.sql" />
-        <option value="$PROJECT_DIR$/src/main/java/utilities/CopyFileToClipboard.java" />
-        <option value="$PROJECT_DIR$/src/main/java/utilities/PasteFromClipFile.java" />
-        <option value="$PROJECT_DIR$/src/main/java/utilities/ClipFile.java" />
-        <option value="$PROJECT_DIR$/src/main/java/marketyp/Temp.java" />
-        <option value="$PROJECT_DIR$/src/main/java/utilities/PasteFile.java" />
-        <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch_42.xml" />
-        <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch_43.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/utilities/MyFile.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/logging.properties" />
-        <option value="$PROJECT_DIR$/src/main/resources/log4j2.xml" />
         <option value="$PROJECT_DIR$/src/main/java/api/Youtube.java" />
         <option value="$PROJECT_DIR$/src/main/java/vk/VKClient.java" />
         <option value="$PROJECT_DIR$/src/main/java/utilities/Get.java" />
@@ -320,9 +400,7 @@
         <option value="$PROJECT_DIR$/src/main/java/mine/MotivationConstants.java" />
         <option value="$PROJECT_DIR$/src/main/java/mine/Motivation.txt" />
         <option value="$PROJECT_DIR$/src/main/java/mine/Motivation.java" />
-        <option value="$PROJECT_DIR$/src/main/java/utilities/ActionsForUser.java" />
         <option value="$PROJECT_DIR$/src/main/java/utilities/Inet.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/database/HBase.java" />
         <option value="$PROJECT_DIR$/src/main/java/utilities/Sequnces.java" />
         <option value="$PROJECT_DIR$/src/main/java/utilities/Actions.java" />
@@ -333,7 +411,6 @@
         <option value="$PROJECT_DIR$/src/main/java/temp/Test.java" />
         <option value="$PROJECT_DIR$/src/test/java/A.java" />
         <option value="$PROJECT_DIR$/src/test/java/temp/TestNewBuilderTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/utilities/Sequences.java" />
         <option value="$PROJECT_DIR$/src/main/java/temp/Lambda.java" />
         <option value="$PROJECT_DIR$/resources/1.xml" />
         <option value="$PROJECT_DIR$/src/main/java/xml/MySAXParser.java" />
@@ -341,12 +418,28 @@
         <option value="$PROJECT_DIR$/resources/pwd.txt" />
         <option value="$PROJECT_DIR$/src/main/java/temp/PR.java" />
         <option value="$PROJECT_DIR$/resources/dpapwd.txt" />
-        <option value="$PROJECT_DIR$/src/main/java/utilities/Util.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/company/ConfHelper.java" />
         <option value="$PROJECT_DIR$/src/main/java/batch/DBConnect.java" />
         <option value="$PROJECT_DIR$/src/main/java/batch/JDBCExample.java" />
-        <option value="$PROJECT_DIR$/src/main/java/database/Postgres.java" />
+        <option value="$PROJECT_DIR$/resources/dpalogin.txt" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/resources/dpasyspwd.txt" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/selenium/controllers/JenkinsController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/selenium/controllers/MyController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/utilities/Util.java" />
+        <option value="$PROJECT_DIR$/src/main/java/database/Postgres.java" />
+        <option value="$PROJECT_DIR$/src/main/java/utilities/ActionsForUser.java" />
+        <option value="$PROJECT_DIR$/resources/sqlpwd.txt" />
+        <option value="$PROJECT_DIR$/src/main/java/utilities/Sequences.java" />
+        <option value="$PROJECT_DIR$/src/main/java/selenium/utils/Util.java" />
+        <option value="$PROJECT_DIR$/src/main/java/selenium/controllers/JenkinsLoginPageController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/selenium/controllers/jenkins/JenkinsLoginPageController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/selenium/controllers/stash/StashLoginPageController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/selenium/Jenkins.java" />
+        <option value="$PROJECT_DIR$/src/main/java/selenium/controllers/stash/StashMainPageController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/selenium/SeleniumSequences.java" />
+        <option value="$PROJECT_DIR$/src/main/java/selenium/utils/SeleniumUtil.java" />
       </list>
     </option>
   </component>
@@ -391,10 +484,9 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-9" />
-    <option name="y" value="-9" />
-    <option name="width" value="1937" />
-    <option name="height" value="1176" />
+    <option name="x" value="1429" />
+    <option name="width" value="1462" />
+    <option name="height" value="1571" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -432,6 +524,70 @@
               <item name="untitled" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="untitled" type="b2602c69:ProjectViewProjectNode" />
+              <item name="untitled" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="untitled" type="b2602c69:ProjectViewProjectNode" />
+              <item name="untitled" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="untitled" type="b2602c69:ProjectViewProjectNode" />
+              <item name="untitled" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="untitled" type="b2602c69:ProjectViewProjectNode" />
+              <item name="untitled" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="selenium" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="untitled" type="b2602c69:ProjectViewProjectNode" />
+              <item name="untitled" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="selenium" type="462c0819:PsiDirectoryNode" />
+              <item name="controllers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="untitled" type="b2602c69:ProjectViewProjectNode" />
+              <item name="untitled" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="selenium" type="462c0819:PsiDirectoryNode" />
+              <item name="controllers" type="462c0819:PsiDirectoryNode" />
+              <item name="jenkins" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="untitled" type="b2602c69:ProjectViewProjectNode" />
+              <item name="untitled" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="selenium" type="462c0819:PsiDirectoryNode" />
+              <item name="controllers" type="462c0819:PsiDirectoryNode" />
+              <item name="stash" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="untitled" type="b2602c69:ProjectViewProjectNode" />
+              <item name="untitled" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="selenium" type="462c0819:PsiDirectoryNode" />
+              <item name="utils" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -442,7 +598,7 @@
     <property name="SearchEverywhereHistoryKey" value="newTask&#9;PSI&#9;JAVA://utilities.Sequnces#setNewTask" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550915988699" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550952456072" />
     <property name="com.intellij.database.dataSource.DataSourceTemplate" value="PostgreSQL" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$2/Languages" value="XML" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
@@ -454,7 +610,7 @@
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.General" />
+    <property name="settings.editor.selected.configurable" value="editing.templates" />
   </component>
   <component name="RecentsManager">
     <key name="ExtractSuperBase.RECENT_KEYS">
@@ -471,6 +627,7 @@
       <recent name="C:\Programming\Java\untitled\src" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="selenium.controllers.stash" />
       <recent name="utilities" />
       <recent name="p12" />
       <recent name="marketyp" />
@@ -479,6 +636,9 @@
       <recent name="C:\Programming\Java\untitled\resources" />
       <recent name="C:\Programming\Java\untitled\lib" />
       <recent name="C:\Programming\Java\untitled\src\mine" />
+    </key>
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="selenium.controllers" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -493,7 +653,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.PR">
+  <component name="RunManager" selected="JUnit.SeleniumSequences.createBranchInStash">
     <configuration name="Unnamed" type="Applet">
       <option name="HEIGHT" value="0" />
       <option name="MAIN_CLASS_NAME" value="p12.SimpleApplet" />
@@ -510,46 +670,6 @@
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="utilities.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Lambda" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="temp.Lambda" />
-      <module name="untitled" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="temp.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="LogFileReader" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="utilities.LogFileReader" />
-      <module name="untitled" />
-      <option name="PROGRAM_PARAMETERS" value="C:\Artur\Work\tasks\28_DPA-58153_Alerts_not_appear_and_assigning_rule_is_failed_if_use_copy_of_rule_in_policy\serverlog" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="utilities.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MySAXParser" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="xml.MySAXParser" />
-      <module name="untitled" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="xml.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -584,6 +704,32 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="SeleniumSequences" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="selenium.SeleniumSequences" />
+      <module name="untitled" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="selenium.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Sequences" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="utilities.Sequences" />
+      <module name="untitled" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="utilities.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="SimpleApplet" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="p12.SimpleApplet" />
       <module name="untitled" />
@@ -597,10 +743,34 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="java in untitled" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SeleniumSequences.createBranchInStash" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="untitled" />
-      <option name="TEST_OBJECT" value="directory" />
-      <dir value="$PROJECT_DIR$/src/test/java" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="selenium.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="selenium" />
+      <option name="MAIN_CLASS_NAME" value="selenium.SeleniumSequences" />
+      <option name="METHOD_NAME" value="createBranchInStash" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SeleniumSequences.test1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="untitled" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="selenium.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="selenium" />
+      <option name="MAIN_CLASS_NAME" value="selenium.SeleniumSequences" />
+      <option name="METHOD_NAME" value="test1" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -610,19 +780,19 @@
       <item itemvalue="Application.Batch" />
       <item itemvalue="Application.SimpleApplet" />
       <item itemvalue="Application.Os" />
-      <item itemvalue="Application.LogFileReader" />
-      <item itemvalue="Application.Lambda" />
-      <item itemvalue="Application.MySAXParser" />
       <item itemvalue="Application.PR" />
-      <item itemvalue="JUnit.java in untitled" />
+      <item itemvalue="Application.SeleniumSequences" />
+      <item itemvalue="JUnit.SeleniumSequences.test1" />
+      <item itemvalue="Application.Sequences" />
+      <item itemvalue="JUnit.SeleniumSequences.createBranchInStash" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.SeleniumSequences.createBranchInStash" />
+        <item itemvalue="JUnit.SeleniumSequences.test1" />
+        <item itemvalue="Application.Sequences" />
+        <item itemvalue="Application.SeleniumSequences" />
         <item itemvalue="Application.PR" />
-        <item itemvalue="Application.MySAXParser" />
-        <item itemvalue="Application.Lambda" />
-        <item itemvalue="JUnit.java in untitled" />
-        <item itemvalue="Application.LogFileReader" />
       </list>
     </recent_temporary>
   </component>
@@ -963,15 +1133,46 @@
       <option name="project" value="LOCAL" />
       <updated>1540264457504</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="ADD files">
+      <created>1550916029402</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1550916029403</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="java_in_untitled - 2019.02.07 at 09h 34m 39s.xml">
-      <configuration name="java in untitled" configurationId="JUnit" />
+    <history-entry file="SeleniumSequences_createBranchInStash - 2019.02.23 at 22h 48m 44s.xml">
+      <configuration name="SeleniumSequences.createBranchInStash" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="java_in_untitled - 2019.02.07 at 09h 42m 00s.xml">
-      <configuration name="java in untitled" configurationId="JUnit" />
+    <history-entry file="SeleniumSequences_createBranchInStash - 2019.02.23 at 22h 49m 53s.xml">
+      <configuration name="SeleniumSequences.createBranchInStash" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SeleniumSequences_createBranchInStash - 2019.02.23 at 22h 51m 58s.xml">
+      <configuration name="SeleniumSequences.createBranchInStash" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SeleniumSequences_createBranchInStash - 2019.02.23 at 22h 52m 35s.xml">
+      <configuration name="SeleniumSequences.createBranchInStash" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SeleniumSequences_createBranchInStash - 2019.02.23 at 22h 52m 56s.xml">
+      <configuration name="SeleniumSequences.createBranchInStash" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SeleniumSequences_createBranchInStash - 2019.02.23 at 22h 58m 38s.xml">
+      <configuration name="SeleniumSequences.createBranchInStash" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SeleniumSequences_createBranchInStash - 2019.02.23 at 22h 59m 27s.xml">
+      <configuration name="SeleniumSequences.createBranchInStash" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SeleniumSequences_createBranchInStash - 2019.02.23 at 23h 00m 23s.xml">
+      <configuration name="SeleniumSequences.createBranchInStash" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SeleniumSequences_createBranchInStash - 2019.02.23 at 23h 01m 14s.xml">
+      <configuration name="SeleniumSequences.createBranchInStash" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SeleniumSequences_createBranchInStash - 2019.02.23 at 23h 02m 41s.xml">
+      <configuration name="SeleniumSequences.createBranchInStash" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
@@ -990,7 +1191,7 @@
     <frame x="-11" y="-11" width="2902" height="1582" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.69402987" visible="true" weight="0.18029872" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.69402987" visible="true" weight="0.27098152" />
       <window_info id="Structure" order="1" sideWeight="0.49655852" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -1000,15 +1201,15 @@
       <window_info id="Learn" order="7" weight="0.3296586" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.4886202" weight="0.3574088" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.66471213" weight="0.25695217" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.467484" weight="0.38932148" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.66429585" visible="true" weight="0.3678332" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.46657184" weight="0.34475055" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49959514" weight="0.3283859" />
-      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49554655" weight="0.41372913" />
-      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5113798" side_tool="true" visible="true" weight="0.25763217" />
+      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49502134" weight="0.4132539" />
+      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.50497866" side_tool="true" weight="0.4132539" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.32879817" />
-      <window_info anchor="bottom" id="Messages" order="10" sideWeight="0.4371002" weight="0.3047831" />
+      <window_info anchor="bottom" id="Messages" order="10" sideWeight="0.43598863" weight="0.30454206" />
       <window_info anchor="bottom" id="TypeScript" order="11" />
       <window_info anchor="bottom" id="Inspection Results" order="12" visible="true" weight="0.18888889" />
       <window_info anchor="bottom" id="Database Console" order="13" sideWeight="0.49946696" visible="true" weight="0.1736997" />
@@ -1082,7 +1283,8 @@
     <MESSAGE value="Modify agents" />
     <MESSAGE value="Add Copy and Paste operations" />
     <MESSAGE value="Add vk api client" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add vk api client" />
+    <MESSAGE value="ADD files" />
+    <option name="LAST_COMMIT_MESSAGE" value="ADD files" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1095,82 +1297,10 @@
           </properties>
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/p12/Meta3.java</url>
-          <line>22</line>
+          <url>file://$PROJECT_DIR$/src/main/java/selenium/SeleniumSequences.java</url>
+          <line>75</line>
           <properties />
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/company/ConfHelper.java</url>
-          <line>174</line>
-          <properties />
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/utilities/PrintLines.java</url>
-          <line>11</line>
-          <properties />
-          <option name="timeStamp" value="14" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/marketyp/Env.java</url>
-          <line>93</line>
-          <properties />
-          <option name="timeStamp" value="36" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/utilities/NounGender.java</url>
-          <line>28</line>
-          <properties />
-          <option name="timeStamp" value="43" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/utilities/SimpleGermanTranslation.java</url>
-          <line>37</line>
-          <properties />
-          <option name="timeStamp" value="46" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/p12/CopyFile.java</url>
-          <line>25</line>
-          <properties />
-          <option name="timeStamp" value="47" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/database/Postgres.java</url>
-          <line>71</line>
-          <properties />
-          <option name="timeStamp" value="50" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/vk/VK.java</url>
-          <line>87</line>
-          <properties />
-          <option name="timeStamp" value="62" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/vk/VK.java</url>
-          <line>70</line>
-          <properties />
-          <option name="timeStamp" value="65" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/utilities/Sequences.java</url>
-          <line>107</line>
-          <properties />
-          <option name="timeStamp" value="67" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/utilities/LogFileReader.java</url>
-          <line>37</line>
-          <properties />
-          <option name="timeStamp" value="68" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/utilities/LogFileReader.java</url>
-          <line>47</line>
-          <properties />
-          <option name="timeStamp" value="70" />
+          <option name="timeStamp" value="82" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -1182,74 +1312,66 @@
   <component name="debuggerHistoryManager">
     <expressions id="evaluateCodeFragment">
       <expression>
-        <expression-string>&quot;004-034556&quot;.split(&quot;-&quot;)</expression-string>
+        <expression-string>stashMainPage.getResultElements().size()</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>&quot;asd.asd&quot;.split(&quot;.&quot;)</expression-string>
+        <expression-string>stashMainPage.getResultElements()</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>f.getName().split(&quot;.&quot;)[0]</expression-string>
+        <expression-string>SeleniumUtil.driver.findElement(By.partialLinkText(&quot;Feature&quot;)).click();</expression-string>
         <language-id>JAVA</language-id>
+        <custom-info>org.openqa.selenium.By</custom-info>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>f.getName().split(&quot;.&quot;)</expression-string>
+        <expression-string>SeleniumUtil.driver.findElement(By.partialLinkText(&quot;Feature&quot;))</expression-string>
         <language-id>JAVA</language-id>
+        <custom-info>org.openqa.selenium.By</custom-info>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>f.getName()</expression-string>
+        <expression-string>SeleniumUtil.driver.findElements(By.partialLinkText(&quot;Feature&quot;))</expression-string>
         <language-id>JAVA</language-id>
+        <custom-info>org.openqa.selenium.By</custom-info>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>SeleniumUtil.driver.findElements(By.tagName(&quot;li&quot;))</expression-string>
+        <language-id>JAVA</language-id>
+        <custom-info>org.openqa.selenium.By</custom-info>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>SeleniumUtil.driver.findElement(By.tagName(&quot;li&quot;)).getText()</expression-string>
+        <language-id>JAVA</language-id>
+        <custom-info>org.openqa.selenium.By</custom-info>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>SeleniumUtil.driver.findElement(By.tagName(&quot;li&quot;)).getSize()</expression-string>
+        <language-id>JAVA</language-id>
+        <custom-info>org.openqa.selenium.By</custom-info>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>SeleniumUtil.driver.findElement(By.tagName(&quot;li&quot;))</expression-string>
+        <language-id>JAVA</language-id>
+        <custom-info>org.openqa.selenium.By</custom-info>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>SeleniumUtil.driver.findElement(By.id(&quot;FEATURE&quot;))</expression-string>
+        <language-id>JAVA</language-id>
+        <custom-info>org.openqa.selenium.By</custom-info>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/utilities/Get.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" selection-start-line="19" selection-end-line="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Artur/Work/tasks/11_DPA-57355_Implement_Replication_Alerts_viewlet/2.xml" />
-    <entry file="file://C:/Artur/Work/tasks/11_DPA-57355_Implement_Replication_Alerts_viewlet/3.xml" />
-    <entry file="file://C:/Artur/Work/tasks/11_DPA-57355_Implement_Replication_Alerts_viewlet/1.xml" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/vk/VK.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="833">
-          <caret line="68" column="13" selection-start-line="68" selection-start-column="13" selection-end-line="68" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/utilities/ClipFile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="28" column="37" selection-start-line="28" selection-start-column="37" selection-end-line="28" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/utilities/CutFile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="49" column="17" selection-start-line="49" selection-start-column="17" selection-end-line="49" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/utilities/XML.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8432">
-          <caret line="496" selection-start-line="496" selection-end-line="496" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://C:/Artur/Work/tasks/11_DPA-57355_Implement_Replication_Alerts_viewlet/4.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1292">
@@ -1283,13 +1405,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="11" selection-start-line="11" selection-end-line="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2329">
-          <caret line="137" column="21" selection-start-line="132" selection-start-column="21" selection-end-line="137" selection-end-column="21" />
         </state>
       </provider>
     </entry>
@@ -1352,13 +1467,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/utilities/MyFile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="das://5dbc1ad2-1df8-4800-8cfc-1407086bc739/database/postgres/schema/public/table/users" />
     <entry file="file://$PROJECT_DIR$/src/main/java/temp/TestNew.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1378,13 +1486,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="1" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/utilities/Sequences.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="935">
-          <caret line="61" column="66" selection-start-line="61" selection-start-column="66" selection-end-line="61" selection-end-column="66" />
         </state>
       </provider>
     </entry>
@@ -1426,13 +1527,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/selenium/FirstExample.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/utilities/BaBla.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
@@ -1454,34 +1548,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/utilities/ActionsForUser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="23" column="16" selection-start-line="23" selection-start-column="16" selection-end-line="23" selection-end-column="16" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/utilities/Batch.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1850">
           <caret line="88" selection-start-line="88" selection-end-line="88" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/sqlpwd.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="6" selection-start-column="6" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/dpapwd.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="10" selection-start-column="10" selection-end-column="10" />
         </state>
       </provider>
     </entry>
@@ -1502,13 +1572,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/utilities/Util.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="11" column="34" selection-start-line="11" selection-start-column="34" selection-end-line="11" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/company/ConfHelper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="403">
@@ -1519,32 +1582,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/batch/DBConnect.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="250">
-          <caret line="16" column="42" lean-forward="true" selection-start-line="16" selection-start-column="42" selection-end-line="16" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/database/Postgres.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="18" column="42" selection-start-line="18" selection-start-column="42" selection-end-line="18" selection-end-column="42" />
-          <folding>
-            <marker date="1550915950844" expanded="false" signature="1771:1817" ph="SELECT value... work" />
-            <marker date="1550915950844" expanded="false" signature="2272:2290" ph="SELECT value... missingValue" />
-            <marker date="1550915950844" expanded="false" signature="2272:2322" ph="SELECT value... missingValue" />
-            <marker date="1550915950844" expanded="false" signature="2272:2334" ph="SELECT value... work" />
-            <marker date="1550915950844" expanded="false" signature="2388:2409" ph="SELECT * FRO... missingValue" />
-            <marker date="1550915950844" expanded="false" signature="2388:2422" ph="SELECT * FRO... missingValue" />
-            <marker date="1550915950844" expanded="false" signature="2871:2890" ph="INSERT into public.... " />
-            <marker date="1550915950844" expanded="false" signature="2871:2917" ph="INSERT into public.work... " />
-            <marker date="1550915950844" expanded="false" signature="3484:3526" ph="DELETE from " />
-            <marker date="1550915950844" expanded="false" signature="3490:3503" ph="INSERT into public.missingValue... " />
-            <marker date="1550915950844" expanded="false" signature="4282:4328" ph="SELECT * FRO... task" />
-            <marker date="1550915950844" expanded="false" signature="4860:4909" ph="UPDATE publi... " />
-            <marker date="1550915950844" expanded="false" signature="5322:5336" ph="UPDATE publi... " />
-            <marker date="1550915950844" expanded="false" signature="5322:5374" ph="UPDATE publi... " />
-            <marker date="1550915950844" expanded="false" signature="5322:5375" ph="UPDATE publi... " />
-            <marker date="1550915950844" expanded="false" signature="5812:5872" ph="SELECT * FRO... abstractcredential" />
-          </folding>
+          <caret line="16" column="42" selection-start-line="16" selection-start-column="42" selection-end-line="16" selection-end-column="42" />
         </state>
       </provider>
     </entry>
@@ -1555,10 +1593,225 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/dpapwd.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="10" selection-start-column="10" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+        <state relative-caret-position="150">
+          <caret line="6" column="21" selection-start-line="6" selection-start-column="21" selection-end-line="6" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/selenium/FirstExample.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/selenium/controllers/MyController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="10" column="7" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3575">
+          <caret line="143" selection-start-line="143" selection-end-line="143" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/dpalogin.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="6" selection-start-column="6" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/dpasyspwd.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="11" selection-start-column="11" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/utilities/MyFile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="19" column="39" selection-start-line="19" selection-start-column="39" selection-end-line="19" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/utilities/Util.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="19" column="70" selection-start-line="19" selection-start-column="70" selection-end-line="19" selection-end-column="70" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/utilities/ActionsForUser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="550">
+          <caret line="34" selection-start-line="34" selection-end-line="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/database/Postgres.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="24" column="39" selection-start-line="24" selection-start-column="39" selection-end-line="24" selection-end-column="39" />
+          <folding>
+            <element signature="e#611#655#0" />
+            <element signature="method#getApolloConnection#0;class#Postgres#0" />
+            <element signature="e#742#1028#0" />
+            <element signature="e#1049#1093#0" />
+            <element signature="method#getDPAConnection#0;class#Postgres#0" />
+            <element signature="e#1177#1460#0" />
+            <element signature="e#1481#1525#0" />
+            <element signature="method#getTask#0;class#Postgres#0" />
+            <element signature="e#1664#1928#0" />
+            <element signature="e#1949#1993#0" />
+            <element signature="method#insertValue#0;class#Postgres#0" />
+            <element signature="e#2760#3179#0" />
+            <element signature="e#2922#3096#0" />
+            <element signature="e#3117#3169#0" />
+            <element signature="e#3203#3247#0" />
+            <element signature="method#delete#0;class#Postgres#0" />
+            <element signature="e#3313#3370#0" />
+            <element signature="method#main#0;class#Postgres#0" />
+            <element signature="e#3909#3980#1" />
+            <element signature="e#4019#4082#1" />
+            <element signature="method#showGerman#0;class#Postgres#0" />
+            <element signature="e#4175#4595#0" />
+            <element signature="e#4420#4552#1" />
+            <element signature="e#4616#4660#0" />
+            <element signature="method#setTask#0;class#Postgres#0" />
+            <element signature="e#4914#5025#0" />
+            <element signature="e#5046#5090#0" />
+            <element signature="method#setAdminPassword#0;class#Postgres#0" />
+            <element signature="e#5705#6139#0" />
+            <element signature="e#5964#6096#1" />
+            <element signature="e#6160#6204#0" />
+            <marker date="1550946975611" expanded="false" signature="2010:2056" ph="SELECT value... work" />
+            <marker date="1550946975611" expanded="false" signature="2511:2529" ph="SELECT value... missingValue" />
+            <marker date="1550946975611" expanded="false" signature="2511:2561" ph="SELECT value... missingValue" />
+            <marker date="1550946975611" expanded="false" signature="2511:2573" ph="SELECT value... work" />
+            <marker date="1550946975611" expanded="false" signature="2627:2648" ph="SELECT * FRO... missingValue" />
+            <marker date="1550946975611" expanded="false" signature="2627:2661" ph="SELECT * FRO... missingValue" />
+            <marker date="1550946975611" expanded="false" signature="3110:3129" ph="INSERT into public.... " />
+            <marker date="1550946975611" expanded="false" signature="3110:3156" ph="INSERT into public.work... " />
+            <marker date="1550946975611" expanded="false" signature="3723:3765" ph="DELETE from " />
+            <marker date="1550946975611" expanded="false" signature="3729:3742" ph="INSERT into public.missingValue... " />
+            <marker date="1550946975611" expanded="false" signature="4521:4567" ph="SELECT * FRO... task" />
+            <marker date="1550946975611" expanded="false" signature="5099:5148" ph="UPDATE publi... " />
+            <marker date="1550946975611" expanded="false" signature="5561:5575" ph="UPDATE publi... " />
+            <marker date="1550946975611" expanded="false" signature="5561:5613" ph="UPDATE publi... " />
+            <marker date="1550946975611" expanded="false" signature="5561:5614" ph="UPDATE publi... " />
+            <marker date="1550946975611" expanded="false" signature="6110:6170" ph="SELECT * FRO... abstractcredential" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/sqlpwd.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="9" selection-start-column="9" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/utilities/Sequences.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="379">
+          <caret line="78" column="7" selection-start-line="78" selection-start-column="7" selection-end-line="78" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/selenium/controllers/jenkins/JenkinsLoginPageController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="650">
+          <caret line="32" selection-start-line="32" selection-end-line="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/selenium/controllers/stash/StashLoginPageController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="589">
+          <caret line="31" column="13" lean-forward="true" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#469#470#0" expanded="true" />
+            <element signature="e#505#506#0" expanded="true" />
+            <element signature="e#549#550#0" expanded="true" />
+            <element signature="e#585#586#0" expanded="true" />
+            <element signature="e#628#629#0" expanded="true" />
+            <element signature="e#663#664#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/selenium/controllers/stash/StashMainPageController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="38" column="30" selection-start-line="38" selection-start-column="30" selection-end-line="38" selection-end-column="30" />
+          <folding>
+            <element signature="e#698#699#0" expanded="true" />
+            <element signature="e#732#733#0" expanded="true" />
+            <element signature="e#856#857#0" expanded="true" />
+            <element signature="e#895#896#0" expanded="true" />
+            <element signature="e#991#992#0" expanded="true" />
+            <element signature="e#1028#1029#0" expanded="true" />
+            <element signature="e#349#350#0" expanded="true" />
+            <element signature="e#390#391#0" expanded="true" />
+            <element signature="e#428#429#0" expanded="true" />
+            <element signature="e#458#459#0" expanded="true" />
+            <element signature="e#504#505#0" expanded="true" />
+            <element signature="e#542#543#0" expanded="true" />
+            <element signature="e#592#593#0" expanded="true" />
+            <element signature="e#623#624#0" expanded="true" />
+            <element signature="e#1386#1387#0" expanded="true" />
+            <element signature="e#1456#1457#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/selenium/SeleniumSequences.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-124">
+          <caret line="28" column="21" lean-forward="true" selection-start-line="28" selection-start-column="21" selection-end-line="28" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1172#1173#0" expanded="true" />
+            <element signature="e#1207#1208#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/selenium/utils/SeleniumUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="20" column="11" selection-start-line="20" selection-start-column="11" selection-end-line="20" selection-end-column="11" />
+          <folding>
+            <element signature="method#isPresent#0;class#SeleniumUtil#0" />
+            <element signature="method#shouldBecome#0;class#SeleniumUtil#0" />
+            <element signature="method#shouldDisappear#0;class#SeleniumUtil#0" />
+            <element signature="method#clickOn#0;class#Util#0" />
+            <element signature="method#setValue#0;class#Util#0" />
+            <element signature="method#initController#0;class#SeleniumUtil#0" />
+            <element signature="e#1176#1288#0" />
+          </folding>
         </state>
       </provider>
     </entry>

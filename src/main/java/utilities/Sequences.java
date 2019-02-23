@@ -36,7 +36,6 @@ public class Sequences {
         // todo  checkout to branch
         // todo history task add
 
-
         saveCurrentTaskScript();
         setNewTaskInDatabase(taskNumber, description);
 
@@ -77,7 +76,6 @@ public class Sequences {
     public static void setNewTask(int number, String description, int historyNumber, String historyDescription){}
 
     public static void main(String[] args) {
-
         if(args.length == 0) {
             LOGGER.warning("No arguments");
             return;
@@ -98,6 +96,7 @@ public class Sequences {
             setNewTaskInDatabase(number, description);
             LOGGER.info("Set task in database DPA-" + number + " " + description);
         }
+        //58584
 
 //        setNewTask(57303, "Error 401 Unauthorized message appear when change password in 'View User Properties' dialog");
 //        setNewTask(57355, "Implement Replication Alerts viewlet");

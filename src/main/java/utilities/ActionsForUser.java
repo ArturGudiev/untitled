@@ -5,6 +5,7 @@ import database.Postgres;
 import java.util.Arrays;
 import java.util.logging.Logger;
 
+import static database.Postgres.getValue;
 import static utilities.Actions.executeCommand;
 
 
@@ -14,12 +15,12 @@ public class ActionsForUser {
     private static final Logger LOGGER = Logger.getLogger(ActionsForUser.class.getName());
 
     public static void navigateToTask(){
-        String task = Postgres.getValue("work", "task");
+        String task = getValue("work", "task");
         executeCommand("ch https://jira.cec.lab.emc.com:8443/browse/DPA-" + task);
     }
 
     public static void navigateToBoard(){
-        String boardUrl = Postgres.getValue("work", "board");
+        String boardUrl = getValue("work", "board");
         LOGGER.info("Get url from database: " + boardUrl);
         Inet.navigateToUrl(boardUrl);
     }
@@ -31,8 +32,8 @@ public class ActionsForUser {
     }
 
     public static String getCurrentTaskDir(){
-        String task = Postgres.getValue("work", "task");
-        String description = Postgres.getValue("work", "description");
+        String task = getValue("work", "task");
+        String description = getValue("work", "description");
         String[] dirs = Actions.getListOfDirectories("C:\\Artur\\Work\\tasks\\");
         String dirName = "DPA-" + task + "_" + description.replaceAll(" ", "_");
         for(int i = 0; i < dirs.length; i++){
