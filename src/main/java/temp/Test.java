@@ -1,15 +1,21 @@
 package temp;
 
-import utilities.Clipboard;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class Test {
+
+    private int a = 0;
+
+    public int getA() {
+        return a;
+    }
+
+    public void setA(int a) {
+        this.a = a;
+    }
+
     public static void main(String[] args) {
         List<String> list = new ArrayList<String>();
         list.add("a");

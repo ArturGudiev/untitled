@@ -49,7 +49,7 @@ public class FirstExample {
         ChromeDriver driver = new ChromeDriver();
 
         if(args[0].equals("delete-licenses")){
-            driver.get("https://localhost:3030/manage-licenses");
+            driver.get("https://localhost:3030/");
             login(driver);
             deleteAllLicenses(driver);
         }

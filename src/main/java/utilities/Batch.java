@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Stream;
@@ -60,7 +61,7 @@ public class Batch {
     }
 
     private void open(String tag) throws IOException {
-        HashMap<String, List<String>> map = getStringListHashMap();
+        TreeMap<String, List<String>> map = getStringListTreeMap();
         if (!map.keySet().contains(tag)) {
             System.out.println("Contains");
             for (Map.Entry<String, List<String>> entry : map.entrySet()) {
@@ -76,24 +77,29 @@ public class Batch {
         for (int i = 0; i < fileLines.size(); i++) {
             String line = fileLines.get(i);
             if (line.toLowerCase().replaceAll(" ", "").startsWith(":" + tag.toLowerCase())) {
-                Runtime.getRuntime().exec("cmd /c start notepad++ " + filename + " -n" + (i + 1));
+//                Runtime.getRuntime().exec("cmd /c start notepad++ " + filename + " -n" + (i + 1));
+                Runtime.getRuntime().exec("cmd /c start vscode.lnk --goto " + filename + ":" + (i + 2));
                 return;
             }
         }
     }
 
     private void echo() {
-        HashMap<String, List<String>> map = getStringListHashMap();
+        System.out.println();
+
+        TreeMap<String, List<String>> map = getStringListTreeMap();
         Iterator it = map.entrySet().iterator();
         while (it.hasNext()) {
             Map.Entry pair = (Map.Entry)it.next();
-            System.out.println(pair.getKey() + " - " + pair.getValue());
+            final int length = pair.getKey().toString().length();
+            final String spaces = new String(new char[20 - length]).replace("\0", " ");
+            System.out.printf("\t %s%s -     %s%n", pair.getKey(), spaces , pair.getValue());
             it.remove(); // avoids a ConcurrentModificationException
         }
     }
 
-    private HashMap<String, List<String>> getStringListHashMap() {
-        HashMap<String, List<String>> map = new HashMap<String, List<String>>();
+    private TreeMap<String, List<String>> getStringListTreeMap() {
+        TreeMap<String, List<String>> map = new TreeMap<String, List<String>>();
         Stream.of(firstPart.split("\n")).forEach(
                 str -> {
                     try {

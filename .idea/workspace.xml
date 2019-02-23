@@ -1,0 +1,1737 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="untitled:jar" />
+    </artifacts-to-build>
+  </component>
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/src/main/java/marketyp/pathes.txt" line="0" mnemonic="P" />
+    <bookmark url="file://$PROJECT_DIR$/src/main/java/marketyp/BaseConsumerAgent.java" line="27" mnemonic="2" />
+    <bookmark url="file://$PROJECT_DIR$/src/main/java/utilities/Get.java" line="14" mnemonic="G" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="557ff452-35b6-462b-b253-ebb913beef9f" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/api/Youtube.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/database/HBase.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/temp/ITestNew.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/temp/Lambda.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/temp/TestNew.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/temp/TestNewBuilder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/temp/TestNewObj.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/utilities/ActionsForUser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/utilities/CutFile.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/utilities/LogFileReader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/utilities/Sequences.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/xml/MySAXParser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/A.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/temp/TestNewBuilderTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mine/Motivation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mine/Motivation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mine/MotivationConstants.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/selenium/FirstExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/selenium/FirstExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/temp/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/temp/Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utilities/Actions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utilities/Actions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utilities/Batch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utilities/Batch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utilities/Get.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utilities/Get.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utilities/Inet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utilities/Inet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utilities/Sequnces.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utilities/XML.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utilities/XML.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/vk/VKClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vk/VK.java" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/out/" />
+    <ignored path="$PROJECT_DIR$/target/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/untitled$Temp.coverage" NAME="Temp Coverage Results" MODIFIED="1527584294232" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>marketyp.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/untitled$FloydWarshall.coverage" NAME="FloydWarshall Coverage Results" MODIFIED="1527536084212" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>marketyp.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/untitled$GetFolderSize.coverage" NAME="GetFolderSize Coverage Results" MODIFIED="1519647353298" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>utilities.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/untitled$java_in_untitled.ic" NAME="java in untitled Coverage Results" MODIFIED="1549521715687" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="postgres@localhost" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="postgres@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="postgres@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="postgres: database" type="6d9b600a:PostgresImplModel$Database" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="postgres@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="postgres: database" type="6d9b600a:PostgresImplModel$Database" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="postgres@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="postgres: database" type="6d9b600a:PostgresImplModel$Database" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="public: schema" type="a16502c0:PostgresImplModel$Schema" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="postgres@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="postgres: database" type="6d9b600a:PostgresImplModel$Database" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="public: schema" type="a16502c0:PostgresImplModel$Schema" />
+        <item name="tables" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="postgres@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="postgres: database" type="6d9b600a:PostgresImplModel$Database" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="public: schema" type="a16502c0:PostgresImplModel$Schema" />
+        <item name="tables" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="users: table" type="a93d6ac6:PostgresImplModel$LocalTable" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="postgres@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="postgres: database" type="6d9b600a:PostgresImplModel$Database" />
+        <item name="access methods" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="1897563577">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="20" />
+          <entry key="project.open.time.103" value="1" />
+          <entry key="project.open.time.11" value="1" />
+          <entry key="project.open.time.12" value="1" />
+          <entry key="project.open.time.15" value="1" />
+          <entry key="project.open.time.16" value="1" />
+          <entry key="project.open.time.17" value="2" />
+          <entry key="project.open.time.19" value="1" />
+          <entry key="project.open.time.2" value="1" />
+          <entry key="project.open.time.27" value="1" />
+          <entry key="project.open.time.3" value="1" />
+          <entry key="project.open.time.30" value="1" />
+          <entry key="project.open.time.34" value="1" />
+          <entry key="project.open.time.37" value="1" />
+          <entry key="project.open.time.4" value="1" />
+          <entry key="project.open.time.43" value="1" />
+          <entry key="project.open.time.46" value="1" />
+          <entry key="project.open.time.6" value="2" />
+          <entry key="project.open.time.7" value="1" />
+          <entry key="project.open.time.8" value="1" />
+          <entry key="project.open.time.86" value="1" />
+          <entry key="project.open.time.9" value="2" />
+          <entry key="project.opened" value="24" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="autos" value="1" />
+          <entry key="java" value="29" />
+          <entry key="kt" value="1" />
+          <entry key="txt" value="1" />
+          <entry key="users" value="1" />
+          <entry key="xml" value="3" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="Database Element" value="2" />
+          <entry key="JAVA" value="29" />
+          <entry key="Kotlin" value="1" />
+          <entry key="PLAIN_TEXT" value="1" />
+          <entry key="XML" value="3" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="dummy" value="1" />
+          <entry key="java" value="3342" />
+          <entry key="sql" value="43" />
+          <entry key="txt" value="46" />
+          <entry key="xml" value="65" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="JAVA" value="3342" />
+          <entry key="PLAIN_TEXT" value="47" />
+          <entry key="SQL" value="43" />
+          <entry key="XML" value="65" />
+        </counts>
+      </usages-collector>
+    </session>
+    <session id="683456481">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="1" />
+          <entry key="project.open.time.25" value="1" />
+          <entry key="project.opened" value="1" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="untitled" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/temp/Lambda.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="22" selection-start-line="22" selection-end-line="22" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/1.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="1" column="34" selection-start-line="1" selection-start-column="34" selection-end-line="1" selection-end-column="34" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/xml/MySAXParser.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="522">
+              <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://C:/Program Files/Java/jdk1.8.0_144/src.zip!/javax/xml/parsers/SAXParser.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="714">
+              <caret line="78" column="22" selection-start-line="78" selection-start-column="22" selection-end-line="78" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/selenium/FirstExample.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/utilities/BaBla.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/A.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="12" selection-start-line="12" selection-end-line="12" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/temp/Test.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#170#171#0" expanded="true" />
+                <element signature="e#194#195#0" expanded="true" />
+                <element signature="e#225#226#0" expanded="true" />
+                <element signature="e#251#252#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/utilities/ActionsForUser.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="23" column="16" selection-start-line="23" selection-start-column="16" selection-end-line="23" selection-end-column="16" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/utilities/Batch.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="508">
+              <caret line="88" selection-start-line="88" selection-end-line="88" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Kotlin File" />
+        <option value="Interface" />
+        <option value="JUnit4 Test Class" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>Auth</find>
+      <find>COnvers</find>
+      <find>conversation</find>
+      <find>wall,</find>
+      <find>cmd /</find>
+      <find>getFileString</find>
+      <find>$</find>
+      <find>delete</find>
+      <find>&amp;lt</find>
+      <find>&amp;amp</find>
+      <find>By Group</find>
+      <find>decode</find>
+      <find>decodeXML</find>
+      <find>Copy</find>
+      <find>deleteFile</find>
+      <find>getFirstWorking</find>
+      <find>navigate-</find>
+      <find>settask</find>
+      <find>MotivationCo</find>
+      <find>plugin</find>
+      <find>main</find>
+      <find>set-tas</find>
+      <find>navigate</find>
+      <find>navigate-to-task</find>
+      <find>set-db-task</find>
+      <find>dependencies</find>
+      <find>database</find>
+      <find>--open</find>
+      <find>set-task</find>
+      <find>--echo</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>Apple</replace>
+      <replace>Gmail</replace>
+      <replace>getStock()</replace>
+      <replace>list</replace>
+      <replace>Driver</replace>
+      <replace>Consumer</replace>
+      <replace>\n</replace>
+      <replace />
+      <replace>:</replace>
+    </replaceStrings>
+    <dirStrings>
+      <dir>C:\Programming\Java\untitled\src\main\java\marketyp</dir>
+    </dirStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/main/java/temp/A.java" />
+        <option value="$PROJECT_DIR$/src/main/java/marketyp/BaseAgent.java" />
+        <option value="$PROJECT_DIR$/src/main/java/marketyp/MyReceiver.java" />
+        <option value="$PROJECT_DIR$/src/main/java/marketyp/MyReceiverBehaviour.java" />
+        <option value="$PROJECT_DIR$/src/main/java/marketyp/unused" />
+        <option value="$PROJECT_DIR$/src/main/java/marketyp/ConsumerAgent.java" />
+        <option value="$PROJECT_DIR$/src/main/java/marketyp/BaseConsumerAgent.java" />
+        <option value="$PROJECT_DIR$/src/main/java/marketyp/DriverAgent.java" />
+        <option value="$PROJECT_DIR$/src/main/java/marketyp/StatisticAgent.java" />
+        <option value="$PROJECT_DIR$/src/main/java/marketyp/Env.java" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/5dbc1ad2-1df8-4800-8cfc-1407086bc739/console.sql" />
+        <option value="$PROJECT_DIR$/src/main/java/utilities/CopyFileToClipboard.java" />
+        <option value="$PROJECT_DIR$/src/main/java/utilities/PasteFromClipFile.java" />
+        <option value="$PROJECT_DIR$/src/main/java/utilities/ClipFile.java" />
+        <option value="$PROJECT_DIR$/src/main/java/marketyp/Temp.java" />
+        <option value="$PROJECT_DIR$/src/main/java/utilities/PasteFile.java" />
+        <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch_42.xml" />
+        <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch_43.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/utilities/MyFile.java" />
+        <option value="$PROJECT_DIR$/src/main/java/database/Postgres.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/logging.properties" />
+        <option value="$PROJECT_DIR$/src/main/resources/log4j2.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/api/Youtube.java" />
+        <option value="$PROJECT_DIR$/src/main/java/vk/VKClient.java" />
+        <option value="$PROJECT_DIR$/src/main/java/utilities/Get.java" />
+        <option value="$PROJECT_DIR$/src/main/java/utilities/UserActions.java" />
+        <option value="$PROJECT_DIR$/src/main/java/utilities/XML.java" />
+        <option value="$PROJECT_DIR$/src/main/java/vk/VK.java" />
+        <option value="$PROJECT_DIR$/src/main/java/utilities/CutFile.java" />
+        <option value="$PROJECT_DIR$/src/main/java/selenium/FirstExample.java" />
+        <option value="$PROJECT_DIR$/src/main/java/mine/MotivationConstants.java" />
+        <option value="$PROJECT_DIR$/src/main/java/mine/Motivation.txt" />
+        <option value="$PROJECT_DIR$/src/main/java/mine/Motivation.java" />
+        <option value="$PROJECT_DIR$/src/main/java/utilities/ActionsForUser.java" />
+        <option value="$PROJECT_DIR$/src/main/java/utilities/Inet.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/database/HBase.java" />
+        <option value="$PROJECT_DIR$/src/main/java/utilities/Sequnces.java" />
+        <option value="$PROJECT_DIR$/src/main/java/utilities/Actions.java" />
+        <option value="$PROJECT_DIR$/src/main/java/utilities/LogFileReader.java" />
+        <option value="$PROJECT_DIR$/src/main/java/temp/TestNewSuper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/temp/TestNewObj.java" />
+        <option value="$PROJECT_DIR$/src/main/java/temp/TestNew.java" />
+        <option value="$PROJECT_DIR$/src/main/java/temp/Test.java" />
+        <option value="$PROJECT_DIR$/src/test/java/A.java" />
+        <option value="$PROJECT_DIR$/src/test/java/temp/TestNewBuilderTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/utilities/Sequences.java" />
+        <option value="$PROJECT_DIR$/src/main/java/temp/Lambda.java" />
+        <option value="$PROJECT_DIR$/resources/1.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/xml/MySAXParser.java" />
+        <option value="$PROJECT_DIR$/src/main/java/utilities/Batch.java" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="JsbtTreeLayoutManager">
+    <layout place="tools.popupGrunt">
+      <scroll-view-position x="0" y="0" />
+    </layout>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="untitled" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+        </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="untitled" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Plugins" type="7aea1407:MavenProjectsStructure$PluginsNode" />
+        </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="untitled" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Plugins" type="7aea1407:MavenProjectsStructure$PluginsNode" />
+          <item name="shade" type="36feed69:MavenProjectsStructure$PluginNode" />
+        </path>
+      </expand>
+      <select />
+    </treeState>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-9" />
+    <option name="y" value="-9" />
+    <option name="width" value="1937" />
+    <option name="height" value="1176" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>Android</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="untitled" type="b2602c69:ProjectViewProjectNode" />
+              <item name="untitled" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="untitled" type="b2602c69:ProjectViewProjectNode" />
+              <item name="untitled" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="untitled" type="b2602c69:ProjectViewProjectNode" />
+              <item name="untitled" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="untitled" type="b2602c69:ProjectViewProjectNode" />
+              <item name="untitled" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="untitled" type="b2602c69:ProjectViewProjectNode" />
+              <item name="untitled" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="untitled" type="b2602c69:ProjectViewProjectNode" />
+              <item name="untitled" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="xml" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="SearchEverywhereHistoryKey" value="newTask&#9;PSI&#9;JAVA://utilities.Sequnces#setNewTask" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550579524996" />
+    <property name="com.intellij.database.dataSource.DataSourceTemplate" value="PostgreSQL" />
+    <property name="com.intellij.ide.scratch.LRUPopupBuilder$2/Languages" value="XML" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
+    <property name="database.console.LAST_STATE" value="true" />
+    <property name="extract.method.default.visibility" value="private" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/src/test/java" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/google-api-services-youtube-v3-rev206-1.25.0.jar!/" />
+    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.general" />
+  </component>
+  <component name="RecentsManager">
+    <key name="ExtractSuperBase.RECENT_KEYS">
+      <recent name="temp" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="temp" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Programming\Java\untitled\lib" />
+      <recent name="C:\Programming\Java\untitled\src\mine" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="utilities" />
+      <recent name="p12" />
+      <recent name="marketyp" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Programming\Java\untitled" />
+      <recent name="C:\Programming\Java\untitled\src" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Application.MySAXParser">
+    <configuration name="Unnamed" type="Applet" factoryName="Applet">
+      <option name="HEIGHT" value="0" />
+      <option name="MAIN_CLASS_NAME" value="p12.SimpleApplet" />
+      <module name="untitled" />
+      <option name="WIDTH" value="0" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Batch" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="utilities.Batch" />
+      <module name="untitled" />
+      <option name="PROGRAM_PARAMETERS" value="C:\Programming\Batch\azure.bat --echo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="utilities.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="HBase" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="database.HBase" />
+      <module name="untitled" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="database.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Lambda" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="temp.Lambda" />
+      <module name="untitled" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="temp.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LogFileReader" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="utilities.LogFileReader" />
+      <module name="untitled" />
+      <option name="PROGRAM_PARAMETERS" value="C:\Artur\Work\tasks\28_DPA-58153_Alerts_not_appear_and_assigning_rule_is_failed_if_use_copy_of_rule_in_policy\serverlog" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="utilities.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MySAXParser" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="xml.MySAXParser" />
+      <module name="untitled" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="xml.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Os" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="batch.Os" />
+      <module name="untitled" />
+      <option name="PROGRAM_PARAMETERS" value="къух къах" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="batch.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SimpleApplet" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="p12.SimpleApplet" />
+      <module name="untitled" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="p12.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="java in untitled" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="untitled" />
+      <option name="TEST_OBJECT" value="directory" />
+      <dir value="$PROJECT_DIR$/src/test/java" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Applet.Unnamed" />
+      <item itemvalue="Application.Batch" />
+      <item itemvalue="Application.SimpleApplet" />
+      <item itemvalue="Application.Os" />
+      <item itemvalue="Application.HBase" />
+      <item itemvalue="Application.LogFileReader" />
+      <item itemvalue="JUnit.java in untitled" />
+      <item itemvalue="Application.Lambda" />
+      <item itemvalue="Application.MySAXParser" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.MySAXParser" />
+        <item itemvalue="Application.Lambda" />
+        <item itemvalue="JUnit.java in untitled" />
+        <item itemvalue="Application.LogFileReader" />
+        <item itemvalue="Application.HBase" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="557ff452-35b6-462b-b253-ebb913beef9f" name="Default" comment="" />
+      <created>1510758920840</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1510758920840</updated>
+      <workItem from="1510758924027" duration="3436000" />
+      <workItem from="1510765276107" duration="1715000" />
+      <workItem from="1510824636747" duration="2515000" />
+      <workItem from="1510908666547" duration="7729000" />
+      <workItem from="1511163753476" duration="510000" />
+      <workItem from="1511171382887" duration="684000" />
+      <workItem from="1511179932464" duration="2394000" />
+      <workItem from="1511330090223" duration="20000" />
+      <workItem from="1511354615884" duration="735000" />
+      <workItem from="1511361414149" duration="181000" />
+      <workItem from="1511420222128" duration="1394000" />
+      <workItem from="1511597494985" duration="749000" />
+      <workItem from="1511705927384" duration="1066000" />
+      <workItem from="1511771159097" duration="3412000" />
+      <workItem from="1511806168132" duration="1527000" />
+      <workItem from="1511877227364" duration="17000" />
+      <workItem from="1511942143715" duration="1194000" />
+      <workItem from="1512200634528" duration="315000" />
+      <workItem from="1512200982876" duration="4809000" />
+      <workItem from="1512382749265" duration="1191000" />
+      <workItem from="1512392541388" duration="1211000" />
+      <workItem from="1512811931831" duration="3316000" />
+      <workItem from="1512978420173" duration="24000" />
+      <workItem from="1512980265237" duration="18000" />
+      <workItem from="1512992192809" duration="658000" />
+      <workItem from="1513597200156" duration="959000" />
+      <workItem from="1514965521859" duration="7179000" />
+      <workItem from="1515266567192" duration="251000" />
+      <workItem from="1515399206372" duration="1029000" />
+      <workItem from="1515597375126" duration="15000" />
+      <workItem from="1515875925446" duration="2368000" />
+      <workItem from="1516135379206" duration="413000" />
+      <workItem from="1516286381735" duration="1050000" />
+      <workItem from="1516348570706" duration="114000" />
+      <workItem from="1516350854697" duration="49000" />
+      <workItem from="1516350939323" duration="452000" />
+      <workItem from="1516452750221" duration="935000" />
+      <workItem from="1516629346134" duration="2414000" />
+      <workItem from="1516693374675" duration="1520000" />
+      <workItem from="1516697129336" duration="999000" />
+      <workItem from="1516719528988" duration="1617000" />
+      <workItem from="1516795641836" duration="1003000" />
+      <workItem from="1517054652003" duration="1289000" />
+      <workItem from="1517133086807" duration="476000" />
+      <workItem from="1517250800031" duration="53000" />
+      <workItem from="1517250984120" duration="346000" />
+      <workItem from="1517411057138" duration="1492000" />
+      <workItem from="1517536683849" duration="481000" />
+      <workItem from="1517585143757" duration="2220000" />
+      <workItem from="1517646183321" duration="1641000" />
+      <workItem from="1517652329916" duration="3178000" />
+      <workItem from="1517730935075" duration="651000" />
+      <workItem from="1517733562826" duration="4439000" />
+      <workItem from="1517839925840" duration="1807000" />
+      <workItem from="1517933097930" duration="1090000" />
+      <workItem from="1518012737720" duration="625000" />
+      <workItem from="1518086745581" duration="4527000" />
+      <workItem from="1518258100218" duration="909000" />
+      <workItem from="1518470260772" duration="144000" />
+      <workItem from="1518855779597" duration="3208000" />
+      <workItem from="1519114900376" duration="151000" />
+      <workItem from="1519115739671" duration="1704000" />
+      <workItem from="1519230653526" duration="1247000" />
+      <workItem from="1519374877235" duration="766000" />
+      <workItem from="1519642639623" duration="3480000" />
+      <workItem from="1519647232720" duration="4179000" />
+      <workItem from="1519658375603" duration="959000" />
+      <workItem from="1519664116156" duration="1017000" />
+      <workItem from="1519813522720" duration="2444000" />
+      <workItem from="1519893466923" duration="2314000" />
+      <workItem from="1519897498582" duration="2161000" />
+      <workItem from="1520518271740" duration="3710000" />
+      <workItem from="1521124967922" duration="3318000" />
+      <workItem from="1521145664620" duration="1326000" />
+      <workItem from="1521147231694" duration="821000" />
+      <workItem from="1521187693351" duration="436000" />
+      <workItem from="1521649348644" duration="43000" />
+      <workItem from="1521649451074" duration="67000" />
+      <workItem from="1521820987881" duration="2890000" />
+      <workItem from="1521841750959" duration="892000" />
+      <workItem from="1522060941704" duration="940000" />
+      <workItem from="1522062172405" duration="1464000" />
+      <workItem from="1522225453939" duration="1181000" />
+      <workItem from="1522302414356" duration="100000" />
+      <workItem from="1522317212157" duration="1136000" />
+      <workItem from="1522318813928" duration="371000" />
+      <workItem from="1522327950614" duration="737000" />
+      <workItem from="1522424937089" duration="57000" />
+      <workItem from="1522668539710" duration="507000" />
+      <workItem from="1522677673101" duration="49000" />
+      <workItem from="1522740085756" duration="489000" />
+      <workItem from="1522754405975" duration="2654000" />
+      <workItem from="1522758251625" duration="17000" />
+      <workItem from="1522822729670" duration="1103000" />
+      <workItem from="1522851566191" duration="1031000" />
+      <workItem from="1522909397756" duration="946000" />
+      <workItem from="1522912724432" duration="2510000" />
+      <workItem from="1522917382566" duration="1799000" />
+      <workItem from="1522920106174" duration="21000" />
+      <workItem from="1522940362715" duration="1207000" />
+      <workItem from="1523002446845" duration="1068000" />
+      <workItem from="1523004470660" duration="180000" />
+      <workItem from="1523009700716" duration="967000" />
+      <workItem from="1524829172910" duration="41000" />
+      <workItem from="1524901764228" duration="1759000" />
+      <workItem from="1525162894452" duration="68000" />
+      <workItem from="1525439917212" duration="1906000" />
+      <workItem from="1525707764730" duration="706000" />
+      <workItem from="1526062009962" duration="5000" />
+      <workItem from="1526383781069" duration="1958000" />
+      <workItem from="1526404297455" duration="3912000" />
+      <workItem from="1526842509612" duration="2340000" />
+      <workItem from="1526887027003" duration="157000" />
+      <workItem from="1526980655572" duration="1926000" />
+      <workItem from="1527253227391" duration="305000" />
+      <workItem from="1527431221806" duration="4624000" />
+      <workItem from="1527501935526" duration="7329000" />
+      <workItem from="1527535336419" duration="10040000" />
+      <workItem from="1527547869924" duration="1923000" />
+      <workItem from="1527570181661" duration="2482000" />
+      <workItem from="1527573430004" duration="23540000" />
+      <workItem from="1527607389108" duration="425000" />
+      <workItem from="1527608111500" duration="573000" />
+      <workItem from="1527611315492" duration="85000" />
+      <workItem from="1527690534456" duration="224000" />
+      <workItem from="1527743156856" duration="781000" />
+      <workItem from="1527758463290" duration="66000" />
+      <workItem from="1527758819192" duration="452000" />
+      <workItem from="1527830807350" duration="4390000" />
+      <workItem from="1527916602639" duration="3652000" />
+      <workItem from="1528133409207" duration="8015000" />
+      <workItem from="1528267638074" duration="1647000" />
+      <workItem from="1528377346845" duration="2169000" />
+      <workItem from="1528384555396" duration="1480000" />
+      <workItem from="1528528534357" duration="538000" />
+      <workItem from="1528583690234" duration="4622000" />
+      <workItem from="1528719321172" duration="1149000" />
+      <workItem from="1528775390655" duration="1473000" />
+      <workItem from="1528870343758" duration="2661000" />
+      <workItem from="1528889734010" duration="11000" />
+      <workItem from="1528933736516" duration="4101000" />
+      <workItem from="1529049585660" duration="746000" />
+      <workItem from="1529227315147" duration="680000" />
+      <workItem from="1529294836601" duration="14395000" />
+      <workItem from="1529315708166" duration="89000" />
+      <workItem from="1529388036904" duration="10520000" />
+      <workItem from="1529528484185" duration="9575000" />
+      <workItem from="1529565963243" duration="4645000" />
+      <workItem from="1529594016214" duration="27000" />
+      <workItem from="1529594139144" duration="393000" />
+      <workItem from="1529904271534" duration="8032000" />
+      <workItem from="1529958559523" duration="14394000" />
+      <workItem from="1529995629962" duration="221000" />
+      <workItem from="1530123810078" duration="764000" />
+      <workItem from="1530268021266" duration="94000" />
+      <workItem from="1530277610080" duration="1600000" />
+      <workItem from="1533641692702" duration="987000" />
+      <workItem from="1533642820158" duration="1858000" />
+      <workItem from="1533746522759" duration="2294000" />
+      <workItem from="1533752735729" duration="1736000" />
+      <workItem from="1533762538828" duration="10000" />
+      <workItem from="1534161674698" duration="3435000" />
+      <workItem from="1534241177324" duration="6061000" />
+      <workItem from="1534429865597" duration="1150000" />
+      <workItem from="1534518599577" duration="1592000" />
+      <workItem from="1538573481173" duration="595000" />
+      <workItem from="1538984542947" duration="8316000" />
+      <workItem from="1539088606586" duration="6110000" />
+      <workItem from="1539342235312" duration="912000" />
+      <workItem from="1539363382415" duration="1029000" />
+      <workItem from="1539377369726" duration="1022000" />
+      <workItem from="1539620442730" duration="620000" />
+      <workItem from="1539703248636" duration="5777000" />
+      <workItem from="1539769086958" duration="4562000" />
+      <workItem from="1539943875114" duration="6937000" />
+      <workItem from="1540207473542" duration="31000" />
+      <workItem from="1540257108481" duration="17145000" />
+      <workItem from="1540296431271" duration="1184000" />
+      <workItem from="1540376445310" duration="7235000" />
+      <workItem from="1540397725299" duration="3249000" />
+      <workItem from="1540549546675" duration="2194000" />
+      <workItem from="1540618778583" duration="4138000" />
+      <workItem from="1540817802273" duration="2851000" />
+      <workItem from="1541081333287" duration="1535000" />
+      <workItem from="1541580717908" duration="1933000" />
+      <workItem from="1541753512826" duration="628000" />
+      <workItem from="1542019417848" duration="1302000" />
+      <workItem from="1542029578925" duration="1641000" />
+      <workItem from="1542193494253" duration="1173000" />
+      <workItem from="1542264481412" duration="1428000" />
+      <workItem from="1542364844091" duration="97000" />
+      <workItem from="1542611561057" duration="1821000" />
+      <workItem from="1542701375984" duration="759000" />
+      <workItem from="1542973596337" duration="580000" />
+      <workItem from="1543395227196" duration="776000" />
+      <workItem from="1543479266505" duration="261000" />
+      <workItem from="1543501178291" duration="1299000" />
+      <workItem from="1543585429765" duration="732000" />
+      <workItem from="1543661772057" duration="1833000" />
+      <workItem from="1543775649714" duration="532000" />
+      <workItem from="1543918463619" duration="2336000" />
+      <workItem from="1543986588336" duration="39000" />
+      <workItem from="1543992752300" duration="3773000" />
+      <workItem from="1544538616594" duration="1012000" />
+      <workItem from="1544539735480" duration="737000" />
+      <workItem from="1545596481634" duration="1742000" />
+      <workItem from="1546071337329" duration="1694000" />
+      <workItem from="1547739835300" duration="3289000" />
+      <workItem from="1547814514383" duration="238000" />
+      <workItem from="1547822904407" duration="1779000" />
+      <workItem from="1547825941804" duration="851000" />
+      <workItem from="1548060949005" duration="974000" />
+      <workItem from="1549310319743" duration="2723000" />
+      <workItem from="1549520775066" duration="1915000" />
+      <workItem from="1549612595402" duration="2204000" />
+      <workItem from="1550500117451" duration="1205000" />
+      <workItem from="1550562379888" duration="2684000" />
+      <workItem from="1550840338987" duration="1946000" />
+    </task>
+    <task id="LOCAL-00001" summary="Last">
+      <created>1527602022804</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1527602022804</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Make common stock">
+      <created>1529302007206</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1529302007207</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Others">
+      <created>1529302731841</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1529302731841</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Rename agents">
+      <created>1529302752808</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1529302752808</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Refactor and print delta">
+      <created>1529307954318</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1529307954318</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Remove REJECT">
+      <created>1529308375966</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1529308375966</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Add SYN ACK messages">
+      <created>1529394038324</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1529394038324</updated>
+    </task>
+    <task id="LOCAL-00008" summary="SYN ACK with multiple agents">
+      <created>1529401635703</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1529401635703</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Refactor agents">
+      <created>1529531749185</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1529531749189</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Extract tryToBuy method to Environment">
+      <created>1529561319024</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1529561319024</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Check for loops">
+      <created>1529570609354</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1529570609354</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Move static methods to BaseConsumerClass">
+      <created>1529911025353</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1529911025353</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Modify agents">
+      <created>1529989346527</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1529989346528</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Add Copy and Paste operations">
+      <created>1533748219291</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1533748219298</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Add vk api client">
+      <created>1540264457504</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1540264457504</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
+    <servers />
+  </component>
+  <component name="TestHistory">
+    <history-entry file="java_in_untitled - 2019.02.07 at 09h 34m 39s.xml">
+      <configuration name="java in untitled" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="java_in_untitled - 2019.02.07 at 09h 42m 00s.xml">
+      <configuration name="java in untitled" configurationId="JUnit" />
+    </history-entry>
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="458433000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1176" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.69402987" visible="true" weight="0.2675906" />
+      <window_info id="Structure" order="1" sideWeight="0.49655852" weight="0.25" />
+      <window_info id="Designer" order="2" />
+      <window_info id="Image Layers" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Favorites" order="5" sideWeight="0.30597016" side_tool="true" weight="0.2707889" />
+      <window_info id="Capture Tool" order="6" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.48906884" weight="0.3580705" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.66558707" weight="0.25788498" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.467484" weight="0.38932148" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49959514" weight="0.3283859" />
+      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49554655" weight="0.41372913" />
+      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.33441296" side_tool="true" visible="true" weight="0.25711483" />
+      <window_info anchor="bottom" id="Version Control" order="9" weight="0.32879817" />
+      <window_info anchor="bottom" id="Messages" order="10" sideWeight="0.4371002" weight="0.3047831" />
+      <window_info anchor="bottom" id="TypeScript" order="11" />
+      <window_info anchor="bottom" id="Inspection Results" order="12" visible="true" weight="0.18888889" />
+      <window_info anchor="bottom" id="Database Console" order="13" sideWeight="0.49946696" visible="true" weight="0.1736997" />
+      <window_info anchor="bottom" id="Database Changes" order="14" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="right" id="Database" order="5" weight="0.5177066" />
+      <window_info anchor="right" id="Maven Projects" order="6" weight="0.32955465" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Theme Preview" order="8" />
+      <window_info anchor="right" id="R Packages" order="9" />
+      <window_info anchor="right" id="R Graphics" order="10" weight="0.32995737" />
+      <window_info anchor="right" id="Coverage" order="11" side_tool="true" visible="true" weight="0.43562752" />
+    </layout>
+    <layout-to-restore>
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.73770493" visible="true" weight="0.20682302" />
+      <window_info id="Structure" order="1" weight="0.25" />
+      <window_info id="Capture Tool" order="2" />
+      <window_info id="Designer" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Image Layers" order="5" />
+      <window_info id="Favorites" order="6" sideWeight="0.26229507" side_tool="true" weight="0.32036248" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.36008918" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.43924192" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.393534" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32998884" />
+      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="8" visible="true" weight="0.3154961" />
+      <window_info anchor="bottom" id="Version Control" order="9" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.3277592" />
+      <window_info anchor="bottom" id="TypeScript" order="11" />
+      <window_info anchor="bottom" id="Inspection Results" order="12" visible="true" weight="0.18888889" />
+      <window_info anchor="bottom" id="Database Console" order="13" visible="true" weight="0.32940018" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Maven Projects" order="4" weight="0.32995737" />
+      <window_info anchor="right" id="Database" order="5" weight="0.16364606" />
+      <window_info anchor="right" id="Palette&#9;" order="6" />
+      <window_info anchor="right" id="Capture Analysis" order="7" />
+      <window_info anchor="right" id="Theme Preview" order="8" />
+      <window_info anchor="right" id="R Graphics" order="9" />
+      <window_info anchor="right" id="Coverage" order="10" side_tool="true" visible="true" weight="0.18230277" />
+      <window_info anchor="right" id="R Packages" order="11" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Last" />
+    <MESSAGE value="Make common stock" />
+    <MESSAGE value="Others" />
+    <MESSAGE value="Rename agents" />
+    <MESSAGE value="Refactor and print delta" />
+    <MESSAGE value="Remove REJECT" />
+    <MESSAGE value="Add SYN ACK messages" />
+    <MESSAGE value="SYN ACK with multiple agents" />
+    <MESSAGE value="Refactor agents" />
+    <MESSAGE value="Extract tryToBuy method to Environment" />
+    <MESSAGE value="Check for loops" />
+    <MESSAGE value="Move static methods to BaseConsumerClass" />
+    <MESSAGE value="Modify agents" />
+    <MESSAGE value="Add Copy and Paste operations" />
+    <MESSAGE value="Add vk api client" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add vk api client" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/com/company/NewThread.java</url>
+          <line>62</line>
+          <properties class="com.company.DemoJoin" method="main">
+            <option name="EMULATED" value="true" />
+          </properties>
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/p12/Meta3.java</url>
+          <line>22</line>
+          <properties />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/company/ConfHelper.java</url>
+          <line>172</line>
+          <properties />
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/utilities/PrintLines.java</url>
+          <line>11</line>
+          <properties />
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/marketyp/Env.java</url>
+          <line>93</line>
+          <properties />
+          <option name="timeStamp" value="36" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/utilities/NounGender.java</url>
+          <line>28</line>
+          <properties />
+          <option name="timeStamp" value="43" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/utilities/SimpleGermanTranslation.java</url>
+          <line>37</line>
+          <properties />
+          <option name="timeStamp" value="46" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/p12/CopyFile.java</url>
+          <line>25</line>
+          <properties />
+          <option name="timeStamp" value="47" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/database/Postgres.java</url>
+          <line>69</line>
+          <properties />
+          <option name="timeStamp" value="50" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/vk/VK.java</url>
+          <line>87</line>
+          <properties />
+          <option name="timeStamp" value="62" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/vk/VK.java</url>
+          <line>70</line>
+          <properties />
+          <option name="timeStamp" value="65" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/utilities/Sequences.java</url>
+          <line>107</line>
+          <properties />
+          <option name="timeStamp" value="67" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/utilities/LogFileReader.java</url>
+          <line>37</line>
+          <properties />
+          <option name="timeStamp" value="68" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/utilities/LogFileReader.java</url>
+          <line>47</line>
+          <properties />
+          <option name="timeStamp" value="70" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
+  </component>
+  <component name="debuggerHistoryManager">
+    <expressions id="evaluateCodeFragment">
+      <expression>
+        <expression-string>&quot;004-034556&quot;.split(&quot;-&quot;)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>&quot;asd.asd&quot;.split(&quot;.&quot;)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>f.getName().split(&quot;.&quot;)[0]</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>f.getName().split(&quot;.&quot;)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>f.getName()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+    </expressions>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="jar://$MAVEN_REPOSITORY$/com/vk/api/sdk/0.2.1/sdk-0.2.1.jar!/com/vk/api/sdk/actions/OAuth.class" />
+    <entry file="jar://$MAVEN_REPOSITORY$/com/vk/api/sdk/0.5.12/sdk-0.5.12.jar!/com/vk/api/sdk/actions/Auth.class" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/api/Youtube.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="595">
+          <caret line="55" selection-start-line="55" selection-end-line="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/vk/api/sdk/0.5.12/sdk-0.5.12-sources.jar!/com/vk/api/sdk/actions/Auth.java" />
+    <entry file="jar://$MAVEN_REPOSITORY$/com/vk/api/sdk/0.5.12/sdk-0.5.12.jar!/com/vk/api/sdk/client/VkApiClient.class" />
+    <entry file="jar://$MAVEN_REPOSITORY$/com/vk/api/sdk/0.5.12/sdk-0.5.12-sources.jar!/com/vk/api/sdk/actions/Messages.java" />
+    <entry file="jar://$MAVEN_REPOSITORY$/com/vk/api/sdk/0.5.12/sdk-0.5.12-sources.jar!/com/vk/api/sdk/client/VkApiClient.java" />
+    <entry file="jar://$MAVEN_REPOSITORY$/com/vk/api/sdk/0.5.12/sdk-0.5.12-sources.jar!/com/vk/api/sdk/actions/Newsfeed.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/utilities/Get.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Artur/Work/tasks/11_DPA-57355_Implement_Replication_Alerts_viewlet/2.xml" />
+    <entry file="file://C:/Artur/Work/tasks/11_DPA-57355_Implement_Replication_Alerts_viewlet/3.xml" />
+    <entry file="file://C:/Artur/Work/tasks/11_DPA-57355_Implement_Replication_Alerts_viewlet/1.xml" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/vk/VK.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="833">
+          <caret line="68" column="13" selection-start-line="68" selection-start-column="13" selection-end-line="68" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/utilities/ClipFile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="28" column="37" selection-start-line="28" selection-start-column="37" selection-end-line="28" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/utilities/CutFile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="49" column="17" selection-start-line="49" selection-start-column="17" selection-end-line="49" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/utilities/XML.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8432">
+          <caret line="496" selection-start-line="496" selection-end-line="496" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Artur/Work/tasks/11_DPA-57355_Implement_Replication_Alerts_viewlet/4.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1292">
+          <caret line="76" column="112" selection-start-line="76" selection-start-column="112" selection-end-line="76" selection-end-column="112" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mine/MotivationConstants.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/mine/Motivation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mine/Motivation.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3281">
+          <caret line="193" column="19" selection-start-line="193" selection-start-column="19" selection-end-line="193" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/utilities/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="16" column="45" selection-start-line="16" selection-start-column="45" selection-end-line="16" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/utilities/Inet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2329">
+          <caret line="137" column="21" selection-start-line="132" selection-start-column="21" selection-end-line="137" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/database/HBase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="16" column="12" selection-start-line="16" selection-start-column="12" selection-end-line="16" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/database/Postgres.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2227">
+          <caret line="136" column="48" selection-start-line="136" selection-start-column="48" selection-end-line="136" selection-end-column="48" />
+          <folding>
+            <marker date="1539948915288" expanded="false" signature="1736:1782" ph="SELECT value... work" />
+            <marker date="1539948915288" expanded="false" signature="2237:2255" ph="SELECT value... missingValue" />
+            <marker date="1539948915288" expanded="false" signature="2237:2287" ph="SELECT value... missingValue" />
+            <marker date="1539948915288" expanded="false" signature="2237:2299" ph="SELECT value... work" />
+            <marker date="1539948915288" expanded="false" signature="2353:2374" ph="SELECT * FRO... missingValue" />
+            <marker date="1539948915288" expanded="false" signature="2353:2387" ph="SELECT * FRO... missingValue" />
+            <marker date="1539948915288" expanded="false" signature="2836:2855" ph="INSERT into public.... " />
+            <marker date="1539948915288" expanded="false" signature="2836:2882" ph="INSERT into public.work... " />
+            <marker date="1539948915288" expanded="false" signature="3449:3491" ph="DELETE from " />
+            <marker date="1539948915288" expanded="false" signature="3455:3468" ph="INSERT into public.missingValue... " />
+            <marker date="1539948915288" expanded="false" signature="4247:4293" ph="SELECT * FRO... task" />
+            <marker date="1539948915288" expanded="false" signature="4825:4874" ph="UPDATE publi... " />
+            <marker date="1539948915288" expanded="false" signature="5287:5301" ph="UPDATE publi... " />
+            <marker date="1539948915288" expanded="false" signature="5287:5339" ph="UPDATE publi... " />
+            <marker date="1539948915288" expanded="false" signature="5287:5340" ph="UPDATE publi... " />
+            <marker date="1539948915288" expanded="false" signature="5777:5837" ph="SELECT * FRO... abstractcredential" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://5dbc1ad2-1df8-4800-8cfc-1407086bc739/database/postgres/schema/public/table/autos">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/utilities/Actions.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="714">
+          <caret line="53" column="13" selection-start-line="53" selection-start-column="13" selection-end-line="53" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_144/src.zip!/java/lang/String.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="39831">
+          <caret line="2420" column="20" selection-start-line="2420" selection-start-column="20" selection-end-line="2420" selection-end-column="20" />
+          <folding>
+            <element signature="e#94598#94599#0" expanded="true" />
+            <element signature="e#94636#94637#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/temp/AAA.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/temp/TestNewSuper.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/utilities/LogFileReader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="816">
+          <caret line="53" selection-start-line="53" selection-end-line="53" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/temp/TestNewObj.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="42" selection-start-line="42" selection-end-line="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/utilities/PrintFile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="32" selection-start-line="4" selection-start-column="32" selection-end-line="4" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/utilities/PrintLines.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/utilities/MyFile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://5dbc1ad2-1df8-4800-8cfc-1407086bc739/database/postgres/schema/public/table/users">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/temp/TestNew.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+          <folding>
+            <element signature="e#96#97#0" expanded="true" />
+            <element signature="e#122#123#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/temp/TestNewBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="21" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/temp/TestNewBuilderTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/utilities/Sequences.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="935">
+          <caret line="61" column="66" selection-start-line="61" selection-start-column="66" selection-end-line="61" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/temp/ITestNew.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/temp/Lambda.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="22" selection-start-line="22" selection-end-line="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/1.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="34" selection-start-line="1" selection-start-column="34" selection-end-line="1" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_144/src.zip!/javax/xml/parsers/SAXParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="714">
+          <caret line="78" column="22" selection-start-line="78" selection-start-column="22" selection-end-line="78" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/selenium/FirstExample.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/utilities/BaBla.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/A.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/temp/Test.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#170#171#0" expanded="true" />
+            <element signature="e#194#195#0" expanded="true" />
+            <element signature="e#225#226#0" expanded="true" />
+            <element signature="e#251#252#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/utilities/ActionsForUser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="23" column="16" selection-start-line="23" selection-start-column="16" selection-end-line="23" selection-end-column="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/xml/MySAXParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="522">
+          <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/utilities/Batch.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="508">
+          <caret line="88" selection-start-line="88" selection-end-line="88" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <last-edited>untitled:jar</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.5" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>No facets are configured</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>R Skeletons</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>untitled</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.6" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>R User Library</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

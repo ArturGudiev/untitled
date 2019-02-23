@@ -6,7 +6,9 @@ public class Inet {
 
     public static void navigateToUrl(String url) {
         try {
-            Runtime.getRuntime().exec("cmd /c \"ch " + url + "\"");
+            url = url.replaceAll("&", "^&");
+//            Runtime.getRuntime().exec("cmd /c \"ch " + url + "\"");
+            Runtime.getRuntime().exec("cmd /c \"start " + url + "\"");
         } catch (IOException e) {
             e.printStackTrace();
         }

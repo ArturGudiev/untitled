@@ -1,0 +1,9 @@
+<locations currentPage="1" pageSize="100" pageStart="1" totalRecords="1">
+	<location version="1" lastModified="2019-02-14T10:41:06.876+03:00">
+		<id>3ba40c88-84b5-45e9-85e6-9b15bfcacc59</id>
+		<link rel="self" href="https://localhost:9002/apollo-api/locations/3ba40c88-84b5-45e9-85e6-9b15bfcacc59"/>
+		<fqcn>Zyablikovo, Moscow, Russia</fqcn>
+		<longitude>37.76667</longitude>
+		<latitude>55.61667</latitude>
+	</location>
+</locations>
